@@ -1,16 +1,16 @@
 'use client';
-
-import { useState } from 'react';
 import {
-  MobileNav,
-  MobileNavHeader,
-  MobileNavToggle,
   Navbar,
-  NavbarButton,
-  NavbarLogo,
   NavBody,
   NavItems,
-} from '../ui/resizable-navbar';
+  MobileNav,
+  NavbarLogo,
+  NavbarButton,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from '@/src/components/ui/resizable-navbar';
+import { useState } from 'react';
 
 const navItems = [
   { name: 'Home', link: '#home' },
@@ -46,6 +46,32 @@ export default function MainNavbar() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             />
           </MobileNavHeader>
+
+          <MobileNavMenu
+            isOpen={isMobileMenuOpen}
+            onClose={() => setIsMobileMenuOpen(false)}
+          >
+            {navItems.map((item, idx) => (
+              <a
+                key={idx}
+                href={item.link}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className='relative'
+              >
+                <span className='block'>{item.name}</span>
+              </a>
+            ))}
+            <div className='flex w-full flex-col gap-4 mt-2'>
+              <NavbarButton
+                onClick={() => setIsMobileMenuOpen(false)}
+                href='#contact'
+                variant='primary'
+                className='w-full'
+              >
+                Hire Me
+              </NavbarButton>
+            </div>
+          </MobileNavMenu>
         </MobileNav>
       </Navbar>
     </nav>
