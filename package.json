@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@tabler/icons-react": "^3.44.0",
+    "@tsparticles/react": "^4.3.0",
+    "@tsparticles/slim": "^4.3.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.22.0",
