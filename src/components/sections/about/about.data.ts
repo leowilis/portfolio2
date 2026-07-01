@@ -19,7 +19,7 @@ export const STATS: StatItem[] = [
 export const DETAILS: DetailItem[] = [
   { label: 'Location', value: 'Medan, Indonesia' },
   { label: 'Availability', value: 'Open to Work', isHighlight: true },
-  { label: 'Type', value: 'Remote / On-site' },
+  { label: 'Type', value: 'Remote' },
   { label: 'Focus', value: 'Frontend Development' },
   { label: 'Education', value: 'Bootcamp Graduate' },
 ];
