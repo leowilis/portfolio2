@@ -6,7 +6,7 @@ import HeroTypewriter from './HeroTypewriter';
 export default function HeroContent() {
   return (
     <div className='flex flex-col items-center text-center'>
-      <HeroHeading name='Leonardo Wilis' />
+      <HeroHeading />
 
       <HeroTypewriter />
 
