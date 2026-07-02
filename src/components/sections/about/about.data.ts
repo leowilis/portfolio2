@@ -9,11 +9,27 @@ export type DetailItem = {
   isHighlight?: boolean;
 };
 
-export const STATS: StatItem[] = [
-  { value: '1+', label: 'Years' },
-  { value: '5+', label: 'Projects' },
-  { value: '11+', label: 'Tech Stack' },
-  { value: '100%', label: 'Dedicated' },
+export const STATS = [
+  {
+    value: 5,
+    suffix: '+',
+    label: 'Projects',
+  },
+  {
+    value: 1,
+    suffix: '+',
+    label: 'Years Experience',
+  },
+  {
+    value: 100,
+    suffix: '%',
+    label: 'Commitment',
+  },
+  {
+    value: 24,
+    suffix: '/7',
+    label: 'Learning',
+  },
 ];
 
 export const DETAILS: DetailItem[] = [
