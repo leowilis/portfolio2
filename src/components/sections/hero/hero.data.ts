@@ -1,3 +1,7 @@
+export const HERO_NAME = 'Leonardo Wilis';
+
+export const HERO_TITLE = 'Frontend Developer';
+
 export const HERO_ROLES = [
   'Frontend Developer',
   'React Specialist',
@@ -20,4 +24,4 @@ export const HERO_TECH_STACK = [
 ] as const;
 
 export const HERO_DESCRIPTION =
-  "Hi, I'm Leo Wilis — a frontend developer who turns ideas into interfaces. Clean code, thoughtful design, and a relentless focus on user experience — that's how I build for the web.";
+  "Hi, I'm Leonardo Wilis — a frontend developer who turns ideas into interfaces. Clean code, thoughtful design, and a relentless focus on user experience — that's how I build for the web.";
