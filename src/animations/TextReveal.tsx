@@ -2,8 +2,13 @@
 
 import { motion, type Variants } from 'framer-motion';
 
+type Segment = {
+  text: string;
+  className?: string;
+};
+
 type TextRevealProps = {
-  children: string;
+  text: Segment[];
   className?: string;
 };
 
@@ -19,7 +24,7 @@ const container: Variants = {
 const word: Variants = {
   hidden: {
     opacity: 0,
-    y: 20,
+    y: 24,
     filter: 'blur(8px)',
   },
   show: {
@@ -33,29 +38,32 @@ const word: Variants = {
   },
 };
 
-export default function TextReveal({ children, className }: TextRevealProps) {
-  const words = children.split(' ');
-
+export default function TextReveal({
+  text,
+  className,
+}: TextRevealProps) {
   return (
-    <motion.div
+    <motion.h2
       variants={container}
-      initial='hidden'
-      whileInView='show'
+      initial="hidden"
+      whileInView="show"
       viewport={{
         once: true,
         amount: 0.5,
       }}
       className={className}
     >
-      {words.map((wordText, index) => (
-        <motion.span
-          key={`${wordText}-${index}`}
-          variants={word}
-          className='mr-[0.25em] inline-block'
-        >
-          {wordText}
-        </motion.span>
-      ))}
-    </motion.div>
+      {text.map((segment, segmentIndex) =>
+        segment.text.split(' ').map((wordText, wordIndex) => (
+          <motion.span
+            key={`${segmentIndex}-${wordIndex}`}
+            variants={word}
+            className={`inline-block mr-[0.25em] ${segment.className ?? ''}`}
+          >
+            {wordText}
+          </motion.span>
+        )),
+      )}
+    </motion.h2>
   );
 }
