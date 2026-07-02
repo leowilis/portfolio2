@@ -3,6 +3,8 @@ import { useEffect, useRef } from 'react';
 
 export function RotatingOrb() {
   const orbRef = useRef<HTMLDivElement>(null);
+  const ring1Ref = useRef<HTMLDivElement>(null);
+  const ring2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let angle = 0;
@@ -10,9 +12,17 @@ export function RotatingOrb() {
 
     const animate = () => {
       angle += 0.35;
+
       if (orbRef.current) {
         orbRef.current.style.transform = `rotateY(${angle}deg) rotateX(12deg)`;
       }
+      if (ring1Ref.current) {
+        ring1Ref.current.style.transform = `rotateX(70deg) rotateZ(${angle * 1.4}deg)`;
+      }
+      if (ring2Ref.current) {
+        ring2Ref.current.style.transform = `rotateX(70deg) rotateZ(${-angle * 0.9}deg)`;
+      }
+
       frameId = requestAnimationFrame(animate);
     };
     animate();
@@ -23,39 +33,27 @@ export function RotatingOrb() {
   return (
     <div className='flex flex-col items-center gap-5'>
       {/* 3D Orb */}
-      <div style={{ perspective: '600px' }}>
+      <div className='relative' style={{ width: 120, height: 120 }}>
+        {/* Ring 2 — outer, self-contained rotation */}
+        <div
+          ref={ring2Ref}
+          className='absolute inset-[-32px] rounded-full border border-violet-500/35'
+        />
+        {/* Ring 1 — inner, self-contained rotation */}
+        <div
+          ref={ring1Ref}
+          className='absolute inset-[-20px] rounded-full border border-violet-500/33'
+        />
+        {/* Core */}
         <div
           ref={orbRef}
           style={{
             transformStyle: 'preserve-3d',
-            width: 120,
-            height: 120,
-            position: 'relative',
+            WebkitTransformStyle: 'preserve-3d',
           }}
+          className='absolute inset-0 flex items-center justify-center rounded-full border border-violet-500/40 bg-violet-500/[0.07]'
         >
-          {/* Core */}
-          <div
-            style={{ backfaceVisibility: 'inherit' }}
-            className='absolute inset-0 flex items-center justify-center rounded-full border border-violet-500/40 bg-violet-500/[0.07]'
-          >
-            <span className='text-3xl font-semibold text-violet-400'>LW</span>
-          </div>
-          {/* Ring 1 */}
-          <div
-            style={{
-              transform: 'translateZ(-18px)',
-              backfaceVisibility: 'inherit',
-            }}
-            className='absolute inset-[-10px] rounded-full border border-violet-500/20'
-          />
-          {/* Ring 2 */}
-          <div
-            style={{
-              transform: 'translateZ(-36px)',
-              backfaceVisibility: 'inherit',
-            }}
-            className='absolute inset-[-22px] rounded-full border border-violet-500/20'
-          />
+          <span className='text-3xl font-semibold text-violet-400'>LW</span>
         </div>
       </div>
 
