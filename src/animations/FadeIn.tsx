@@ -2,11 +2,11 @@
 
 import { motion } from 'framer-motion';
 
-interface Props {
+type Props = {
   children: React.ReactNode;
   className?: string;
   y?: number;
-}
+};
 
 export default function FadeIn({
   children,
@@ -15,15 +15,11 @@ export default function FadeIn({
 }: Props) {
   return (
     <motion.div
-      custom={y}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
       variants={{
-        hidden: (distance: number) => ({
+        hidden: {
           opacity: 0,
-          y: distance,
-        }),
+          y,
+        },
         show: {
           opacity: 1,
           y: 0,
