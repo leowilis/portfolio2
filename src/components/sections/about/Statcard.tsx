@@ -1,7 +1,7 @@
 'use client';
 
+import FadeIn from '@/src/animations/FadeIn';
 import { motion } from 'framer-motion';
-import { FadeIn } from '@/src/animations/FadeIn';
 
 type StatCardProps = {
   value: string;
@@ -9,13 +9,9 @@ type StatCardProps = {
   delay?: number;
 };
 
-export default function Statcard({
-  value,
-  label,
-  delay = 0,
-}: StatCardProps) {
+export default function Statcard({ value, label, delay = 0 }: StatCardProps) {
   return (
-    <FadeIn delay={delay * 0.1}>
+    <FadeIn>
       <motion.div
         whileHover={{
           y: -4,
@@ -24,15 +20,13 @@ export default function Statcard({
         transition={{
           duration: 0.25,
         }}
-        className="relative flex flex-col items-center justify-center overflow-hidden rounded-xl border border-violet-500/10 bg-violet-500/5 p-5"
+        className='relative flex flex-col items-center justify-center overflow-hidden rounded-xl border border-violet-500/10 bg-violet-500/5 p-5'
       >
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent" />
+        <div className='absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent' />
 
-        <span className="text-2xl font-semibold text-violet-400">
-          {value}
-        </span>
+        <span className='text-2xl font-semibold text-violet-400'>{value}</span>
 
-        <span className="mt-1 text-[9px] uppercase tracking-[2px] text-white/30">
+        <span className='mt-1 text-[9px] uppercase tracking-[2px] text-white/30'>
           {label}
         </span>
       </motion.div>
