@@ -12,6 +12,6 @@ export { default as AboutStats } from './AboutStats';
 
 export { default as AboutOrb } from './AboutOrb';
 
-export { default as StatCard } from './StatCard';
+export { default as StatCard } from './Statcard';
 
 export * from './about.data';
