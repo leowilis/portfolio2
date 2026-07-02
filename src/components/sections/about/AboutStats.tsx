@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { STATS } from './about.data';
-import StatCard from './Statcard';
+import StatCard from './StatCard';
 
 const container = {
   hidden: {},
