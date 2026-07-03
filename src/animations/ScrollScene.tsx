@@ -7,14 +7,16 @@ import {
   useSpring,
   useTransform,
 } from 'framer-motion';
-import { ReactNode, useRef } from 'react';
+import { Children, type ReactNode, useRef } from 'react';
 
 interface ScrollSceneProps {
-  children: [ReactNode, ReactNode];
+  children: ReactNode;
 }
 
 export default function ScrollScene({ children }: ScrollSceneProps) {
   const ref = useRef<HTMLDivElement>(null);
+
+  const sections = Children.toArray(children);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -31,48 +33,51 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   const heroScale = useTransform(progress, [0, 0.3], [1, 0.94]);
   const heroOpacity = useTransform(progress, [0, 0.3], [1, 0]);
   const heroBlur = useTransform(progress, [0, 0.3], [0, 12]);
-
   const heroFilter = useMotionTemplate`blur(${heroBlur}px)`;
 
   // About
   const aboutY = useTransform(progress, [0, 0.3], [180, 0]);
-
   const aboutRadius = useTransform(progress, [0, 0.3], [40, 0]);
 
   return (
-    <div
-      ref={ref}
-      className="relative h-[220vh]"
-    >
+    <div ref={ref} className='relative h-[500vh]'>
       {/* HERO */}
+
       <motion.div
         style={{
           scale: heroScale,
           opacity: heroOpacity,
           filter: heroFilter,
         }}
-        className="sticky top-0 h-screen"
+        className='sticky top-0 h-screen'
       >
-        {children[0]}
+        {sections[0]}
       </motion.div>
 
       {/* ABOUT */}
+
       <motion.div
         style={{
           y: aboutY,
           borderTopLeftRadius: aboutRadius,
           borderTopRightRadius: aboutRadius,
         }}
-        className="
-          relative
-          z-20
-          min-h-screen
-          overflow-hidden
-          bg-transparent
-        "
+        className='relative z-20 min-h-screen overflow-hidden bg-transparent'
       >
-        {children[1]}
+        {sections[1]}
       </motion.div>
+
+      {/* PROJECTS */}
+
+      {sections[2] && <div className='relative z-30'>{sections[2]}</div>}
+
+      {/* SKILLS */}
+
+      {sections[3] && <div className='relative z-40'>{sections[3]}</div>}
+
+      {/* CONTACT */}
+
+      {sections[4] && <div className='relative z-50'>{sections[4]}</div>}
     </div>
   );
 }
