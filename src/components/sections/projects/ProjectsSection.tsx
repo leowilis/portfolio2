@@ -1,6 +1,7 @@
 import { StaggerContainer } from '@/src/animations';
 import ProjectsGrid from './ProjectsGrid';
 import ProjectsHeader from './ProjectsHeader';
+import ProjectsScene from './ProjectsScene';
 
 export default function ProjectsSection() {
   return (
@@ -8,6 +9,7 @@ export default function ProjectsSection() {
       <StaggerContainer>
         <ProjectsHeader />
         <ProjectsGrid />
+        <ProjectsScene />
       </StaggerContainer>
     </section>
   );
