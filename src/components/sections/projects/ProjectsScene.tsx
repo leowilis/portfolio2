@@ -3,7 +3,7 @@
 import { PROJECTS } from './project.data';
 import ProjectCard from './ProjectCard';
 
-export default function ProjectScene() {
+export default function ProjectsScene() {
   return (
     <div
       className='
