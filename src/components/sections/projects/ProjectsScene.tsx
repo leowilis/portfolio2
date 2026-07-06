@@ -1,46 +1,84 @@
 'use client';
 
 import { PROJECTS } from './project.data';
-import ProjectCard from './ProjectCard';
+import { PROJECT_STAGE_MAX_WIDTH } from './project.constants';
+
+import ProjectStage from './ProjectStage';
+import ProjectModal from './ProjectModal';
+import useProjectCarousel from './useProjectCarousel';
+import { useEffect, useState } from 'react';
+import { Project } from './project.type';
 
 export default function ProjectsScene() {
+  const carousel = useProjectCarousel({
+    total: PROJECTS.length,
+  });
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const currentIndex = selectedProject
+    ? PROJECTS.findIndex((project) => project.id === selectedProject.id)
+    : -1;
+
+  const openPreviousProject = () => {
+    if (currentIndex <= 0) return;
+
+    setSelectedProject(PROJECTS[currentIndex - 1]);
+  };
+  const openNextProject = () => {
+    if (currentIndex >= PROJECTS.length - 1) return;
+
+    setSelectedProject(PROJECTS[currentIndex + 1]);
+  };
+
+  useEffect(() => {
+  if (!selectedProject) return;
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'ArrowRight') {
+      const currentIndex = PROJECTS.findIndex(
+        (project) => project.id === selectedProject.id,
+      );
+
+      if (currentIndex < PROJECTS.length - 1) {
+        setSelectedProject(PROJECTS[currentIndex + 1]);
+      }
+    }
+
+    if (event.key === 'ArrowLeft') {
+      const currentIndex = PROJECTS.findIndex(
+        (project) => project.id === selectedProject.id,
+      );
+
+      if (currentIndex > 0) {
+        setSelectedProject(PROJECTS[currentIndex - 1]);
+      }
+    }
+  };
+
+  window.addEventListener('keydown', handleKeyDown);
+
+  return () =>
+    window.removeEventListener('keydown', handleKeyDown);
+}, [selectedProject]);
+
   return (
-    <div
-      className='
-        relative
-        mx-auto
-        mt-12
-        flex
-        flex-col
-        gap-8
-        h-auto
-        w-full
-        md:mt-20
-        md:block
-        md:h-[850px]
-        md:perspective-[2200px]
-      '
-    >
-      {PROJECTS.map((project, index) => (
-        <div
-          key={project.id}
-          className='w-full md:absolute md:left-1/2 md:top-1/2'
-          style={{
-            /* Wrapped in a JS helper window check or standard media utility */
-            transform:
-              typeof window !== 'undefined' && window.innerWidth >= 768
-                ? `
-              translate(-50%, -50%)
-              translateY(${index * 120}px)
-              translateZ(${-index * 180}px)
-              rotateX(10deg)
-            `
-                : undefined,
-          }}
-        >
-          <ProjectCard project={project} />
-        </div>
-      ))}
-    </div>
+    <section className='relative overflow-hidden min-h-[760px]'>
+      <div
+        className='mx-auto px-6'
+        style={{
+          maxWidth: PROJECT_STAGE_MAX_WIDTH,
+        }}
+      >
+        <ProjectStage {...carousel} onProjectOpen={setSelectedProject} />
+
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+          onNext={openNextProject}
+          onPrevious={openPreviousProject}
+          hasNext={currentIndex < PROJECTS.length - 1}
+          hasPrevious={currentIndex > 0}
+        />
+      </div>
+    </section>
   );
 }
