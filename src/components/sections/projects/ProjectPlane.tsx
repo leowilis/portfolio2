@@ -1,0 +1,145 @@
+'use client';
+
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import WindowHeader from './WindowHeader';
+import FeaturedProjectContent from './FeaturedProjectContent';
+import CompactProjectContent from './CompactProjectContent';
+import type { ProjectPlaneProps } from './project.type';
+import { cn } from '@/src/lib/utils';
+import {
+  FEATURED_CARD_WIDTH,
+  FEATURED_IMAGE_HEIGHT,
+  FLOAT_DISTANCE,
+  IMAGE_HOVER_SCALE,
+  SIDE_CARD_HOVER_SCALE,
+  SIDE_CARD_HOVER_Y,
+  SIDE_CARD_WIDTH,
+  SIDE_IMAGE_HEIGHT,
+} from './project.constants';
+import {
+  CARD_ENTRANCE,
+  CARD_HOVER,
+  getFloatTransition,
+} from './project.motion';
+
+export default function ProjectPlane({
+  project,
+  layout,
+  index,
+  onClick,
+}: ProjectPlaneProps) {
+  const { x, y, z, rotateX, rotateY, scale, blur, isCenter, zIndex } = layout;
+
+  return (
+    <motion.div
+      custom={index}
+      variants={CARD_ENTRANCE}
+      initial='hidden'
+      animate='visible'
+      onClick={onClick}
+      className='absolute'
+      style={{
+        left: '50%',
+        top: '50%',
+        translateX: `calc(-50% + ${x}px)`,
+        translateY: `calc(-50% + ${y}px)`,
+        translateZ: z,
+        rotateX,
+        rotateY,
+        scale,
+        zIndex,
+        filter: `blur(${blur}px)`,
+        willChange: 'transform',
+        transformStyle: 'preserve-3d',
+        cursor: isCenter ? 'default' : 'pointer',
+      }}
+    >
+      <motion.div
+        animate={{
+          y: [0, -FLOAT_DISTANCE, 0],
+        }}
+        transition={getFloatTransition(index)}
+      >
+        <motion.div
+          whileHover={
+            isCenter
+              ? CARD_HOVER
+              : {
+                  y: SIDE_CARD_HOVER_Y,
+                  scale: SIDE_CARD_HOVER_SCALE,
+                }
+          }
+          transition={{
+            duration: 0.35,
+          }}
+          style={{
+            transformStyle: 'preserve-3d',
+          }}
+        >
+          <div
+            className={cn(
+              'group relative overflow-hidden rounded-[22px] border transition-all duration-500 bg-[#0d0d0d]',
+              isCenter
+                ? 'border-violet-500/30 shadow-[0_60px_120px_rgba(0,0,0,.70)]'
+                : 'border-white/5 shadow-[0_20px_40px_rgba(0,0,0,.45)]',
+            )}
+            style={{
+              width: isCenter ? FEATURED_CARD_WIDTH : SIDE_CARD_WIDTH,
+            }}
+          >
+            {/* Top Shimmer */}
+            <div className='absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent' />
+
+            {/* Glow */}
+            <div
+              className={`absolute inset-0 rounded-[22px] bg-violet-500/[0.06] blur-[60px] transition-opacity duration-500 ${
+                isCenter
+                  ? 'opacity-80 group-hover:opacity-100'
+                  : 'opacity-0 group-hover:opacity-20'
+              }`}
+            />
+            <WindowHeader title={project.title} />
+            <div
+              className='relative overflow-hidden'
+              style={{
+                height: isCenter ? FEATURED_IMAGE_HEIGHT : SIDE_IMAGE_HEIGHT,
+              }}
+            >
+              <motion.div
+                className='relative h-full w-full'
+                whileHover={
+                  isCenter
+                    ? {
+                        scale: IMAGE_HOVER_SCALE,
+                      }
+                    : {}
+                }
+                transition={{
+                  duration: 0.9,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  priority={isCenter}
+                  quality={90}
+                  sizes={isCenter ? "560px" : "480px"}
+                  className='object-cover object-top'
+                />
+              </motion.div>
+              <div className='absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/15 to-transparent' />
+              {isCenter ? (
+                <FeaturedProjectContent project={project} />
+              ) : (
+                <CompactProjectContent project={project} />
+              )}
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+}
