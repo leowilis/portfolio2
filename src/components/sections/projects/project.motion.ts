@@ -1,0 +1,44 @@
+import type { Transition, Variants } from 'framer-motion';
+
+// Initial card appearance
+export const CARD_ENTRANCE: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+
+    transition: {
+      duration: 0.55,
+      delay: index * 0.08,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+// Featured card hover
+export const CARD_HOVER = {
+  rotateY: 4,
+  rotateX: -3,
+  scale: 1.02,
+} as const;
+
+// Tech chip hover
+export const TECH_CHIP_HOVER = {
+  scale: 1.05,
+  y: -2,
+};
+
+// FLoating animation
+export function getFloatTransition(index: number): Transition {
+  return {
+    duration: 5 + index * 0.7,
+    repeat: Infinity,
+    repeatType: 'mirror',
+    ease: 'easeInOut',
+    delay: index * 0.5,
+  };
+}
