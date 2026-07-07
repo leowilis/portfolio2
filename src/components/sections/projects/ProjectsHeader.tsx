@@ -1,34 +1,35 @@
-import { TextReveal, FadeIn } from '@/src/animations';
+'use client';
+
+import { motion } from 'framer-motion';
 
 export default function ProjectsHeader() {
   return (
-    <div className='mb-20 flex flex-col items-center text-center'>
-      <FadeIn>
-        <p className='mb-3 text-xs font-bold uppercase tracking-[4px] text-white/40'>
-          Featured Projects
-        </p>
-      </FadeIn>
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 20,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.8,
+      }}
+      className='mb-16 text-center'
+    >
+      <p className='mb-3 text-xs font-medium uppercase tracking-[0.45em] text-violet-400'>
+        Selected Works
+      </p>
 
-      <TextReveal
-        className='text-3xl font-semibold tracking-tight md:text-4xl'
-        text={[
-          {
-            text: 'Selected work crafted with',
-            className: 'text-white',
-          },
-          {
-            text: 'performance and passion.',
-            className: 'text-violet-400',
-          },
-        ]}
-      />
-
-      <FadeIn>
-        <p className='mt-6 max-w-2xl text-white/45'>
-          A collection of projects focused on performance, clean architecture,
-          and delightful user experience.
-        </p>
-      </FadeIn>
-    </div>
+      <h2 className='text-5xl font-bold tracking-tight text-white'>
+        Featured Projects
+      </h2>
+      <p className='mx-auto mt-5 max-w-2xl text-base leading-8 text-white/45'>
+        A selection of products and applications I&apos;ve designed and built
+        with a strong focus on performance, clean architecture, and user
+        experience.
+      </p>
+    </motion.div>
   );
 }
