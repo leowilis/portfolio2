@@ -64,6 +64,7 @@ export default function ProjectStage({
           const layout = getProjectLayout({
             index,
             activeIndex,
+            total: PROJECTS.length,
           });
 
           return (
