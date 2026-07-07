@@ -4,6 +4,7 @@ import { HIDDEN_CARD_OFFSET } from './project.constants';
 interface LayoutOptions {
   index: number;
   activeIndex: number;
+  total: number;
 }
 
 // Active project
@@ -90,8 +91,17 @@ const HIDDEN_LAYOUT: ProjectLayout = {
 export function getProjectLayout({
   index,
   activeIndex,
+  total,
 }: LayoutOptions): ProjectLayout {
-  const offset = index - activeIndex;
+  let offset = index - activeIndex;
+
+  if (offset > total / 2) {
+    offset -= total;
+  }
+
+  if (offset < -total / 2) {
+    offset += total;
+  }
 
   switch (offset) {
     case -2:
