@@ -51,9 +51,9 @@ export default function useProjectCarousel({
     const offset = dragX.get();
 
     if (offset <= -DRAG_THRESHOLD) {
-      setActiveIndex((prev) => Math.min(prev + 1, total - 1));
+      setActiveIndex((prev) => (prev + 1) % total);
     } else if (offset >= DRAG_THRESHOLD) {
-      setActiveIndex((prev) => Math.max(prev - 1, 0));
+      setActiveIndex((prev) => (prev - 1 + total) % total);
     }
 
     dragX.set(0);
