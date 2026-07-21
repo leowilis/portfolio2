@@ -1,5 +1,4 @@
 import { ProjectLayout } from './project.type';
-import { HIDDEN_CARD_OFFSET } from './project.constants';
 
 interface LayoutOptions {
   index: number;
@@ -105,19 +104,19 @@ export function getProjectLayout({
 
   switch (offset) {
     case -2:
-      return FAR_LEFT_LAYOUT;
+      return { ...FAR_LEFT_LAYOUT };
 
     case -1:
-      return SIDE_LEFT_LAYOUT;
+      return { ...SIDE_LEFT_LAYOUT };
 
     case 0:
-      return CENTER_LAYOUT;
+      return { ...CENTER_LAYOUT };
 
     case 1:
-      return SIDE_RIGHT_LAYOUT;
+      return { ...SIDE_RIGHT_LAYOUT };
 
     case 2:
-      return FAR_RIGHT_LAYOUT;
+      return { ...FAR_RIGHT_LAYOUT };
 
     default:
       const direction = offset > 0 ? 1 : -1;
