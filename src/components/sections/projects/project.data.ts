@@ -7,7 +7,7 @@ export const PROJECTS: Project[] = [
     description:
       'Movie discovery platform with search, detailed information, and a responsive user interface.',
 
-    image: '/projects/movie-app.png',
+    image: '/movie-app.webp',
 
     technologies: [
       'React',
@@ -32,7 +32,7 @@ export const PROJECTS: Project[] = [
     description:
       'Food ordering platform with authentication, search, favorites, cart management, and a responsive user interface.',
 
-    image: '/projects/ecommerce.png',
+    image: '/foody-app.webp',
     technologies: [
       'React',
       'TypeScript',
@@ -51,7 +51,7 @@ export const PROJECTS: Project[] = [
     description:
       'Digital library application with book discovery, search functionality, and intuitive navigation.',
 
-    image: '/projects/dashboard.png',
+    image: '/library.webp',
     technologies: [
       'Next.js',
       'Redux',
