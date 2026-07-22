@@ -6,7 +6,7 @@ import {
   useSpring,
   useTransform,
 } from 'framer-motion';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { DRAG_LIMIT, DRAG_THRESHOLD } from './project.constants';
 
@@ -14,10 +14,13 @@ interface UseProjectCarouselOptions {
   total: number;
 }
 
+// Controls the interactive 3D project carousel.
 export default function useProjectCarousel({
   total,
 }: UseProjectCarouselOptions) {
-  const [activeIndex, setActiveIndex] = useState(Math.floor(total / 2));
+  // Initial active project
+  const initialIndex = total > 0 ? Math.floor(total / 2) : 0;
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
 
   // Raw drag position
   const dragX = useMotionValue(0);
@@ -33,31 +36,41 @@ export default function useProjectCarousel({
   const rotateY = useTransform(springX, [-DRAG_LIMIT, DRAG_LIMIT], [28, -28]);
   const rotateX = useTransform(springX, [-DRAG_LIMIT, DRAG_LIMIT], [-2, 2]);
 
-  // Camera Zoom
+  // Camera zoom
   const cameraZ = useTransform(
     springX,
     [-DRAG_LIMIT, 0, DRAG_LIMIT],
     [-80, 0, -80],
   );
 
-  function handleDrag(
-    _: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo,
-  ) {
-    dragX.set(info.offset.x);
-  }
+  const nextProject = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % total);
+  }, [total]);
 
-  function handleDragEnd() {
+  const previousProject = useCallback(() => {
+    setActiveIndex((prev) => (prev - 1 + total) % total);
+  }, [total]);
+
+  // Update drag position
+  const handleDrag = useCallback(
+    (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+      dragX.set(info.offset.x);
+    },
+    [dragX],
+  );
+
+  // Handle drag release
+  const handleDragEnd = useCallback(() => {
     const offset = dragX.get();
 
     if (offset <= -DRAG_THRESHOLD) {
-      setActiveIndex((prev) => (prev + 1) % total);
+      nextProject();
     } else if (offset >= DRAG_THRESHOLD) {
-      setActiveIndex((prev) => (prev - 1 + total) % total);
+      previousProject();
     }
 
     dragX.set(0);
-  }
+  }, [dragX, nextProject, previousProject]);
 
   return {
     activeIndex,
@@ -67,5 +80,7 @@ export default function useProjectCarousel({
     cameraZ,
     handleDrag,
     handleDragEnd,
+    nextProject,
+    previousProject,
   };
 }
