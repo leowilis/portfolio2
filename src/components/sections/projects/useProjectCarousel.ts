@@ -24,6 +24,7 @@ export default function useProjectCarousel({
 
   // Raw drag position
   const dragX = useMotionValue(0);
+  const [isDragging, setIsDragging] = useState(false);
 
   // Smoothed drag motion
   const springX = useSpring(dragX, {
@@ -51,25 +52,30 @@ export default function useProjectCarousel({
     setActiveIndex((prev) => (prev - 1 + total) % total);
   }, [total]);
 
-  // Update drag position
+  // Drag position
   const handleDrag = useCallback(
     (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-      dragX.set(info.offset.x);
+      setIsDragging(true);
+      dragX.set(dragX.get() + info.delta.x);
     },
     [dragX],
   );
 
   // Handle drag release
   const handleDragEnd = useCallback(() => {
-    const offset = dragX.get();
+    const totalOffsetDistance = dragX.get();
 
-    if (offset <= -DRAG_THRESHOLD) {
+    if (totalOffsetDistance <= -DRAG_THRESHOLD) {
       nextProject();
-    } else if (offset >= DRAG_THRESHOLD) {
+    } else if (totalOffsetDistance >= DRAG_THRESHOLD) {
       previousProject();
     }
 
     dragX.set(0);
+
+    setTimeout(() => {
+      setIsDragging(false);
+    }, 150);
   }, [dragX, nextProject, previousProject]);
 
   return {
@@ -82,5 +88,6 @@ export default function useProjectCarousel({
     handleDragEnd,
     nextProject,
     previousProject,
+    isDragging,
   };
 }
