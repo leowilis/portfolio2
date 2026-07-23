@@ -13,6 +13,9 @@
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.922 0 0);
   --primary-foreground: #0d0d0d;
+  --primary-foreground-red: #ff5f56;
+  --primary-foreground-yellow: #ffbd2e;
+  --primary-foreground-green: #27c93f;
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -42,6 +45,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-foreground-red: var(--color-foreground-red);
+  --color-foreground-yellow: var(--color-foreground-yellow);
+  --color-foreground-green: var(--color-foreground-green);
   --color-primary: var(--color-primary-100);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
@@ -99,6 +105,9 @@ body {
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.922 0 0);
   --primary-foreground: #0d0d0d;
+  --primary-foreground-red: #ff5f56;
+  --primary-foreground-yellow: #ffbd2e;
+  --primary-foreground-green: #27c93f;
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
