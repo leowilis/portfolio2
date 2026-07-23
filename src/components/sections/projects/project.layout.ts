@@ -9,8 +9,8 @@ interface LayoutOptions {
 // Active project
 const CENTER_LAYOUT: ProjectLayout = {
   x: 0,
-  y: -30,
-  z: 260,
+  y: -20,
+  z: 280,
   rotateX: 0,
   rotateY: 0,
   scale: 1,
@@ -22,67 +22,67 @@ const CENTER_LAYOUT: ProjectLayout = {
 
 // Adjacent projects
 const SIDE_LEFT_LAYOUT: ProjectLayout = {
-  x: -540,
-  y: 30,
-  z: -180,
-  rotateX: 2,
-  rotateY: 20,
-  scale: 0.9,
-  opacity: 0.65,
-  blur: 0,
+  x: -470,
+  y: 15,
+  z: 60,
+  rotateX: 0,
+  rotateY: 16,
+  scale: 0.86,
+  opacity: 0.9,
+  blur: 1,
   isCenter: false,
   zIndex: 20,
 };
 
 const SIDE_RIGHT_LAYOUT: ProjectLayout = {
-  x: 540,
-  y: 30,
-  z: -180,
-  rotateX: 2,
-  rotateY: -20,
-  scale: 0.9,
-  opacity: 0.65,
-  blur: 0,
+  x: 470,
+  y: 15,
+  z: 60,
+  rotateX: 0,
+  rotateY: -16,
+  scale: 0.86,
+  opacity: 0.9,
+  blur: 1,
   isCenter: false,
   zIndex: 20,
 };
 
 // Background projects
 const FAR_LEFT_LAYOUT: ProjectLayout = {
-  x: -980,
-  y: 120,
-  z: -700,
-  rotateX: 8,
-  rotateY: 28,
-  scale: 0.65,
-  opacity: 0.15,
-  blur: 3,
+  x: -860,
+  y: 45,
+  z: -180,
+  rotateX: 0,
+  rotateY: 24,
+  scale: 0.72,
+  opacity: 0.18,
+  blur: 4,
   isCenter: false,
   zIndex: 10,
 };
 
 const FAR_RIGHT_LAYOUT: ProjectLayout = {
-  x: 980,
-  y: 120,
-  z: -700,
-  rotateX: 8,
-  rotateY: -28,
-  scale: 0.65,
-  opacity: 0.15,
-  blur: 3,
+  x: 860,
+  y: 45,
+  z: -180,
+  rotateX: 0,
+  rotateY: -24,
+  scale: 0.72,
+  opacity: 0.18,
+  blur: 4,
   isCenter: false,
   zIndex: 10,
 };
 
 const HIDDEN_LAYOUT: ProjectLayout = {
   x: 0,
-  y: 180,
-  z: -1000,
-  rotateX: 10,
+  y: 80,
+  z: -500,
+  rotateX: 0,
   rotateY: 0,
-  scale: 0.4,
+  scale: 0.55,
   opacity: 0,
-  blur: 6,
+  blur: 8,
   isCenter: false,
   zIndex: 0,
 };
@@ -124,15 +124,13 @@ export function getProjectLayout({
 
       return {
         ...HIDDEN_LAYOUT,
-
-        x: direction * (1120 + (distance - 2) * 420),
-        y: 120 + (distance - 2) * 30,
-        z: -700 - (distance - 2) * 180,
-        rotateY: direction > 0 ? -30 : 30,
-        scale: Math.max(0.25, 0.55 - (distance - 2) * 0.08),
+        x: direction * (980 + (distance - 2) * 260),
+        y: 60,
+        z: -400,
+        rotateY: direction > 0 ? -28 : 28,
+        scale: 0.55,
         opacity: 0,
-        blur: 6,
-        zIndex: 0,
+        blur: 8,
       };
   }
 }
