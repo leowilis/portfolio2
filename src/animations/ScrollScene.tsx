@@ -49,7 +49,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
           opacity: heroOpacity,
           filter: heroFilter,
         }}
-        className='sticky top-0 h-screen'
+        className='sticky top-0 h-screen overflow-hidden'
       >
         {sections[0]}
       </motion.div>
@@ -62,7 +62,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
           borderTopLeftRadius: aboutRadius,
           borderTopRightRadius: aboutRadius,
         }}
-        className='relative z-20 min-h-screen overflow-hidden bg-transparent'
+        className='relative z-20 overflow-hidden bg-transparent'
       >
         {sections[1]}
       </motion.div>
