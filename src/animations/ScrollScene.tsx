@@ -36,8 +36,10 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   const heroFilter = useMotionTemplate`blur(${heroBlur}px)`;
 
   // About
-  const aboutY = useTransform(progress, [0, 0.3], [180, 0]);
-  const aboutRadius = useTransform(progress, [0, 0.3], [40, 0]);
+  const aboutY = useTransform(progress, [0, 0.25], [80, 0]);
+  const aboutRadius = useTransform(progress, [0, 0], [40, 0]);
+  const aboutScale = useTransform(progress, [0, 0.25], [0.98, 1]);
+  const aboutOpacity = useTransform(progress, [0, 0.2], [0.6, 1]);
 
   return (
     <div ref={ref} className='min-h-screen'>
@@ -59,10 +61,12 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
       <motion.div
         style={{
           y: aboutY,
+          scale: aboutScale,
+          opacity: aboutOpacity,
           borderTopLeftRadius: aboutRadius,
           borderTopRightRadius: aboutRadius,
         }}
-        className='relative z-20 overflow-hidden bg-transparent'
+        className='relative z-20 -mt-28 overflow-hidden bg-transparent'
       >
         {sections[1]}
       </motion.div>
