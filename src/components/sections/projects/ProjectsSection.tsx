@@ -30,7 +30,7 @@ export default function ProjectsSection() {
   ));
 
   return (
-    <section id='projects' className='relative overflow-hidden py-32'>
+    <section id='projects' className='relative overflow-hidden'>
       <StaggerContainer>
         <ProjectsHeader />
       </StaggerContainer>
