@@ -9,9 +9,9 @@ interface LayoutOptions {
 // Active project
 const CENTER_LAYOUT: ProjectLayout = {
   x: 0,
-  y: -10,
-  z: 220,
-  rotateX: 2,
+  y: -30,
+  z: 260,
+  rotateX: 0,
   rotateY: 0,
   scale: 1,
   opacity: 1,
@@ -22,54 +22,54 @@ const CENTER_LAYOUT: ProjectLayout = {
 
 // Adjacent projects
 const SIDE_LEFT_LAYOUT: ProjectLayout = {
-  x: -620,
-  y: 70,
-  z: -260,
-  rotateX: 6,
-  rotateY: 18,
-  scale: 0.82,
-  opacity: 0.45,
-  blur: 2,
+  x: -540,
+  y: 30,
+  z: -180,
+  rotateX: 2,
+  rotateY: 20,
+  scale: 0.9,
+  opacity: 0.65,
+  blur: 0,
   isCenter: false,
   zIndex: 20,
 };
 
 const SIDE_RIGHT_LAYOUT: ProjectLayout = {
-  x: 620,
-  y: 70,
-  z: -260,
-  rotateX: 6,
-  rotateY: -18,
-  scale: 0.82,
-  opacity: 0.45,
-  blur: 2,
+  x: 540,
+  y: 30,
+  z: -180,
+  rotateX: 2,
+  rotateY: -20,
+  scale: 0.9,
+  opacity: 0.65,
+  blur: 0,
   isCenter: false,
   zIndex: 20,
 };
 
 // Background projects
 const FAR_LEFT_LAYOUT: ProjectLayout = {
-  x: -1120,
+  x: -980,
   y: 120,
   z: -700,
   rotateX: 8,
   rotateY: 28,
-  scale: 0.55,
-  opacity: 0.18,
-  blur: 4,
+  scale: 0.65,
+  opacity: 0.15,
+  blur: 3,
   isCenter: false,
   zIndex: 10,
 };
 
 const FAR_RIGHT_LAYOUT: ProjectLayout = {
-  x: 1120,
+  x: 980,
   y: 120,
   z: -700,
   rotateX: 8,
   rotateY: -28,
-  scale: 0.55,
-  opacity: 0.18,
-  blur: 4,
+  scale: 0.65,
+  opacity: 0.15,
+  blur: 3,
   isCenter: false,
   zIndex: 10,
 };
