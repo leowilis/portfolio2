@@ -49,7 +49,7 @@ export default function ProjectModal({
     <AnimatePresence mode='wait'>
       {project && (
         <motion.div
-          className='fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-lg'
+          className='fixed inset-0 z-[999] flex items-center justify-center bg-overlay backdrop-blur-lg'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -63,7 +63,7 @@ export default function ProjectModal({
               duration: 0.25,
             }}
             onClick={(e) => e.stopPropagation()}
-            className='w-full max-w-6xl rounded-3xl border border-white/10 bg-primary-foreground p-10'
+            className='w-full max-w-6xl rounded-3xl border border-surface-elevated bg-surface p-10'
           >
             <ProjectModalContent
               project={project}
