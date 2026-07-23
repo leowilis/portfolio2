@@ -10,12 +10,15 @@ export const PROJECTS: Project[] = [
     image: '/movie-app.webp',
 
     technologies: [
-      'React',
+      'React 18',
+      'Vite 5',
       'TanStack Query',
       'React Router',
       'TypeScript',
       'Redux',
       'Tailwind',
+      'Zustand',
+      'Axios',
       'Framer Motion',
       'Sonner',
     ],
@@ -34,11 +37,12 @@ export const PROJECTS: Project[] = [
 
     image: '/foody-app.webp',
     technologies: [
-      'React',
+      'React 19 + Vite',
       'TypeScript',
       'Redux',
       'Tailwind',
       'TanStack Query',
+      'shadcn/ui',
     ],
 
     demo: 'https://foody-app-mu.vercel.app/',
@@ -53,14 +57,41 @@ export const PROJECTS: Project[] = [
 
     image: '/library.webp',
     technologies: [
+      'React 19 + Vite',
+      'Redux',
+      'TypeScript',
+      'Tailwind',
+      'TanStack Query',
+      'shadcn/ui',
+      'React Router',
+      'Axios',
+      'Lucide React',
+      'Sonner',
+    ],
+
+    demo: 'https://library-app-indol-nu.vercel.app/',
+    github: 'https://github.com/leowilis/library-app.git',
+  },
+
+  {
+    id: 4,
+    title: 'Social Media App',
+    description:
+      'A full-featured social media web app — feed, posts, likes, comments, follows, and bookmarks.',
+
+    image: '/social-app.webp',
+    technologies: [
       'Next.js',
       'Redux',
       'TypeScript',
       'Tailwind',
       'TanStack Query',
+      'Zod',
+      'Axios',
+      'shadcn/ui',
     ],
 
-    demo: 'https://library-app-indol-nu.vercel.app/',
-    github: 'https://github.com/leowilis/library-app.git',
+    demo: 'https://social-media-apps1.vercel.app/',
+    github: 'https://github.com/leowilis/social-media-apps.git',
   },
 ];
