@@ -12,7 +12,7 @@ export const CARD_ENTRANCE: Variants = {
     y: 0,
 
     transition: {
-      duration: 0.55,
+      duration: 0.65,
       delay: index * 0.08,
       ease: [0.22, 1, 0.36, 1],
     },
