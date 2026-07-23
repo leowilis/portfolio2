@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { PROJECTS } from './project.data';
 import { DRAG_LIMIT, STAGE_PERSPECTIVE } from './project.constants';
@@ -12,8 +12,6 @@ import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 
 type Props = ReturnType<typeof useProjectCarousel> & {
   onProjectOpen: (project: Project) => void;
-  nextProject: () => void;
-  previousProject: () => void;
 };
 
 export default function ProjectStage({
@@ -27,6 +25,7 @@ export default function ProjectStage({
   onProjectOpen,
   nextProject,
   previousProject,
+  isDragging,
 }: Props) {
   const handleCardClick = (index: number, project: Project) => {
     if (index !== activeIndex) {
@@ -104,20 +103,41 @@ export default function ProjectStage({
       <div className='pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent' />
 
       {/* Previous button */}
-      <button
-        onClick={previousProject}
-        className='absolute left-6 top-1/2 z-50 -translate-y-1/2 flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-violet-500/40 hover:bg-violet-500/10'
-      >
-        <IoChevronBack size={24} />
-      </button>
+      <AnimatePresence mode='wait'>
+        {!isDragging && (
+          <>
+            <motion.button
+              key='previous'
+              initial={{ opacity: 0, x: -25 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -25 }}
+              transition={{
+                duration: 0.25,
+                ease: 'easeOut',
+              }}
+              onClick={previousProject}
+              className='absolute left-6 top-1/2 z-50 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-violet-500/40 hover:bg-violet-500/10 active:scale-95'
+            >
+              <IoChevronBack size={24} />
+            </motion.button>
 
-      {/* Next button */}
-      <button
-        onClick={nextProject}
-        className='absolute right-6 top-1/2 z-50 -translate-y-1/2 flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-violet-500/40 hover:bg-violet-500/10'
-      >
-        <IoChevronForward size={24} />
-      </button>
+            <motion.button
+              key='next'
+              initial={{ opacity: 0, x: 25 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 25 }}
+              transition={{
+                duration: 0.25,
+                ease: 'easeOut',
+              }}
+              onClick={nextProject}
+              className='absolute right-6 top-1/2 z-50 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-violet-500/40 hover:bg-violet-500/10 active:scale-95'
+            >
+              <IoChevronForward size={24} />
+            </motion.button>
+          </>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
