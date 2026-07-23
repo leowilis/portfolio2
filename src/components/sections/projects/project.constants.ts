@@ -6,7 +6,7 @@ export const DRAG_THRESHOLD = 180;
 export const STAGE_PERSPECTIVE = 2600;
 
 // Floating
-export const FLOAT_DISTANCE = 12;
+export const FLOAT_DISTANCE = 10;
 
 // Card
 export const FEATURED_CARD_WIDTH = 560;
