@@ -17,6 +17,7 @@
   --popover: #18181b;
   --overlay: rgba(0, 0, 0, 0.72);
   --primary: #8b5cf6;
+  --primary-100: #6C3BFF;
   --primary-hover: #9f67ff;
   --primary-active: #7c3aed;
   --primary-foreground: #ffffff;
@@ -66,6 +67,7 @@
   --color-popover: var(--popover);
   --color-overlay: var(--overlay);
   --color-primary: var(--primary);
+  --color-primary-100: var(--color-primary-100);
   --color-primary-hover: var(--primary-hover);
   --color-primary-active: var(--primary-active);
   --color-primary-foreground: var(--primary-foreground);
