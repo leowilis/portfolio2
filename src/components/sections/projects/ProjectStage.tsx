@@ -8,6 +8,7 @@ import { DRAG_LIMIT, STAGE_PERSPECTIVE } from './project.constants';
 import useProjectCarousel from './useProjectCarousel';
 import { getProjectLayout } from './project.layout';
 import { Project } from './project.type';
+import { useEffect } from 'react';
 
 type Props = ReturnType<typeof useProjectCarousel> & {
   onProjectOpen: (project: Project) => void;
@@ -21,6 +22,8 @@ export default function ProjectStage({
   cameraZ,
   handleDrag,
   handleDragEnd,
+  nextProject,
+  previousProject,
   onProjectOpen,
 }: Props) {
   const handleCardClick = (index: number, project: Project) => {
@@ -30,6 +33,22 @@ export default function ProjectStage({
     }
     onProjectOpen(project);
   };
+
+  useEffect(() => {
+    function handleKeydown(event: KeyboardEvent) {
+      if (event.key === 'ArrowRight') {
+        nextProject();
+      }
+      if (event.key === 'ArrowLeft') {
+        previousProject();
+      }
+    }
+    window.addEventListener('keydown', handleKeydown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeydown);
+    };
+  }, [nextProject, previousProject]);
 
   return (
     <motion.div
@@ -78,12 +97,6 @@ export default function ProjectStage({
           );
         })}
       </motion.div>
-
-      {/* Left Fade */}
-      <div className='pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[#0a0a0a] to-transparent' />
-
-      {/* Right Fade */}
-      <div className='pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#0a0a0a] to-transparent' />
 
       {/* Bottom Fade */}
       <div className='pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent' />
