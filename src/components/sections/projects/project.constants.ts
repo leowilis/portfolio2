@@ -9,12 +9,12 @@ export const STAGE_PERSPECTIVE = 2600;
 export const FLOAT_DISTANCE = 10;
 
 // Card
-export const FEATURED_CARD_WIDTH = 560;
-export const SIDE_CARD_WIDTH = 480;
+export const FEATURED_CARD_WIDTH = 720;
+export const SIDE_CARD_WIDTH = 450;
 export const HIDDEN_CARD_OFFSET = 650;
 
 // Image
-export const FEATURED_IMAGE_HEIGHT = 300;
+export const FEATURED_IMAGE_HEIGHT = 430;
 export const SIDE_IMAGE_HEIGHT = 240;
 
 // Animation
