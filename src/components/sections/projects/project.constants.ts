@@ -3,7 +3,7 @@ export const DRAG_LIMIT = 450;
 export const DRAG_THRESHOLD = 180;
 
 // Stage
-export const STAGE_PERSPECTIVE = 2400;
+export const STAGE_PERSPECTIVE = 2600;
 
 // Floating
 export const FLOAT_DISTANCE = 12;
@@ -24,7 +24,7 @@ export const SIDE_CARD_HOVER_SCALE = 0.86;
 export const SIDE_CARD_HOVER_Y = -8;
 
 // Project Stage
-export const PROJECT_STAGE_MAX_WIDTH = 1600;
+export const PROJECT_STAGE_MAX_WIDTH = 1800;
 
 // Mobile
 export const MOBILE_BREAKPOINT = 768;
