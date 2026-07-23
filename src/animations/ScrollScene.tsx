@@ -40,7 +40,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   const aboutRadius = useTransform(progress, [0, 0.3], [40, 0]);
 
   return (
-    <div ref={ref} className='relative h-[500vh]'>
+    <div ref={ref} className='min-h-screen'>
       {/* HERO */}
 
       <motion.div
