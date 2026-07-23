@@ -79,7 +79,7 @@ export default function ProjectPlane({
         >
           <div
             className={cn(
-              'group relative overflow-hidden rounded-[22px] border transition-all duration-500 bg-foreground',
+              'group relative overflow-hidden rounded-[22px] border transition-all duration-500 bg-surface',
               isCenter
                 ? 'border-violet-500/30 shadow-[0_60px_120px_rgba(0,0,0,.70)]'
                 : 'border-white/5 shadow-[0_20px_40px_rgba(0,0,0,.45)]',
@@ -126,11 +126,11 @@ export default function ProjectPlane({
                   fill
                   priority={isCenter}
                   quality={90}
-                  sizes={isCenter ? "560px" : "480px"}
+                  sizes={isCenter ? '560px' : '480px'}
                   className='object-cover object-top'
                 />
               </motion.div>
-              <div className='absolute inset-0 bg-gradient-to-t from-foreground via-foreground/15 to-transparent' />
+              <div className='absolute inset-0 bg-gradient-to-t from-surface via-surface/15 to-transparent' />
               {isCenter ? (
                 <FeaturedProjectContent project={project} />
               ) : (
