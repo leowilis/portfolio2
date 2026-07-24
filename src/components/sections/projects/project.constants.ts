@@ -28,3 +28,7 @@ export const PROJECT_STAGE_MAX_WIDTH = 1800;
 
 // Mobile
 export const MOBILE_BREAKPOINT = 768;
+
+// Shadow
+export const CENTER_CARD_SHADOW = '0_80px_140px_rgba(0,0,0,.85)';
+export const SIDE_CARD_SHADOW = '0_20px_40px_rgba(0,0,0,.45)';
