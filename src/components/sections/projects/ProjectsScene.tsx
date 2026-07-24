@@ -1,103 +1,114 @@
 'use client';
 
-import { PROJECTS } from './project.data';
+import { useCallback, useEffect, useState } from 'react';
+
 import { PROJECT_STAGE_MAX_WIDTH } from './project.constants';
-import ProjectStage from './ProjectStage';
+import { PROJECTS } from './project.data';
+import ProjectIndicator from './ProjectIndicator';
 import ProjectModal from './ProjectModal';
+import ProjectStage from './ProjectStage';
+import type { Project } from './project.type';
 import useProjectCarousel from './useProjectCarousel';
-import { useEffect, useState } from 'react';
-import { Project } from './project.type';
 
 export default function ProjectsScene() {
   const carousel = useProjectCarousel({
     total: PROJECTS.length,
   });
 
-  const openProject = (project: Project) => {
-    setSelectedProject(project);
-    carousel.setActiveIndex(
-      PROJECTS.findIndex((item) => item.id === project.id),
-    );
-  };
+  const { activeIndex, setActiveIndex } = carousel;
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const openProject = useCallback(
+    (project: Project) => {
+      const index = PROJECTS.findIndex((item) => item.id === project.id);
+
+      if (index === -1) return;
+
+      setActiveIndex(index);
+      setSelectedProject(project);
+    },
+    [setActiveIndex],
+  );
+
+  const changeProject = useCallback(
+    (direction: 1 | -1) => {
+      if (!selectedProject) return;
+
+      const nextIndex =
+        (activeIndex + direction + PROJECTS.length) % PROJECTS.length;
+
+      setActiveIndex(nextIndex);
+      setSelectedProject(PROJECTS[nextIndex]);
+    },
+    [activeIndex, selectedProject, setActiveIndex],
+  );
+
+  const handleNext = useCallback(() => {
+    changeProject(1);
+  }, [changeProject]);
+
+  const handlePrevious = useCallback(() => {
+    changeProject(-1);
+  }, [changeProject]);
 
   useEffect(() => {
     if (!selectedProject) return;
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowRight') {
-        const currentIndex = PROJECTS.findIndex(
-          (project) => project.id === selectedProject.id,
-        );
+    function handleKeyDown(event: KeyboardEvent) {
+      switch (event.key) {
+        case 'ArrowRight':
+          event.preventDefault();
+          handleNext();
+          break;
 
-        if (currentIndex < PROJECTS.length - 1) {
-          setSelectedProject(PROJECTS[currentIndex + 1]);
-        }
+        case 'ArrowLeft':
+          event.preventDefault();
+          handlePrevious();
+          break;
+
+        default:
+          break;
       }
-
-      if (event.key === 'ArrowLeft') {
-        const currentIndex = PROJECTS.findIndex(
-          (project) => project.id === selectedProject.id,
-        );
-
-        if (currentIndex > 0) {
-          setSelectedProject(PROJECTS[currentIndex - 1]);
-        }
-      }
-    };
-
+    }
     window.addEventListener('keydown', handleKeyDown);
 
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedProject]);
-
-  const handleNext = () => {
-    if (!selectedProject) return;
-
-    const currentIndex = PROJECTS.findIndex(
-      (project) => project.id === selectedProject.id,
-    );
-
-    const nextIndex = (currentIndex + 1) % PROJECTS.length;
-
-    carousel.setActiveIndex(nextIndex);
-    setSelectedProject(PROJECTS[nextIndex]);
-  };
-
-  const handlePrevious = () => {
-    if (!selectedProject) return;
-
-    const currentIndex = PROJECTS.findIndex(
-      (project) => project.id === selectedProject.id,
-    );
-
-    const previousIndex =
-      (currentIndex - 1 + PROJECTS.length) % PROJECTS.length;
-
-    carousel.setActiveIndex(previousIndex);
-    setSelectedProject(PROJECTS[previousIndex]);
-  };
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedProject, handleNext, handlePrevious]);
 
   return (
-    <section className='relative overflow-hidden min-h-[760px]'>
-      <div
-        className='mx-auto px-6'
-        style={{
-          maxWidth: PROJECT_STAGE_MAX_WIDTH,
-        }}
-      >
-        <ProjectStage {...carousel} onProjectOpen={openProject} />
+    <>
+      <section className='relative min-h-[900px] w-full overflow-x-hidden bg-transparent py-12 select-none'>
+        <div
+          className='mx-auto w-full px-4'
+          style={{
+            maxWidth: PROJECT_STAGE_MAX_WIDTH,
+          }}
+        >
+          <div className='flex w-full flex-col items-center'>
+            <ProjectStage {...carousel} onProjectOpen={openProject} />
 
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-          onNext={handleNext}
-          onPrevious={handlePrevious}
-          hasNext
-          hasPrevious
-        />
-      </div>
-    </section>
+            <div className='mt-10 w-full shrink-0'>
+              <ProjectIndicator
+                total={PROJECTS.length}
+                activeIndex={activeIndex}
+                onSelect={setActiveIndex}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+        onNext={handleNext}
+        onPrevious={handlePrevious}
+        hasNext={PROJECTS.length > 1}
+        hasPrevious={PROJECTS.length > 1}
+      />
+    </>
   );
 }
