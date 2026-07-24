@@ -22,15 +22,19 @@ export default function ProjectModalImage({ image, title }: Props) {
       transition={{
         duration: 0.45,
       }}
-      className='relative overflow-hidden rounded-2xl'
+      className='overflow-hidden rounded-2xl border border-white/10 bg-neutral-950'
     >
-      <Image
-        src={image}
-        alt={title}
-        width={900}
-        height={600}
-        className='h-full w-full object-cover'
-      />
+      <div className='relative h-[420px] w-full'>
+        <Image
+          src={image}
+          alt={title}
+          fill
+          priority
+          quality={100}
+          sizes='(min-width: 1024px) 50vw, 100vw'
+          className='object-contain object-center'
+        />
+      </div>
     </motion.div>
   );
 }
