@@ -6,7 +6,7 @@ interface Props {
 }
 
 const LINK_CLASS =
-  'flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/50 transition-all duration-300 hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-white';
+  'flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold text-neutral-400 transition-all duration-300 hover:border-purple-500/40 hover:bg-purple-500/10 hover:text-white outline-none focus-visible:ring-1 focus-visible:ring-purple-500 focus-visible:ring-offset-1 focus-visible:ring-offset-ring-primary active:scale-95 cursor-pointer select-none';
 
 export default function ProjectLinks({ demo, github }: Props) {
   const links = [
@@ -38,8 +38,8 @@ export default function ProjectLinks({ demo, github }: Props) {
               onClick={(e) => e.stopPropagation()}
               className={LINK_CLASS}
             >
-              <Icon size={12} />
-              {link.label}
+              <Icon size={12} className="shrink-0 text-current" aria-hidden='true' />
+              <span>{link.label}</span>
             </a>
           );
         })}
