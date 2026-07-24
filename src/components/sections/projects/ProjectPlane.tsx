@@ -48,7 +48,7 @@ export default function ProjectPlane({
         rotateX,
         rotateY,
         scale,
-        zIndex,
+        zIndex: zIndex + 10,
         filter: `blur(${blur}px)`,
         willChange: 'transform',
         transformStyle: 'preserve-3d',
@@ -73,6 +73,7 @@ export default function ProjectPlane({
           transition={{
             duration: 0.35,
           }}
+          className='relative'
           style={{
             transformStyle: 'preserve-3d',
           }}
@@ -81,7 +82,7 @@ export default function ProjectPlane({
             className={cn(
               'group relative overflow-hidden rounded-[22px] border transition-all duration-500 bg-surface',
               isCenter
-                ? 'border-violet-500/30 shadow-[0_60px_120px_rgba(0,0,0,.70)]'
+                ? 'border-violet-500/40 shadow-[0_80px_140px_rgba(0,0,0,.85)]'
                 : 'border-white/5 shadow-[0_20px_40px_rgba(0,0,0,.45)]',
             )}
             style={{
@@ -93,7 +94,7 @@ export default function ProjectPlane({
 
             {/* Glow */}
             <div
-              className={`absolute inset-0 rounded-[22px] bg-violet-500/[0.06] blur-[60px] transition-opacity duration-500 ${
+              className={`absolute inset-0 rounded-[22px] bg-violet-500/10 blur-[90px] transition-opacity duration-500 ${
                 isCenter
                   ? 'opacity-80 group-hover:opacity-100'
                   : 'opacity-0 group-hover:opacity-20'
@@ -130,7 +131,7 @@ export default function ProjectPlane({
                   className='object-cover object-top'
                 />
               </motion.div>
-              <div className='absolute inset-0 bg-gradient-to-t from-surface via-surface/15 to-transparent' />
+              <div className='absolute inset-0 bg-gradient-to-t from-surface/75 via-surface/20 to-transparent' />
               {isCenter ? (
                 <FeaturedProjectContent project={project} />
               ) : (
