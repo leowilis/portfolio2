@@ -16,6 +16,8 @@ import {
   SIDE_CARD_HOVER_Y,
   SIDE_CARD_WIDTH,
   SIDE_IMAGE_HEIGHT,
+  CENTER_CARD_SHADOW,
+  SIDE_CARD_SHADOW,
 } from './project.constants';
 import {
   CARD_ENTRANCE,
@@ -87,6 +89,9 @@ export default function ProjectPlane({
             )}
             style={{
               width: isCenter ? FEATURED_CARD_WIDTH : SIDE_CARD_WIDTH,
+              boxShadow: isCenter
+                ? CENTER_CARD_SHADOW.replaceAll('_', ' ')
+                : SIDE_CARD_SHADOW.replaceAll('_', ' '),
             }}
           >
             {/* Top Shimmer */}
