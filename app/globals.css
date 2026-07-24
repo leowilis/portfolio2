@@ -18,6 +18,7 @@
   --overlay: rgba(0, 0, 0, 0.72);
   --primary: #8b5cf6;
   --primary-100: #6C3BFF;
+  --primary-200: #A855F7;
   --primary-hover: #9f67ff;
   --primary-active: #7c3aed;
   --primary-foreground: #ffffff;
@@ -68,6 +69,7 @@
   --color-overlay: var(--overlay);
   --color-primary: var(--primary);
   --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
   --color-primary-hover: var(--primary-hover);
   --color-primary-active: var(--primary-active);
   --color-primary-foreground: var(--primary-foreground);
