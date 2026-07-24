@@ -1,12 +1,11 @@
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import WindowHeader from './WindowHeader';
-import TechList from './TechList';
 import ProjectLinks from './ProjectLinks';
-import type { Project } from './project.type';
 import ProjectModalImage from './ProjectModalImage';
 import ProjectModalNavigation from './ProjectModalNavigation';
+import TechList from './TechList';
+import type { Project } from './project.type';
 
 interface Props {
   project: Project;
@@ -26,47 +25,71 @@ export default function ProjectModalContent({
   return (
     <>
       <WindowHeader title={project.title} />
-
-      <motion.div
-        key={project.id}
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -30 }}
-        transition={{ duration: 0.3 }}
-        className='grid gap-8 lg:grid-cols-2'
-      >
-        {/* Image */}
-        <ProjectModalImage image={project.image} title={project.title} />
-
-        {/* Content */}
+      <AnimatePresence mode='wait'>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.12, duration: 0.35 }}
-          className='flex flex-col justify-center'
+          key={project.id}
+          initial={{
+            opacity: 0,
+            x: 50,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+          }}
+          exit={{
+            opacity: 0,
+            x: -50,
+          }}
+          transition={{
+            duration: 0.45,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className='grid items-start gap-10 p-10 lg:grid-cols-[1.15fr_.85fr]'
         >
-          {project.featured && (
-            <p className='mb-2 text-xs font-semibold uppercase tracking-[4px] text-violet-400'>
-              Featured Project
+          {/* Image */}
+          <ProjectModalImage image={project.image} title={project.title} />
+
+          {/* Content */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 24,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 0.1,
+              duration: 0.35,
+            }}
+            className='flex flex-col justify-center'
+          >
+            {project.featured && (
+              <p className='mb-2 text-xs font-semibold uppercase tracking-[4px] text-violet-400'>
+                Featured Project
+              </p>
+            )}
+            <h2
+              id='project-modal-title'
+              className='text-3xl font-bold text-white'
+            >
+              {project.title}
+            </h2>
+            <p className='mt-5 leading-8 text-white/55'>
+              {project.description}
             </p>
-          )}
-
-          <h2 className='text-3xl font-bold text-white'>{project.title}</h2>
-
-          <p className='mt-5 leading-8 text-white/55'>{project.description}</p>
-
-          <TechList technologies={project.technologies} />
-
-          <ProjectLinks demo={project.demo} github={project.github} />
-
-          <ProjectModalNavigation
-            onNext={onNext}
-            onPrevious={onPrevious}
-            hasNext={hasNext}
-            hasPrevious={hasPrevious}
-          />
+            <TechList technologies={project.technologies} />
+            <ProjectLinks demo={project.demo} github={project.github} />
+            <ProjectModalNavigation
+              onNext={onNext}
+              onPrevious={onPrevious}
+              hasNext={hasNext}
+              hasPrevious={hasPrevious}
+            />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </AnimatePresence>
     </>
   );
 }
