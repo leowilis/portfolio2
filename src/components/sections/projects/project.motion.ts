@@ -13,7 +13,7 @@ export const CARD_ENTRANCE: Variants = {
 
     transition: {
       duration: 0.65,
-      delay: index * 0.08,
+      delay: Math.min(index * 0.06, 0.3),
       ease: [0.22, 1, 0.36, 1],
     },
   }),
@@ -21,9 +21,9 @@ export const CARD_ENTRANCE: Variants = {
 
 // Featured card hover
 export const CARD_HOVER = {
-  rotateY: 4,
-  rotateX: -3,
-  scale: 1.02,
+  rotateY: 2,
+  rotateX: -2,
+  scale: 1.015,
 } as const;
 
 // Tech chip hover
@@ -35,10 +35,10 @@ export const TECH_CHIP_HOVER = {
 // FLoating animation
 export function getFloatTransition(index: number): Transition {
   return {
-    duration: 5 + index * 0.7,
+    duration: 5.5 + index * 0.4,
     repeat: Infinity,
-    repeatType: 'mirror',
+    repeatType: 'reverse',
     ease: 'easeInOut',
-    delay: index * 0.5,
+    delay: index * 0.25,
   };
 }
