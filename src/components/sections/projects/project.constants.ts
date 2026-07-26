@@ -27,5 +27,5 @@ export const SIDE_CARD_HOVER_Y = -8;
 export const MOBILE_BREAKPOINT = 768;
 
 // Shadow
-export const CENTER_CARD_SHADOW = '0_80px_140px_rgba(0,0,0,.85)' as const;
-export const SIDE_CARD_SHADOW = '0_20px_40px_rgba(0,0,0,.45)' as const;
+export const CENTER_CARD_SHADOW = '0 80px 140px rgba(0,0,0,.85)' as const;
+export const SIDE_CARD_SHADOW = '0 20px 40px rgba(0,0,0,.45)' as const;
