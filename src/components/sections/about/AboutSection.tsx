@@ -6,8 +6,9 @@ import StaggerContainer from '@/src/animations/StaggerContainer';
 export default function AboutSection() {
   return (
     <section
-      id="about"
-      className="relative mx-auto max-w-5xl px-6 py-32"
+      id='about'
+      aria-labelledby='about-heading'
+      className='relative mx-auto max-w-5xl px-6 py-32'
     >
       <StaggerContainer>
         <AboutHeader />
