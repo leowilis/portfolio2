@@ -82,16 +82,12 @@ export default function ProjectPlane({
         >
           <div
             className={cn(
-              'group relative overflow-hidden rounded-[22px] border transition-all duration-500 bg-surface',
-              isCenter
-                ? 'border-violet-500/40 shadow-[0_80px_140px_rgba(0,0,0,.85)]'
-                : 'border-white/5 shadow-[0_20px_40px_rgba(0,0,0,.45)]',
+              'group relative overflow-hidden rounded-[22px] border bg-surface transition-all duration-500',
+              isCenter ? 'border-violet-500/40' : 'border-white/5',
             )}
             style={{
               width: isCenter ? FEATURED_CARD_WIDTH : SIDE_CARD_WIDTH,
-              boxShadow: isCenter
-                ? CENTER_CARD_SHADOW.replaceAll('_', ' ')
-                : SIDE_CARD_SHADOW.replaceAll('_', ' '),
+              boxShadow: isCenter ? CENTER_CARD_SHADOW : SIDE_CARD_SHADOW,
             }}
           >
             {/* Top Shimmer */}
