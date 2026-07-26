@@ -47,7 +47,6 @@ const SIDE_RIGHT_LAYOUT: ProjectLayout = {
   zIndex: 20,
 };
 
-
 const HIDDEN_LAYOUT: ProjectLayout = {
   x: 0,
   y: 0,
@@ -77,16 +76,16 @@ export function getProjectLayout({
   }
 
   switch (offset) {
-  case -1:
-    return { ...SIDE_LEFT_LAYOUT };
+    case -1:
+      return SIDE_LEFT_LAYOUT;
 
-  case 0:
-    return { ...CENTER_LAYOUT };
+    case 0:
+      return CENTER_LAYOUT;
 
-  case 1:
-    return { ...SIDE_RIGHT_LAYOUT };
+    case 1:
+      return SIDE_RIGHT_LAYOUT;
 
-  default:
-    return { ...HIDDEN_LAYOUT };
-}
+    default:
+      return HIDDEN_LAYOUT;
+  }
 }
