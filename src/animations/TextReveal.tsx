@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, type Variants } from 'framer-motion';
+import type { ElementType } from 'react';
 
 type Segment = {
   text: string;
@@ -11,6 +12,7 @@ type TextRevealProps = {
   text: Segment[];
   className?: string;
   id?: string;
+  as?: 'h1' | 'h2' | 'h3' | 'div' | 'span';
 };
 
 const container: Variants = {
@@ -39,9 +41,16 @@ const word: Variants = {
   },
 };
 
-export default function TextReveal({ text, className, id }: TextRevealProps) {
+export default function TextReveal({
+  text,
+  className,
+  id,
+  as = 'div',
+}: TextRevealProps) {
+  const MotionTag = motion[as] as ElementType;
+
   return (
-    <motion.h2
+    <MotionTag
       id={id}
       variants={container}
       initial='hidden'
@@ -57,12 +66,12 @@ export default function TextReveal({ text, className, id }: TextRevealProps) {
           <motion.span
             key={`${segmentIndex}-${wordIndex}`}
             variants={word}
-            className={`inline-block mr-[0.25em] ${segment.className ?? ''}`}
+            className={`mr-[0.25em] inline-block ${segment.className ?? ''}`}
           >
             {wordText}
           </motion.span>
         )),
       )}
-    </motion.h2>
+    </MotionTag>
   );
 }
