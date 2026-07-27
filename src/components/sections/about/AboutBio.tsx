@@ -4,10 +4,9 @@ import { motion } from 'framer-motion';
 import AboutTechStack from './AboutTechStack';
 import AboutDownloadCV from './AboutDownloadCV';
 
-
 export default function AboutBio() {
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, x: -40 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -42,6 +41,6 @@ export default function AboutBio() {
       <AboutTechStack />
 
       <AboutDownloadCV />
-    </motion.div>
+    </motion.article>
   );
 }
