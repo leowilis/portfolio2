@@ -6,12 +6,16 @@ type Props = {
   children: React.ReactNode;
   className?: string;
   y?: number;
+  delay?: number;
+  duration?: number;
 };
 
 export default function FadeIn({
   children,
   className,
   y = 24,
+  delay = 0,
+  duration = 0.7,
 }: Props) {
   return (
     <motion.div
@@ -24,7 +28,8 @@ export default function FadeIn({
           opacity: 1,
           y: 0,
           transition: {
-            duration: 0.7,
+            duration,
+            delay,
             ease: 'easeOut',
           },
         },
