@@ -138,3 +138,9 @@
     @apply bg-primary text-white;
   }
 }
+
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
