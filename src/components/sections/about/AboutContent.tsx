@@ -5,12 +5,12 @@ import AboutDetails from './AboutDetails';
 
 export default function AboutContent() {
   return (
-    <div className="grid items-start gap-16 md:grid-cols-2">
+    <div className='grid items-start gap-16 md:grid-cols-2'>
       <FadeIn>
         <AboutBio />
       </FadeIn>
 
-      <FadeIn y={40}>
+      <FadeIn y={40} delay={0.12}>
         <AboutDetails />
       </FadeIn>
     </div>
