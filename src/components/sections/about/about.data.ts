@@ -41,12 +41,18 @@ export const DETAILS: DetailItem[] = [
 ];
 
 export const TECHS = [
+  'HTML',
+  'CSS',
   'React',
   'Next.js',
+  'JavaScript',
   'TypeScript',
   'Tailwind CSS',
   'Redux Toolkit',
   'TanStack Query',
-  'shadcn/ui',
+  'Zustand',
+  'Shadcn UI',
+  'Zod',
   'Framer Motion',
+  'Git/Github',
 ] as const;
