@@ -5,6 +5,7 @@ import { DETAILS } from './about.data';
 import AboutOrb from './AboutOrb';
 import Floating from '@/src/animations/Floating';
 import Magnetic from '@/src/animations/Magnetic';
+import { cn } from '@/src/lib/utils';
 
 const container = {
   hidden: {},
@@ -28,7 +29,7 @@ const item = {
 
 export default function AboutDetails() {
   return (
-    <motion.div
+    <motion.section
       variants={container}
       initial='hidden'
       whileInView='show'
@@ -44,7 +45,7 @@ export default function AboutDetails() {
         </Floating>
       </Magnetic>
 
-      <motion.div variants={container} className='flex flex-col'>
+      <motion.dl variants={container} className='flex flex-col'>
         {DETAILS.map((detail) => (
           <motion.div
             key={detail.label}
@@ -54,20 +55,21 @@ export default function AboutDetails() {
             }}
             className='flex items-center justify-between border-b border-white/10 py-3 last:border-none'
           >
-            <span className='text-[10px] font-bold uppercase tracking-[2px] text-white/30'>
+            <motion.dt className='text-[10px] font-bold uppercase tracking-[2px] text-white/30'>
               {detail.label}
-            </span>
+            </motion.dt>
 
-            <span
-              className={`text-sm font-semibold ${
-                detail.isHighlight ? 'text-green-400' : 'text-white/50'
-              }`}
+            <motion.dd
+              className={cn(
+                'text-sm font-semibold',
+                detail.isHighlight ? 'text-green-400' : 'text-white/50',
+              )}
             >
               {detail.value}
-            </span>
+            </motion.dd>
           </motion.div>
         ))}
-      </motion.div>
-    </motion.div>
+      </motion.dl>
+    </motion.section>
   );
 }
