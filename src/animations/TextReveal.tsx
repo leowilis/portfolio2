@@ -10,6 +10,7 @@ type Segment = {
 type TextRevealProps = {
   text: Segment[];
   className?: string;
+  id?: string;
 };
 
 const container: Variants = {
@@ -38,15 +39,13 @@ const word: Variants = {
   },
 };
 
-export default function TextReveal({
-  text,
-  className,
-}: TextRevealProps) {
+export default function TextReveal({ text, className, id }: TextRevealProps) {
   return (
     <motion.h2
+      id={id}
       variants={container}
-      initial="hidden"
-      whileInView="show"
+      initial='hidden'
+      whileInView='show'
       viewport={{
         once: true,
         amount: 0.5,
