@@ -1,12 +1,13 @@
-export type StatItem = {
-  value: string;
-  label: string;
-};
-
 export type DetailItem = {
   label: string;
   value: string;
   isHighlight?: boolean;
+};
+
+export type StatsItem = {
+  value: number;
+  suffix?: string;
+  label: string;
 };
 
 export const STATS = [
@@ -30,29 +31,45 @@ export const STATS = [
     suffix: '/7',
     label: 'Learning',
   },
-];
+] as const satisfies readonly StatsItem[];
 
-export const DETAILS: DetailItem[] = [
-  { label: 'Location', value: 'Medan, Indonesia' },
-  { label: 'Availability', value: 'Open to Work', isHighlight: true },
-  { label: 'Type', value: 'Remote' },
-  { label: 'Focus', value: 'Frontend Development' },
-  { label: 'Education', value: 'Bootcamp Graduate' },
-];
+export const DETAILS = [
+  {
+    label: 'Location',
+    value: 'Medan, Indonesia',
+  },
+  {
+    label: 'Availability',
+    value: 'Open to Work',
+    isHighlight: true,
+  },
+  {
+    label: 'Type',
+    value: 'Remote',
+  },
+  {
+    label: 'Focus',
+    value: 'Frontend Development',
+  },
+  {
+    label: 'Education',
+    value: 'Bootcamp Graduate',
+  },
+] as const satisfies readonly DetailItem[];
 
 export const TECHS = [
   'HTML',
   'CSS',
-  'React',
-  'Next.js',
   'JavaScript',
   'TypeScript',
+  'React',
+  'Next.js',
   'Tailwind CSS',
+  'Shadcn UI',
   'Redux Toolkit',
   'TanStack Query',
   'Zustand',
-  'Shadcn UI',
   'Zod',
   'Framer Motion',
-  'Git/Github',
+  'Git/GitHub',
 ] as const;
