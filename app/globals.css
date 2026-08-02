@@ -141,7 +141,7 @@
 
 .tech-outline {
   color: transparent;
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.28);
+  -webkit-text-stroke: 2px rgb(108, 59, 255);
   text-stroke: 2px rgba(255, 255, 255, 0.28);
 }
 
