@@ -17,8 +17,8 @@
   --popover: #18181b;
   --overlay: rgba(0, 0, 0, 0.72);
   --primary: #8b5cf6;
-  --primary-100: #6C3BFF;
-  --primary-200: #A855F7;
+  --primary-100: #6c3bff;
+  --primary-200: #a855f7;
   --primary-hover: #9f67ff;
   --primary-active: #7c3aed;
   --primary-foreground: #ffffff;
@@ -137,6 +137,12 @@
   ::selection {
     @apply bg-primary text-white;
   }
+}
+
+.tech-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.28);
+  text-stroke: 2px rgba(255, 255, 255, 0.28);
 }
 
 @media (pointer: fine) {
