@@ -39,12 +39,11 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   const aboutY = useTransform(progress, [0, 0.25], [80, 0]);
   const aboutRadius = useTransform(progress, [0, 0], [40, 0]);
   const aboutScale = useTransform(progress, [0, 0.25], [0.98, 1]);
-  const aboutOpacity = useTransform(progress, [0, 0.2], [0.6, 1]);
+  const aboutOpacity = useTransform(progress, [0, 0.01], [0.6, 1]);
 
   return (
     <div ref={ref} className='min-h-screen'>
       {/* HERO */}
-
       <motion.div
         style={{
           scale: heroScale,
@@ -57,7 +56,6 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
       </motion.div>
 
       {/* ABOUT */}
-
       <motion.div
         style={{
           y: aboutY,
@@ -72,15 +70,12 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
       </motion.div>
 
       {/* PROJECTS */}
-
       {sections[2] && <div className='relative z-30'>{sections[2]}</div>}
 
       {/* SKILLS */}
-
       {sections[3] && <div className='relative z-40'>{sections[3]}</div>}
 
       {/* CONTACT */}
-
       {sections[4] && <div className='relative z-50'>{sections[4]}</div>}
     </div>
   );
