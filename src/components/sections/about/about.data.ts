@@ -31,12 +31,13 @@ export const STATS = [
     suffix: '/7',
     label: 'Learning',
   },
-] as const satisfies readonly StatsItem[];
+];
 
 export const DETAILS = [
   {
     label: 'Location',
     value: 'Medan, Indonesia',
+    isHighlight: false,
   },
   {
     label: 'Availability',
@@ -46,14 +47,17 @@ export const DETAILS = [
   {
     label: 'Type',
     value: 'Remote',
+    isHighlight: false,
   },
   {
     label: 'Focus',
     value: 'Frontend Development',
+    isHighlight: false,
   },
   {
     label: 'Education',
     value: 'Bootcamp Graduate',
+    isHighlight: false,
   },
 ] as const satisfies readonly DetailItem[];
 
