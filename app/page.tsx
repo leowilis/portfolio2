@@ -2,6 +2,7 @@ import ScrollScene from '@/src/animations/ScrollScene';
 import AboutSection from '@/src/components/sections/about/AboutSection';
 import HeroSection from '@/src/components/sections/hero/HeroSection';
 import ProjectsSection from '@/src/components/sections/projects/ProjectsSection';
+import TechStack from '@/src/components/sections/tech-stack';
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
+      <TechStack />
     </ScrollScene>
   );
 }
