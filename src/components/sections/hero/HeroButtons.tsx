@@ -15,7 +15,7 @@ export default function HeroButtons() {
       <Magnetic>
         <a
           href='#contact'
-          className='rounded-lg border border-white/15 px-6 py-3 text-sm text-white/50 transition-all duration-300 hover:border-violet-400/40 hover:text-white hover:scale-[1.03] active:scale-95'
+          className='rounded-lg border border-white/15 px-6 py-3 text-sm font-medium text-white/55 transition-all duration-300 hover:scale-[1.03] hover:border-violet-400/40 hover:text-white active:scale-95'
         >
           Contact Me
         </a>
