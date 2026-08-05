@@ -28,10 +28,14 @@ export default function HeroAvailability() {
         duration: HERO_AVAILABILITY_REVEAL_DURATION,
         ease: HERO_AVAILABILITY_EASE_OUT_EXPO,
       }}
-      className='mt-12'
+      className='mt-10 md:mt-12'
     >
-      <div className='inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/[0.04] px-4 py-2 backdrop-blur-md'>
-        <span className='relative flex h-2 w-2'>
+      <div
+        role='status'
+        aria-label='Current employment availability'
+        className='inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/[0.04] px-3.5 py-2 backdrop-blur-md md:px-4'
+      >
+        <span className='relative flex h-2 w-2' aria-hidden='true'>
           <motion.span
             animate={{
               scale: HERO_AVAILABILITY_DOT_SCALE,
@@ -46,7 +50,7 @@ export default function HeroAvailability() {
           />
           <span className='relative h-2 w-2 rounded-full bg-emerald-400' />
         </span>
-        <span className='text-sm font-medium text-violet-200/80'>
+        <span className='text-xs font-bold tracking-wide text-purple-200/80 uppercase pt-0.5 md:text-sm'>
           Available for work
         </span>
       </div>
