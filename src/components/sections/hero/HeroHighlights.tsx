@@ -2,7 +2,6 @@
 
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import { type MouseEvent, useRef } from 'react';
-
 import { HERO_HIGHLIGHTS } from './hero.data';
 import HeroHighlightCard from './HeroHightlightCard';
 import HeroParticles from './HeroParticles';
@@ -28,10 +27,8 @@ import {
 
 export default function HeroHighlights() {
   const cardRef = useRef<HTMLDivElement>(null);
-
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
   const spotlight = useMotionTemplate`
     radial-gradient(
       ${SPOTLIGHT_SIZE}px circle at ${mouseX}px ${mouseY}px,
@@ -39,21 +36,15 @@ export default function HeroHighlights() {
       transparent 70%
     )
   `;
-
   function handleMove(e: MouseEvent<HTMLDivElement>) {
     if (!cardRef.current) return;
-
     const rect = cardRef.current.getBoundingClientRect();
-
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-
     mouseX.set(x);
     mouseY.set(y);
-
     const rotateY = (x / rect.width - 0.5) * CARD_ROTATE_Y;
-    const rotateX = (y / rect.height - 0.5) * CARD_ROTATE_X;
-
+    const rotateX = (y / rect.height - 0.5) * -CARD_ROTATE_X;
     cardRef.current.style.transform = `
       perspective(${CARD_PERSPECTIVE}px)
       rotateX(${rotateX}deg)
@@ -102,16 +93,7 @@ export default function HeroHighlights() {
           ref={cardRef}
           onMouseMove={handleMove}
           onMouseLeave={handleLeave}
-          className='
-            group
-            relative
-            overflow-hidden
-            bg-white/[0.04]
-            backdrop-blur-2xl
-            transition-transform
-            duration-300
-            will-change-transform
-          '
+          className='group relative overflow-hidden bg-white/[0.04] backdrop-blur-2xl transition-transform duration-300 will-change-transform'
           style={{
             borderRadius: CARD_RADIUS,
             transformStyle: 'preserve-3d',
@@ -121,13 +103,7 @@ export default function HeroHighlights() {
 
           {/* Animated Border */}
           <div
-            className='
-              pointer-events-none
-              absolute
-              inset-0
-              overflow-hidden
-              p-px
-            '
+            className='pointer-events-none absolute inset-0 overflow-hidden p-px'
             style={{
               borderRadius: CARD_RADIUS,
             }}
@@ -141,22 +117,13 @@ export default function HeroHighlights() {
                 ease: 'linear',
                 repeat: Infinity,
               }}
-              className='
-                absolute
-                inset-[-150%]
-                bg-[conic-gradient(from_180deg,transparent,rgba(139,92,246,.9),transparent,rgba(255,255,255,.2),transparent)]
-              '
+              className='absolute inset-[-150%] bg-[conic-gradient(from_180deg,transparent,rgba(139,92,246,.9),transparent,rgba(255,255,255,.2),transparent)]'
             />
 
             <div
-              className='
-                absolute
-                inset-px
-                bg-black/85
-                backdrop-blur-2xl
-              '
+              className='absolute inset-px bg-black/85 backdrop-blur-2xl'
               style={{
-                borderRadius: CARD_RADIUS - 1,
+                borderRadius: `calc(${CARD_RADIUS} - 1px)`,
               }}
             />
           </div>
@@ -165,33 +132,14 @@ export default function HeroHighlights() {
           <motion.div
             style={{
               background: spotlight,
-              borderRadius: CARD_RADIUS - 1,
+              borderRadius: `calc(${CARD_RADIUS} - 1px)`,
             }}
-            className='
-              pointer-events-none
-              absolute
-              inset-px
-              z-10
-            '
+            className='pointer-events-none absolute inset-px z-10'
           />
 
           {/* Shine */}
           <div
-            className='
-              pointer-events-none
-              absolute
-              inset-y-0
-              -left-1/2
-              z-20
-              w-1/2
-              bg-gradient-to-r
-              from-transparent
-              via-white/10
-              to-transparent
-              transition-transform
-              duration-[1000ms]
-              group-hover:translate-x-[700px]
-            '
+            className='pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-[1000ms] group-hover:translate-x-[700px]'
             style={{
               transform: `skewX(${SHINE_SKEW})`,
               transitionDuration: `${SHINE_DURATION}ms`,
