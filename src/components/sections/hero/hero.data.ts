@@ -4,8 +4,7 @@ export const HERO_TITLE = 'Frontend Developer';
 
 export const HERO_ROLES = [
   'Frontend Developer',
-  'React Specialist',
-  'Next.js Developer',
+  'Web Developer',
   'UI Engineer',
 ] as const;
 
