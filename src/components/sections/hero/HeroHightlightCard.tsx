@@ -38,20 +38,11 @@ export default function HeroHighlightCard({
         duration: CARD_ITEM_TRANSITION_DURATION,
         ease: EASE_OUT_EXPO,
       }}
-      className='relative min-w-0 px-3 py-6 text-center sm:px-6 sm:py-7'
+      className='relative min-w-0 px-2 py-5 text-center sm:px-6 sm:py-7'
     >
       {!isLastItem && (
         <div
-          className='
-            absolute
-            right-0
-            top-1/2
-            hidden
-            w-px
-            -translate-y-1/2
-            bg-white/10
-            sm:block
-          '
+          className='absolute right-0 top-1/2 hidden h-8 w-px -translate-y-1/2 bg-white/10 sm:block'
           style={{
             height: `${DIVIDER_HEIGHT}px`,
             opacity: DIVIDER_OPACITY,
@@ -59,8 +50,8 @@ export default function HeroHighlightCard({
         />
       )}
 
-      <div className='min-w-0 overflow-hidden'>
-        <div className='truncate text-2xl font-semibold tracking-tight text-white sm:text-3xl'>
+      <div className='min-w-0'>
+        <div className='whitespace-nowrap text-xl font-semibold tracking-tight text-white sm:text-3xl'>
           {typeof item.value === 'number' ? (
             <>
               <CountUp end={item.value} duration={COUNT_UP_DURATION} />
@@ -72,15 +63,7 @@ export default function HeroHighlightCard({
         </div>
 
         <p
-          className='
-            mt-1
-            truncate
-            text-[9px]
-            font-medium
-            uppercase
-            text-white/40
-            sm:text-[10px]
-          '
+          className='mt-1 whitespace-nowrap text-[8px] font-medium uppercase tracking-[0.16em] text-white/40 sm:text-[10px] sm:tracking-[0.22em]'
           style={{
             letterSpacing: HIGHLIGHT_LABEL_TRACKING,
             opacity: HIGHLIGHT_LABEL_OPACITY,
