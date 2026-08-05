@@ -86,3 +86,7 @@ export const HERO_SCROLL_EASE_OUT_EXPO: [number, number, number, number] = [
   0.22, 1, 0.36, 1,
 ];
 
+// Hero Typewriter
+export const HERO_TYPEWRITER_TYPE_SPEED = 80;
+export const HERO_TYPEWRITER_DELETE_SPEED = 40;
+export const HERO_TYPEWRITER_HOLD_DURATION = 2000;
