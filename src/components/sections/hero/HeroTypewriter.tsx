@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useState, useTransition } from 'react';
-
 import { HERO_ROLES } from './hero.data';
-
-const TYPE_SPEED = 80;
-const DELETE_SPEED = 40;
-const HOLD_DURATION = 2000;
+import {
+  HERO_TYPEWRITER_DELETE_SPEED,
+  HERO_TYPEWRITER_HOLD_DURATION,
+  HERO_TYPEWRITER_TYPE_SPEED,
+} from './constants';
 
 export default function HeroTypewriter() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -22,15 +22,15 @@ export default function HeroTypewriter() {
     if (!deleting && displayed.length < currentRole.length) {
       timeout = setTimeout(() => {
         setDisplayed(currentRole.slice(0, displayed.length + 1));
-      }, TYPE_SPEED);
+      }, HERO_TYPEWRITER_TYPE_SPEED);
     } else if (!deleting && displayed.length === currentRole.length) {
       timeout = setTimeout(() => {
         setDeleting(true);
-      }, HOLD_DURATION);
+      }, HERO_TYPEWRITER_HOLD_DURATION);
     } else if (deleting && displayed.length > 0) {
       timeout = setTimeout(() => {
         setDisplayed(currentRole.slice(0, displayed.length - 1));
-      }, DELETE_SPEED);
+      }, HERO_TYPEWRITER_DELETE_SPEED);
     } else {
       startTransition(() => {
         setDeleting(false);
