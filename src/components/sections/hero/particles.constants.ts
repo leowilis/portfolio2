@@ -18,11 +18,11 @@ export const PARTICLES = [
 ] as const;
 
 // Movement
-export const PARTICLE_INITIAL_OPACITY = 0.2;
+export const PARTICLE_INITIAL_OPACITY = 0.92;
 export const PARTICLE_INITIAL_SCALE = 0.8;
-export const PARTICLE_MOVE_X = [-5, 5, -5];
+export const PARTICLE_MOVE_X: [number, number, number] = [-5, 5, -5];
 export const PARTICLE_MOVE_Y = [-8, 8, -8];
-export const PARTICLE_OPACITY = [0.15, 0.5, 0.15];
+export const PARTICLE_OPACITY: [number, number, number] = [38, 22, 54];
 export const PARTICLE_EASE = 'easeInOut' as const;
 
 // Connections
@@ -59,9 +59,9 @@ export const PARTICLE_LINE_HOVER_WIDTH = 1;
 export const PARTICLE_LINE_PULL = 18;
 
 // Glow
-export const PARTICLE_GLOW_SIZE = 8;
-export const PARTICLE_GLOW_BLUR = 5;
+export const PARTICLE_GLOW_SIZE = 10;
+export const PARTICLE_GLOW_BLUR = 2;
 export const PARTICLE_GLOW_COLOR = 'rgba(167,139,250,0.9)';
-export const PARTICLE_GLOW_OPACITY = [0.2, 0.7, 0.2];
-export const PARTICLE_GLOW_SCALE = [0.8, 1.25, 0.8];
+export const PARTICLE_GLOW_OPACITY: [number, number, number] = [0.2, 0.7, 0.2];
+export const PARTICLE_GLOW_SCALE: [number, number, number] = [0.8, 1.25, 0.8];
 export const PARTICLE_GLOW_DURATION = 2.5;
