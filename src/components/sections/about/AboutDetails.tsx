@@ -1,75 +1,69 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { DETAILS } from './about.data';
-import AboutOrb from './AboutOrb';
 import Floating from '@/src/animations/Floating';
 import Magnetic from '@/src/animations/Magnetic';
 import { cn } from '@/src/lib/utils';
-
-const container = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const item = {
-  hidden: {
-    opacity: 0,
-    x: 24,
-  },
-  show: {
-    opacity: 1,
-    x: 0,
-  },
-};
+import AboutOrb from './AboutOrb';
+import { DETAILS } from './about.data';
+import {
+  ABOUT_DETAILS_CONTAINER_VARIANTS,
+  ABOUT_DETAILS_ITEM_DURATION,
+  ABOUT_DETAILS_ITEM_VARIANTS,
+  ABOUT_DETAILS_ORB_DURATION,
+  ABOUT_DETAILS_ORB_Y,
+  ABOUT_DETAILS_VIEWPORT_AMOUNT,
+  ABOUT_DETAILS_VIEWPORT_ONCE,
+} from './constants';
 
 export default function AboutDetails() {
   return (
     <motion.section
-      variants={container}
+      variants={ABOUT_DETAILS_CONTAINER_VARIANTS}
       initial='hidden'
       whileInView='show'
       viewport={{
-        once: true,
-        amount: 0.3,
+        once: ABOUT_DETAILS_VIEWPORT_ONCE,
+        amount: ABOUT_DETAILS_VIEWPORT_AMOUNT,
       }}
       className='flex flex-col gap-8'
+      aria-labelledby='about-details-heading'
     >
+      <h2 id='about-details-heading' className='sr-only'>
+        Profile Details
+      </h2>
+
       <Magnetic>
-        <Floating y={8} duration={5}>
+        <Floating y={ABOUT_DETAILS_ORB_Y} duration={ABOUT_DETAILS_ORB_DURATION}>
           <AboutOrb />
         </Floating>
       </Magnetic>
 
-      <motion.dl variants={container} className='flex flex-col'>
+      <dl className='flex flex-col'>
         {DETAILS.map((detail) => (
           <motion.div
             key={detail.label}
-            variants={item}
+            variants={ABOUT_DETAILS_ITEM_VARIANTS}
             transition={{
-              duration: 0.45,
+              duration: ABOUT_DETAILS_ITEM_DURATION,
             }}
             className='flex items-center justify-between border-b border-white/10 py-3 last:border-none'
           >
-            <motion.dt className='text-[10px] font-bold uppercase tracking-[2px] text-white/30'>
+            <dt className='text-[10px] font-bold uppercase tracking-[2px] text-white/30'>
               {detail.label}
-            </motion.dt>
+            </dt>
 
-            <motion.dd
+            <dd
               className={cn(
                 'text-sm font-semibold',
                 detail.isHighlight ? 'text-green-400' : 'text-white/50',
               )}
             >
               {detail.value}
-            </motion.dd>
+            </dd>
           </motion.div>
         ))}
-      </motion.dl>
+      </dl>
     </motion.section>
   );
 }

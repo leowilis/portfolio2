@@ -2,6 +2,15 @@
 
 import { motion } from 'framer-motion';
 
+import {
+  ABOUT_ORB_CORE_ROTATION_DURATION,
+  ABOUT_ORB_EASE,
+  ABOUT_ORB_INNER_ROTATION_DURATION,
+  ABOUT_ORB_OUTER_ROTATION_DURATION,
+  ABOUT_ORB_REPEAT,
+  ABOUT_ORB_ROTATION_DEGREES,
+} from './constants';
+
 export default function AboutOrb() {
   return (
     <section
@@ -14,33 +23,39 @@ export default function AboutOrb() {
 
         {/* Outer Ring */}
         <motion.div
-          animate={{ rotate: 360 }}
+          animate={{
+            rotate: ABOUT_ORB_ROTATION_DEGREES,
+          }}
           transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: 'linear',
+            duration: ABOUT_ORB_OUTER_ROTATION_DURATION,
+            repeat: ABOUT_ORB_REPEAT,
+            ease: ABOUT_ORB_EASE,
           }}
           className='absolute inset-[-32px] rounded-full border border-violet-500/30'
         />
 
         {/* Inner Ring */}
         <motion.div
-          animate={{ rotate: -360 }}
+          animate={{
+            rotate: -ABOUT_ORB_ROTATION_DEGREES,
+          }}
           transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'linear',
+            duration: ABOUT_ORB_INNER_ROTATION_DURATION,
+            repeat: ABOUT_ORB_REPEAT,
+            ease: ABOUT_ORB_EASE,
           }}
           className='absolute inset-[-18px] rounded-full border border-violet-500/40'
         />
 
         {/* Core */}
         <motion.div
-          animate={{ rotateY: 360 }}
+          animate={{
+            rotateY: ABOUT_ORB_ROTATION_DEGREES,
+          }}
           transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'linear',
+            duration: ABOUT_ORB_CORE_ROTATION_DURATION,
+            repeat: ABOUT_ORB_REPEAT,
+            ease: ABOUT_ORB_EASE,
           }}
           className='absolute inset-0 flex items-center justify-center rounded-full border border-violet-500/40 bg-violet-500/10 backdrop-blur-sm'
         >
@@ -51,7 +66,7 @@ export default function AboutOrb() {
       <header className='text-center'>
         <h3 className='text-sm font-semibold text-white/80'>Leonardo Wilis</h3>
 
-        <p className='mt-1 text-xs uppercase tracking-[2px] text-white/30'>
+        <p className='mt-1 text-xs font-black uppercase tracking-[2px] text-white/30'>
           Frontend Developer
         </p>
 

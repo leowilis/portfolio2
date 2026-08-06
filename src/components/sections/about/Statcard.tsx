@@ -2,6 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { CountUp } from '@/src/animations';
+import {
+  STAT_CARD_HOVER_DURATION,
+  STAT_CARD_HOVER_SCALE,
+  STAT_CARD_HOVER_Y,
+} from './constants';
 
 type StatCardProps = {
   value: number;
@@ -11,18 +16,21 @@ type StatCardProps = {
 
 export default function Statcard({ value, label, suffix = '' }: StatCardProps) {
   return (
-    <motion.div
+    <motion.article
       whileHover={{
-        y: -4,
-        scale: 1.02,
+        y: STAT_CARD_HOVER_Y,
+        scale: STAT_CARD_HOVER_SCALE,
       }}
       transition={{
-        duration: 0.25,
+        duration: STAT_CARD_HOVER_DURATION,
       }}
-      className='group relative flex list-none flex-col items-center justify-center overflow-hidden rounded-xl border border-violet-500/10 bg-violet-500/5 p-5 transition-colors duration-300 hover:border-violet-500/30'
+      className='group relative flex flex-col items-center justify-center overflow-hidden rounded-xl border border-violet-500/10 bg-violet-500/5 p-5 transition-colors duration-300 hover:border-violet-500/30'
     >
       {/* Top Glow */}
-      <div className='absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent' />
+      <div
+        aria-hidden='true'
+        className='absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500 to-transparent'
+      />
 
       <CountUp
         to={value}
@@ -30,9 +38,9 @@ export default function Statcard({ value, label, suffix = '' }: StatCardProps) {
         className='text-2xl font-semibold text-violet-400'
       />
 
-      <p className='mt-1 text-[9px] uppercase tracking-[2px] text-white/30 transition-colors duration-300 group-hover:text-white/50'>
+      <p className='mt-1 text-[9px] font-black uppercase tracking-[2px] text-white/40 transition-colors duration-300 group-hover:text-white/50'>
         {label}
       </p>
-    </motion.div>
+    </motion.article>
   );
 }
