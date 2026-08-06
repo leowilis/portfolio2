@@ -13,7 +13,7 @@ import {
 
 export default function HeroParticles() {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
+    <div className="pointer-events-none absolute inset-0 select-none overflow-hidden z-0">
       {PARTICLES.map((particle, index) => (
         <motion.span
           key={index}
