@@ -13,13 +13,15 @@ import {
 
 export default function HeroParticles() {
   return (
-    <>
+    <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
       {PARTICLES.map((particle, index) => (
         <motion.span
           key={index}
           initial={{
             opacity: PARTICLE_INITIAL_OPACITY,
             scale: PARTICLE_INITIAL_SCALE,
+            x: 0,
+            y: 0
           }}
           animate={{
             x: PARTICLE_MOVE_X,
@@ -32,7 +34,7 @@ export default function HeroParticles() {
             delay: particle.delay,
             ease: PARTICLE_EASE,
           }}
-          className='absolute rounded-full bg-violet-300'
+          className='absolute rounded-full bg-violet-200'
           style={{
             width: particle.size,
             height: particle.size,
@@ -41,6 +43,6 @@ export default function HeroParticles() {
           }}
         />
       ))}
-    </>
+    </div>
   );
 }
