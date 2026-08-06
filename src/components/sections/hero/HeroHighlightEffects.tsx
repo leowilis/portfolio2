@@ -38,7 +38,7 @@ export default function HeroHighlightEffects({ spotlight }: Props) {
         <div
           className='absolute inset-[1px] bg-[#0b0b11]/95 backdrop-blur-2xl'
           style={{
-            borderRadius: CARD_RADIUS - 1,
+            borderRadius: `calc(${CARD_RADIUS} - 1px)`,
           }}
         />
       </div>
@@ -47,14 +47,14 @@ export default function HeroHighlightEffects({ spotlight }: Props) {
       <motion.div
         style={{
           background: spotlight,
-          borderRadius: CARD_RADIUS - 1,
+          borderRadius: `calc(${CARD_RADIUS} - 1px)`,
         }}
         className='pointer-events-none absolute inset-[1px] z-10'
       />
 
       {/* Shine */}
       <div
-        className='pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/2 skew-x-[-25deg] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform group-hover:translate-x-[700px]'
+        className='pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/2 skew-x-[-25deg] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[700px]'
         style={{
           transitionDuration: `${SHINE_DURATION}ms`,
         }}
