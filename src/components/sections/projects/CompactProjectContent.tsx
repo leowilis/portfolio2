@@ -1,15 +1,17 @@
 import type { Project } from './project.type';
 
-interface Props {
+interface CompactProjectContentProps {
   project: Project;
 }
 
-export default function CompactProjectContent({ project }: Props) {
+export default function CompactProjectContent({
+  project,
+}: CompactProjectContentProps) {
   return (
-    <div className='absolute bottom-0 w-full bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/80 to-transparent p-5'>
-      <h3 className='text-lg font-semibold tracking-tight text-white/75'>
+    <figcaption className='absolute inset-x-0 bottom-0 select-none bg-gradient-to-t from-black/95 via-black/80 to-transparent p-5 pt-12'>
+      <h3 className='line-clamp-1 text-lg font-bold tracking-tight text-white sm:text-xl'>
         {project.title}
       </h3>
-    </div>
+    </figcaption>
   );
 }
