@@ -28,7 +28,6 @@ export default function HeroAvailability() {
         duration: HERO_AVAILABILITY_REVEAL_DURATION,
         ease: HERO_AVAILABILITY_EASE_OUT_EXPO,
       }}
-      className='mt-10 md:mt-12'
     >
       <div
         role='status'
