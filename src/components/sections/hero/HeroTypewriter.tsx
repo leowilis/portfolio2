@@ -42,10 +42,13 @@ export default function HeroTypewriter() {
   }, [displayed, deleting, roleIndex, startTransition]);
 
   return (
-    <div className='mb-6 flex h-8 items-center justify-center text-base font-medium text-white/45 md:text-lg'>
-      <span className='min-w-0'>{displayed}</span>
+    <div className='mb-6 flex h-8 items-center justify-center text-base font-medium select-none text-white/45 md:text-lg'>
+      <span className='inline-block tracking-wide'>{displayed}</span>
 
-      <span aria-hidden='true' className='ml-1 text-violet-300'>
+      <span
+        aria-hidden='true'
+        className='ml-1 text-violet-400 font-bold animate-pulse'
+      >
         |
       </span>
     </div>
