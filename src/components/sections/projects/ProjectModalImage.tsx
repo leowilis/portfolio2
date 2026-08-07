@@ -3,35 +3,46 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-interface Props {
+import {
+  PROJECT_IMAGE_QUALITY,
+  PROJECT_MODAL_CONTENT_EASE,
+  PROJECT_MODAL_IMAGE_ENTER_DURATION,
+  PROJECT_MODAL_IMAGE_INITIAL_SCALE,
+  PROJECT_MODAL_IMAGE_OPACITY,
+  PROJECT_MODAL_IMAGE_SCALE,
+} from './project.constants';
+
+interface ProjectModalImageProps {
   image: string;
   title: string;
 }
 
-export default function ProjectModalImage({ image, title }: Props) {
+export default function ProjectModalImage({
+  image,
+  title,
+}: ProjectModalImageProps) {
   return (
     <motion.div
       initial={{
-        scale: 0.96,
+        scale: PROJECT_MODAL_IMAGE_INITIAL_SCALE,
         opacity: 0,
       }}
       animate={{
-        scale: 1,
-        opacity: 1,
+        scale: PROJECT_MODAL_IMAGE_SCALE,
+        opacity: PROJECT_MODAL_IMAGE_OPACITY,
       }}
       transition={{
-        duration: 0.45,
-        ease: [0.16, 1, 0.3, 1],
+        duration: PROJECT_MODAL_IMAGE_ENTER_DURATION,
+        ease: PROJECT_MODAL_CONTENT_EASE,
       }}
-      className='overflow-hidden rounded-2xl border border-white/10 bg-neutral-950 select-none shadow-inner'
+      className='overflow-hidden rounded-2xl border border-white/10 bg-neutral-950 shadow-inner select-none'
     >
-      <div className='relative h-[340px] sm:h-[400px] md:h-[420px] w-full bg-neutral-950/20'>
+      <div className='relative h-[340px] w-full bg-neutral-950/20 sm:h-[400px] md:h-[420px]'>
         <Image
           src={image}
           alt={`Mockup screenshot for ${title}`}
           fill
-          priority
-          quality={100}
+          quality={PROJECT_IMAGE_QUALITY}
           sizes='(min-width: 1280px) 680px, (min-width: 1024px) 50vw, 100vw'
           className='object-contain object-center transition-transform duration-300'
         />
