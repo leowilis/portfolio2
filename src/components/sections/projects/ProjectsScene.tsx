@@ -1,8 +1,11 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
-
-import { PROJECT_STAGE_MAX_WIDTH } from './project.constants';
+import { useCallback, useState } from 'react';
+import {
+  PROJECT_DIRECTION_NEXT,
+  PROJECT_DIRECTION_PREVIOUS,
+  PROJECT_STAGE_MAX_WIDTH,
+} from './project.constants';
 import { PROJECTS } from './project.data';
 import ProjectIndicator from './ProjectIndicator';
 import ProjectModal from './ProjectModal';
@@ -16,7 +19,6 @@ export default function ProjectsScene() {
   });
 
   const { activeIndex, setActiveIndex } = carousel;
-
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const openProject = useCallback(
@@ -45,42 +47,22 @@ export default function ProjectsScene() {
   );
 
   const handleNext = useCallback(() => {
-    changeProject(1);
+    changeProject(PROJECT_DIRECTION_NEXT);
   }, [changeProject]);
 
   const handlePrevious = useCallback(() => {
-    changeProject(-1);
+    changeProject(PROJECT_DIRECTION_PREVIOUS);
   }, [changeProject]);
 
-  useEffect(() => {
-    if (!selectedProject) return;
+  const handleClose = useCallback(() => {
+    setSelectedProject(null);
+  }, []);
 
-    function handleKeyDown(event: KeyboardEvent) {
-      switch (event.key) {
-        case 'ArrowRight':
-          event.preventDefault();
-          handleNext();
-          break;
-
-        case 'ArrowLeft':
-          event.preventDefault();
-          handlePrevious();
-          break;
-
-        default:
-          break;
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [selectedProject, handleNext, handlePrevious]);
+  const hasMultipleProjects = PROJECTS.length > 1;
 
   return (
     <>
-      <section className='relative min-h-[900px] w-full overflow-x-hidden bg-transparent py-12 select-none'>
+      <section className='relative min-h-[900px] w-full select-none overflow-x-hidden bg-transparent py-12'>
         <div
           className='mx-auto w-full px-4'
           style={{
@@ -89,7 +71,6 @@ export default function ProjectsScene() {
         >
           <div className='flex w-full flex-col items-center'>
             <ProjectStage {...carousel} onProjectOpen={openProject} />
-
             <div className='mt-10 w-full shrink-0'>
               <ProjectIndicator
                 total={PROJECTS.length}
@@ -103,11 +84,11 @@ export default function ProjectsScene() {
 
       <ProjectModal
         project={selectedProject}
-        onClose={() => setSelectedProject(null)}
+        onClose={handleClose}
         onNext={handleNext}
         onPrevious={handlePrevious}
-        hasNext={PROJECTS.length > 1}
-        hasPrevious={PROJECTS.length > 1}
+        hasNext={hasMultipleProjects}
+        hasPrevious={hasMultipleProjects}
       />
     </>
   );
