@@ -2,11 +2,12 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import type { KeyboardEvent } from 'react';
+import { cn } from '@/src/lib/utils';
 import WindowHeader from './WindowHeader';
 import FeaturedProjectContent from './FeaturedProjectContent';
 import CompactProjectContent from './CompactProjectContent';
 import type { ProjectPlaneProps } from './project.type';
-import { cn } from '@/src/lib/utils';
 import {
   FEATURED_CARD_WIDTH,
   FEATURED_IMAGE_HEIGHT,
@@ -18,6 +19,12 @@ import {
   SIDE_IMAGE_HEIGHT,
   CENTER_CARD_SHADOW,
   SIDE_CARD_SHADOW,
+  PROJECT_CARD_Z_INDEX_OFFSET,
+  PROJECT_CARD_HOVER_DURATION,
+  PROJECT_IMAGE_QUALITY,
+  FEATURED_IMAGE_SIZE,
+  SIDE_IMAGE_SIZE,
+  PROJECT_IMAGE_HOVER_EASE,
 } from './project.constants';
 import {
   CARD_ENTRANCE,
@@ -33,6 +40,17 @@ export default function ProjectPlane({
 }: ProjectPlaneProps) {
   const { x, y, z, rotateX, rotateY, scale, blur, isCenter, zIndex } = layout;
 
+  const cardWidth = isCenter ? FEATURED_CARD_WIDTH : SIDE_CARD_WIDTH;
+  const imageHeight = isCenter ? FEATURED_IMAGE_HEIGHT : SIDE_IMAGE_HEIGHT;
+  const imageSize = isCenter ? FEATURED_IMAGE_SIZE : SIDE_IMAGE_SIZE;
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (!isCenter && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      onClick?.();
+    }
+  };
+
   return (
     <motion.div
       custom={index}
@@ -40,6 +58,10 @@ export default function ProjectPlane({
       initial='hidden'
       animate='visible'
       onClick={onClick}
+      onKeyDown={handleKeyDown}
+      aria-label={isCenter ? undefined : `View details for ${project.title}`}
+      role={isCenter ? undefined : 'button'}
+      tabIndex={isCenter ? -1 : 0}
       className='absolute'
       style={{
         left: '50%',
@@ -50,7 +72,7 @@ export default function ProjectPlane({
         rotateX,
         rotateY,
         scale,
-        zIndex: zIndex + 10,
+        zIndex: zIndex + PROJECT_CARD_Z_INDEX_OFFSET,
         filter: `blur(${blur}px)`,
         willChange: 'transform',
         transformStyle: 'preserve-3d',
@@ -73,7 +95,7 @@ export default function ProjectPlane({
                 }
           }
           transition={{
-            duration: 0.35,
+            duration: PROJECT_CARD_HOVER_DURATION,
           }}
           className='relative'
           style={{
@@ -86,26 +108,33 @@ export default function ProjectPlane({
               isCenter ? 'border-violet-500/40' : 'border-white/5',
             )}
             style={{
-              width: isCenter ? FEATURED_CARD_WIDTH : SIDE_CARD_WIDTH,
+              width: cardWidth,
               boxShadow: isCenter ? CENTER_CARD_SHADOW : SIDE_CARD_SHADOW,
             }}
           >
             {/* Top Shimmer */}
-            <div className='absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent' />
+            <div
+              aria-hidden='true'
+              className='absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent'
+            />
 
             {/* Glow */}
             <div
-              className={`absolute inset-0 rounded-[22px] bg-violet-500/10 blur-[90px] transition-opacity duration-500 ${
+              aria-hidden='true'
+              className={cn(
+                'absolute inset-0 rounded-[22px] bg-violet-500/10 blur-[90px] transition-opacity duration-500',
                 isCenter
                   ? 'opacity-80 group-hover:opacity-100'
-                  : 'opacity-0 group-hover:opacity-20'
-              }`}
+                  : 'opacity-0 group-hover:opacity-20',
+              )}
             />
+
             <WindowHeader title={project.title} />
+
             <div
               className='relative overflow-hidden'
               style={{
-                height: isCenter ? FEATURED_IMAGE_HEIGHT : SIDE_IMAGE_HEIGHT,
+                height: imageHeight,
               }}
             >
               <motion.div
@@ -115,24 +144,29 @@ export default function ProjectPlane({
                     ? {
                         scale: IMAGE_HOVER_SCALE,
                       }
-                    : {}
+                    : undefined
                 }
                 transition={{
-                  duration: 0.9,
-                  ease: [0.22, 1, 0.36, 1],
+                  duration: PROJECT_CARD_HOVER_DURATION,
+                  ease: PROJECT_IMAGE_HOVER_EASE,
                 }}
               >
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`Screenshot of ${project.title}`}
                   fill
                   priority={isCenter}
-                  quality={90}
-                  sizes={isCenter ? '560px' : '480px'}
+                  quality={PROJECT_IMAGE_QUALITY}
+                  sizes={imageSize}
                   className='object-cover object-top'
                 />
               </motion.div>
-              <div className='absolute inset-0 bg-gradient-to-t from-surface/75 via-surface/20 to-transparent' />
+
+              <div
+                aria-hidden='true'
+                className='absolute inset-0 bg-gradient-to-t from-surface/75 via-surface/20 to-transparent'
+              />
+
               {isCenter ? (
                 <FeaturedProjectContent project={project} />
               ) : (
