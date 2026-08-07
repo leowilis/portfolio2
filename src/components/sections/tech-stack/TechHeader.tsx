@@ -37,7 +37,7 @@ const TechHeader = forwardRef<HTMLDivElement, Props>(function TechHeader(
       {/* Badge */}
       <p
         ref={badgeRef}
-        className='text-xs font-extrabold uppercase text-violet-400'
+        className='text-xs font-extrabold uppercase tracking-[0.45em] text-violet-400'
         style={{
           marginBottom: TECH_BADGE_MARGIN_BOTTOM,
           letterSpacing: TECH_BADGE_TRACKING,
