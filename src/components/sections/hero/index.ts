@@ -10,8 +10,6 @@ export { default as HeroButtons } from './HeroButtons';
 
 export { default as HeroTypewriter } from './HeroTypewriter';
 
-export { default as HeroTechStack } from './HeroTechStack';
-
 export { default as HeroAvailability } from './HeroAvailability';
 
 export { default as HeroScrollIndicator } from './HeroScrollIndicator';
