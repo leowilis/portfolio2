@@ -2,7 +2,7 @@
 
 import type { RefObject } from 'react';
 import { useGSAP } from '@gsap/react';
-import { createTechHeaderTimeline } from './techHeader';
+import { createTechHeaderTimeline } from './techHeaderTimeline';
 
 type Props = {
   wrapperRef: RefObject<HTMLDivElement | null>;
