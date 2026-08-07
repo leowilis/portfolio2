@@ -6,24 +6,20 @@ interface WindowHeaderProps {
 
 function WindowHeader({ title }: WindowHeaderProps) {
   return (
-    <div className='relative z-10 mb-6 flex items-center border-b border-border bg-card backdrop-blur-xl px-5 py-3 '>
-      <div className='flex items-center gap-2'>
-        <span
-          aria-hidden='true'
-          className='h-3 w-3 rounded-full bg-danger'
-        />
-        <span
-          aria-hidden='true'
-          className='h-3 w-3 rounded-full bg-warning'
-        />
-        <span
-          aria-hidden='true'
-          className='h-3 w-3 rounded-full bg-success'
-        />
+    <div className='relative z-10 grid grid-cols-3 items-center border-b border-white/5 bg-zinc-950/40 px-5 py-3.5 backdrop-blur-xl select-none'>
+      <div aria-hidden='true' className='flex items-center gap-1.5'>
+        <span className='h-3 w-3 rounded-full border border-red-500/20 bg-red-500/80' />
+        <span className='h-3 w-3 rounded-full border border-yellow-500/20 bg-yellow-500/80' />
+        <span className='h-3 w-3 rounded-full border border-green-500/20 bg-green-500/80' />
       </div>
-      <h3 className='absolute left-1/2 -translate-x-1/2 text-xs font-medium tracking-wide text-muted-foreground'>
+
+      {/* Project title */}
+      <span className='min-w-0 truncate text-center text-[11px] font-semibold tracking-wider text-neutral-400'>
         {title}
-      </h3>
+      </span>
+
+      {/* Grid balance */}
+      <div aria-hidden='true' className='justify-self-end' />
     </div>
   );
 }
