@@ -40,53 +40,41 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   const aboutOpacity = useTransform(progress, [0, 0.01], [0.6, 1]);
 
   return (
-  <div ref={ref} className="relative">
-    {/* HERO */}
-    <motion.div
-      style={{
-        scale: heroScale,
-        opacity: heroOpacity,
-        filter: heroFilter,
-      }}
-      className="sticky top-0 h-screen overflow-hidden"
-    >
-      {sections[0]}
-    </motion.div>
+    <div ref={ref} className='relative'>
+      {/* HERO */}
+      <motion.div
+        style={{
+          scale: heroScale,
+          opacity: heroOpacity,
+          filter: heroFilter,
+        }}
+        className='sticky top-0 h-screen overflow-hidden'
+      >
+        {sections[0]}
+      </motion.div>
 
-    {/* ABOUT */}
-    <motion.div
-      style={{
-        y: aboutY,
-        scale: aboutScale,
-        opacity: aboutOpacity,
-        borderTopLeftRadius: aboutRadius,
-        borderTopRightRadius: aboutRadius,
-      }}
-      className="relative z-20 -mt-28 overflow-hidden bg-transparent"
-    >
-      {sections[1]}
-    </motion.div>
+      {/* ABOUT */}
+      <motion.div
+        style={{
+          y: aboutY,
+          scale: aboutScale,
+          opacity: aboutOpacity,
+          borderTopLeftRadius: aboutRadius,
+          borderTopRightRadius: aboutRadius,
+        }}
+        className='relative z-20 -mt-28 overflow-hidden bg-transparent'
+      >
+        {sections[1]}
+      </motion.div>
 
-    {/* PROJECTS */}
-    {sections[2] && (
-      <div className="relative z-30">
-        {sections[2]}
-      </div>
-    )}
+      {/* PROJECTS */}
+      {sections[2] && <div className='relative z-30'>{sections[2]}</div>}
 
-    {/* TECH STACK */}
-    {sections[3] && (
-      <div className="relative z-40">
-        {sections[3]}
-      </div>
-    )}
+      {/* TECH STACK */}
+      {sections[3] && <div className='relative z-40'>{sections[3]}</div>}
 
-    {/* CONTACT */}
-    {sections[4] && (
-      <div className="relative z-50">
-        {sections[4]}
-      </div>
-    )}
-  </div>
-);
+      {/* CONTACT */}
+      {sections[4] && <div className='relative z-50'>{sections[4]}</div>}
+    </div>
+  );
 }
