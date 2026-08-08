@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+
 import {
   GRID_FLOAT_Y,
   HEADER_DESCRIPTION_OPACITY,
@@ -11,7 +12,6 @@ import {
   SCENE_END_ROTATE_X,
   SCENE_END_ROTATE_Y,
   SCENE_END_Z,
-  SCENE_PERSPECTIVE,
   SCENE_ROTATE_X,
   SCENE_ROTATE_Y,
   SCENE_Z,
@@ -42,7 +42,14 @@ export function createTechSectionTimeline({
   grid,
   scene,
 }: Params) {
-  if (!section || !scene || !title || !outline || !description || !grid) {
+  if (
+    !section ||
+    !scene ||
+    !title ||
+    !outline ||
+    !description ||
+    !grid
+  ) {
     return null;
   }
 
@@ -50,23 +57,42 @@ export function createTechSectionTimeline({
     defaults: {
       ease: 'none',
     },
+
     scrollTrigger: {
       trigger: section,
+
       start: TECH_SECTION_START,
+
+      // IMPORTANT:
+      // jangan tunggu sampai section keluar viewport.
+      // Scene harus sudah flat sebelum masuk Contact.
       end: TECH_SECTION_END,
+
       scrub: TECH_SCRUB,
+
       invalidateOnRefresh: true,
     },
   });
 
-  // Scene
+  /*
+   * =========================
+   * SCENE
+   * =========================
+   *
+   * Mobile:
+   * tetap masuk dengan sedikit perspektif
+   * lalu perlahan menjadi flat.
+   *
+   * Desktop:
+   * transform selesai lebih cepat karena
+   * TECH_SECTION_END kita ubah.
+   */
   timeline.fromTo(
     scene,
     {
       rotateX: SCENE_ROTATE_X,
       rotateY: SCENE_ROTATE_Y,
       z: SCENE_Z,
-      transformPerspective: SCENE_PERSPECTIVE,
       transformOrigin: 'center center',
       force3D: true,
     },
@@ -74,12 +100,19 @@ export function createTechSectionTimeline({
       rotateX: SCENE_END_ROTATE_X,
       rotateY: SCENE_END_ROTATE_Y,
       z: SCENE_END_Z,
+
+      // Jangan set transformPerspective di sini.
+      // Perspective sudah tidak kita paksa dari timeline.
       force3D: true,
     },
     0,
   );
 
-  // Badge
+  /*
+   * =========================
+   * BADGE
+   * =========================
+   */
   if (badge) {
     timeline.set(
       badge,
@@ -91,7 +124,11 @@ export function createTechSectionTimeline({
     );
   }
 
-  // TECH
+  /*
+   * =========================
+   * TECH TITLE
+   * =========================
+   */
   timeline.to(
     title,
     {
@@ -99,14 +136,17 @@ export function createTechSectionTimeline({
       scale: TECH_TITLE_FLOAT_SCALE,
       rotateX: HEADER_TITLE_ROTATION,
       z: TECH_Z,
-      transformPerspective: SCENE_PERSPECTIVE,
       transformOrigin: 'center center',
       force3D: true,
     },
     0,
   );
 
-  // ECOSYSTEM
+  /*
+   * =========================
+   * ECOSYSTEM
+   * =========================
+   */
   timeline.to(
     outline,
     {
@@ -120,7 +160,11 @@ export function createTechSectionTimeline({
     0,
   );
 
-  // Description
+  /*
+   * =========================
+   * DESCRIPTION
+   * =========================
+   */
   timeline.to(
     description,
     {
@@ -131,7 +175,13 @@ export function createTechSectionTimeline({
     0,
   );
 
-  // Grid
+  /*
+   * =========================
+   * GRID
+   * =========================
+   *
+   * Jangan dorong grid terlalu jauh ke atas.
+   */
   timeline.to(
     grid,
     {

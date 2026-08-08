@@ -56,11 +56,13 @@ export default function useTechSection({
       });
 
       return () => {
+        timeline?.scrollTrigger?.kill();
         timeline?.kill();
       };
     },
     {
       scope: sectionRef,
+      revertOnUpdate: true,
     },
   );
 }

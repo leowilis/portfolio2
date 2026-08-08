@@ -92,13 +92,13 @@ export const HEADER_BADGE_OPACITY = 1;
 export const HEADER_DESCRIPTION_OPACITY = 1;
 
 // Header Animations
-export const TECH_HEADER_START = 'top bottom';
-export const TECH_HEADER_END = 'bottom top';
+export const TECH_HEADER_START = 'top 85%';
+export const TECH_HEADER_END = 'bottom 65%';
 export const TECH_HEADER_SCRUB = 1.2;
 export const TECH_HEADER_Y = -40;
 export const TECH_HEADER_SCALE = 0.96;
-export const TECH_HEADER_ROTATE = -44;
-export const TECH_HEADER_TRANSFORM_PERSPECTIVE = 1000;
+export const TECH_HEADER_ROTATE = 0;
+export const TECH_HEADER_TRANSFORM_PERSPECTIVE = 0;
 
 // Floating
 export const TECH_TITLE_FLOAT_Y = -30;
@@ -110,20 +110,19 @@ export const MATRIX_FLOAT_ROTATE = -1;
 export const GRID_FLOAT_Y = -40;
 
 // Scene
-export const SCENE_ROTATE_X = 8;
-export const SCENE_ROTATE_Y = -6;
-export const SCENE_Z = -120;
+export const SCENE_ROTATE_X = 0;
+export const SCENE_ROTATE_Y = 0;
+export const SCENE_Z = 0;
 export const SCENE_END_ROTATE_X = 0;
 export const SCENE_END_ROTATE_Y = 0;
 export const SCENE_END_Z = 0;
-export const SCENE_PERSPECTIVE = 1800;
+export const SCENE_PERSPECTIVE = 0;
 
 // Grid Layout
 export const TECH_GRID_COLUMNS_DESKTOP = 4;
 export const TECH_GRID_COLUMNS_TABLET = 2;
 export const TECH_GRID_COLUMNS_MOBILE = 1;
 export const TECH_GRID_GAP = 24;
-export const TECH_SECTION_MARGIN_TOP = 80;
 export const TECH_CARD_GRID_COLOR = 'rgba(255,255,255,.05)';
 
 // Grid Parallax
@@ -139,12 +138,12 @@ export const EASE_OUT_EXPO: [number, number, number, number] = [
 
 // Tech Header
 export const TECH_HEADER_MAX_WIDTH = 900;
-export const TECH_HEADER_MARGIN_BOTTOM = '5rem';
-export const TECH_HEADER_PERSPECTIVE = '1000px';
-export const TECH_HEADER_TITLE_PERSPECTIVE = '800px';
+export const TECH_HEADER_MARGIN_BOTTOM = '2rem';
+export const TECH_HEADER_PERSPECTIVE = 'none';
+export const TECH_HEADER_TITLE_PERSPECTIVE = 'none';
 
 // Badge
-export const TECH_BADGE_MARGIN_BOTTOM = '5rem';
+export const TECH_BADGE_MARGIN_BOTTOM = '2rem';
 export const TECH_BADGE_TRACKING = '0.45em';
 
 // Description
