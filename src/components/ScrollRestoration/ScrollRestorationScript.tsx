@@ -14,7 +14,7 @@ export default function ScrollRestorationScript() {
           if (savedY !== null) {
             window.scrollTo(0, Number(savedY));
           }
-        } catch (e) {}
+        } catch (error) {}
       `}
     </Script>
   );
