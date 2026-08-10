@@ -6,7 +6,7 @@ import HeroScrollIndicator from './HeroScrollIndicator';
 
 export default function HeroSection() {
   return (
-    <section className='relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 py-24 sm:px-6 sm:py-28 lg:py-20'>
+    <section className='relative flex min-h-[49svh] flex-col items-center justify-center overflow-hidden px-5 py-24 sm:px-6 sm:py-28 lg:py-20'>
       <HeroAmbientGlow />
 
       <HeroMouseGlow />
