@@ -1,11 +1,11 @@
 export const GLOBE_RADIUS = 90;
 
 export const GLOBE_CONFIG = {
-  globeColor: '#17121f',
-  polygonColor: 'rgba(196, 181, 253, 0.42)',
+  globeColor: '#171225',
+  polygonColor: '#8b7bb8',
   atmosphereColor: '#a78bfa',
   atmosphereAltitude: 0.08,
-  emissive: '#120b1d',
+  emissive: '#281840',
   emissiveIntensity: 0.55,
   shininess: 0.8,
   pointSize: 0.7,
