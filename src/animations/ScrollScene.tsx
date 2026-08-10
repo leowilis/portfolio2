@@ -13,19 +13,22 @@ interface ScrollSceneProps {
   children: ReactNode;
 }
 
+const SPRING_CONFIG = {
+  stiffness: 140,
+  damping: 25,
+  mass: 0.25,
+};
+
 export default function ScrollScene({ children }: ScrollSceneProps) {
   const ref = useRef<HTMLDivElement>(null);
   const sections = Children.toArray(children);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end end'],
   });
 
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 140,
-    damping: 25,
-    mass: 0.25,
-  });
+  const progress = useSpring(scrollYProgress, SPRING_CONFIG);
 
   // Hero
   const heroScale = useTransform(progress, [0, 0.3], [1, 0.94]);
@@ -40,8 +43,8 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   const aboutOpacity = useTransform(progress, [0, 0.01], [0.6, 1]);
 
   return (
-    <div ref={ref} className='relative'>
-      {/* HERO */}
+    <div ref={ref}>
+      {/* Hero */}
       <motion.div
         style={{
           scale: heroScale,
@@ -53,7 +56,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
         {sections[0]}
       </motion.div>
 
-      {/* ABOUT */}
+      {/* About */}
       <motion.div
         style={{
           y: aboutY,
@@ -67,13 +70,13 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
         {sections[1]}
       </motion.div>
 
-      {/* PROJECTS */}
+      {/* Project */}
       {sections[2] && <div className='relative z-30'>{sections[2]}</div>}
 
-      {/* TECH STACK */}
+      {/* Tech Stack */}
       {sections[3] && <div className='relative z-40'>{sections[3]}</div>}
 
-      {/* CONTACT */}
+      {/* Contact */}
       {sections[4] && <div className='relative z-50'>{sections[4]}</div>}
     </div>
   );
