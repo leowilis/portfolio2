@@ -28,6 +28,16 @@ export default function HeroAvailability() {
         duration: HERO_AVAILABILITY_REVEAL_DURATION,
         ease: HERO_AVAILABILITY_EASE_OUT_EXPO,
       }}
+      className='
+        absolute
+  bottom-15
+  left-1/2
+  z-20
+  -translate-x-1/2
+  whitespace-nowrap
+  sm:bottom-10
+  md:bottom-12
+      '
     >
       <div
         role='status'
@@ -47,9 +57,11 @@ export default function HeroAvailability() {
             }}
             className='absolute inset-0 rounded-full bg-emerald-400'
           />
+
           <span className='relative h-2 w-2 rounded-full bg-emerald-400' />
         </span>
-        <span className='text-xs font-bold tracking-wide text-purple-200/80 uppercase pt-0.5 md:text-sm'>
+
+        <span className='pt-0.5 text-xs font-bold uppercase tracking-wide text-purple-200/80 md:text-sm'>
           Available for work
         </span>
       </div>
