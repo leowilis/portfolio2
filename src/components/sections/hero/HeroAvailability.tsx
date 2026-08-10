@@ -29,14 +29,14 @@ export default function HeroAvailability() {
         ease: HERO_AVAILABILITY_EASE_OUT_EXPO,
       }}
       className='
-        absolute
-  bottom-15
+      absolute
+  bottom-18
   left-1/2
   z-20
   -translate-x-1/2
   whitespace-nowrap
-  sm:bottom-10
-  md:bottom-12
+  sm:bottom-43
+  md:bottom-20
       '
     >
       <div

@@ -26,14 +26,14 @@ export default function HeroScrollIndicator() {
         duration: HERO_SCROLL_REVEAL_DURATION,
         ease: HERO_SCROLL_EASE_OUT_EXPO,
       }}
-      className='absolute bottom-22 left-1/2 -translate-x-1/2 md:bottom-30'
+      className='absolute -bottom-3 left-1/2 -translate-x-1/2 md:-bottom-0'
     >
       <a
         href='#about'
         aria-label='Scroll to about section'
         className='group flex flex-col items-center gap-2'
       >
-        <span className='text-[10px] font-medium uppercase tracking-[0.3em] text-white/30 transition-colors duration-300 group-hover:text-white/60'>
+        <span className='text-[10px] font-medium uppercase tracking-[0.4em] text-white/35 transition-colors duration-300 group-hover:text-white/60'>
           Scroll
         </span>
 
