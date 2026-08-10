@@ -86,103 +86,43 @@ export default function TextReveal({
 }: TextRevealProps) {
   const containerVariants = createContainerVariants(delay, stagger);
   const wordVariants = createWordVariants(duration, y, blur);
+
   const content = renderWords(children, wordVariants);
+
   const viewport = {
     once,
     amount,
   };
 
+  const props = {
+    className,
+    variants: containerVariants,
+    initial: 'hidden' as const,
+    whileInView: 'show' as const,
+    viewport,
+  };
+
   switch (as) {
     case 'h1':
-      return (
-        <motion.h1
-          className={className}
-          variants={containerVariants}
-          initial='hidden'
-          whileInView='show'
-          viewport={viewport}
-        >
-          {content}
-        </motion.h1>
-      );
+      return <motion.h1 {...props}>{content}</motion.h1>;
 
     case 'h2':
-      return (
-        <motion.h2
-          className={className}
-          variants={containerVariants}
-          initial='hidden'
-          whileInView='show'
-          viewport={viewport}
-        >
-          {content}
-        </motion.h2>
-      );
+      return <motion.h2 {...props}>{content}</motion.h2>;
 
     case 'h3':
-      return (
-        <motion.h3
-          className={className}
-          variants={containerVariants}
-          initial='hidden'
-          whileInView='show'
-          viewport={viewport}
-        >
-          {content}
-        </motion.h3>
-      );
+      return <motion.h3 {...props}>{content}</motion.h3>;
 
     case 'h4':
-      return (
-        <motion.h4
-          className={className}
-          variants={containerVariants}
-          initial='hidden'
-          whileInView='show'
-          viewport={viewport}
-        >
-          {content}
-        </motion.h4>
-      );
+      return <motion.h4 {...props}>{content}</motion.h4>;
 
     case 'span':
-      return (
-        <motion.span
-          className={className}
-          variants={containerVariants}
-          initial='hidden'
-          whileInView='show'
-          viewport={viewport}
-        >
-          {content}
-        </motion.span>
-      );
+      return <motion.span {...props}>{content}</motion.span>;
 
     case 'p':
-      return (
-        <motion.p
-          className={className}
-          variants={containerVariants}
-          initial='hidden'
-          whileInView='show'
-          viewport={viewport}
-        >
-          {content}
-        </motion.p>
-      );
+      return <motion.p {...props}>{content}</motion.p>;
 
     case 'div':
     default:
-      return (
-        <motion.div
-          className={className}
-          variants={containerVariants}
-          initial='hidden'
-          whileInView='show'
-          viewport={viewport}
-        >
-          {content}
-        </motion.div>
-      );
+      return <motion.div {...props}>{content}</motion.div>;
   }
 }
