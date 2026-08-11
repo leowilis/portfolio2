@@ -20,7 +20,6 @@ export const SIDE_IMAGE_SIZE = '480px';
 
 // Motion
 export const FLOAT_DISTANCE = 10;
-export const CARD_HOVER_SCALE = 1.015;
 export const IMAGE_HOVER_SCALE = 1.03;
 export const SIDE_CARD_HOVER_SCALE = 0.86;
 export const SIDE_CARD_HOVER_Y = -8;
