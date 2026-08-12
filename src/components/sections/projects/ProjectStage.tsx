@@ -21,11 +21,13 @@ import {
   PROJECT_STAGE_DRAG_ELASTIC,
   PROJECT_STAGE_HEIGHT,
   STAGE_PERSPECTIVE,
+  TABLET_PLANE_SCALE,
 } from './project.constants';
 import { getProjectLayout } from './project.layout';
 import type { Project } from './project.type';
 import ProjectPlane from './ProjectPlane';
 import useProjectCarousel from './useProjectCarousel';
+import useIsTablet from './useIsTablet';
 
 type Props = ReturnType<typeof useProjectCarousel> & {
   onProjectOpen: (project: Project) => void;
@@ -44,6 +46,8 @@ export default function ProjectStage({
   previousProject,
   isDragging,
 }: Props) {
+  const isTablet = useIsTablet();
+
   const handleCardClick = (index: number, project: Project) => {
     if (isDragging) return;
     if (index !== activeIndex) {
@@ -78,6 +82,7 @@ export default function ProjectStage({
           rotateX,
           rotateY,
           z: cameraZ,
+          scale: isTablet ? TABLET_PLANE_SCALE : 1,
           transformStyle: 'preserve-3d',
           transformOrigin: 'center center',
           backfaceVisibility: 'hidden',
