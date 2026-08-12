@@ -70,14 +70,17 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
         {sections[1]}
       </motion.div>
 
-      {/* Project */}
+      {/* Projects */}
       {sections[2] && <div className='relative z-30'>{sections[2]}</div>}
 
       {/* Tech Stack */}
       {sections[3] && <div className='relative z-40'>{sections[3]}</div>}
 
-      {/* Contact */}
+      {/* Education */}
       {sections[4] && <div className='relative z-50'>{sections[4]}</div>}
+
+      {/* Contact */}
+      {sections[5] && <div className='relative z-[60]'>{sections[5]}</div>}
     </div>
   );
 }
