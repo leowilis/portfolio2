@@ -1,10 +1,26 @@
 import type { Transition, Variants } from 'framer-motion';
 
-// Initial card appearance
+import {
+  PROJECT_CARD_ENTRANCE_DELAY_STEP,
+  PROJECT_CARD_ENTRANCE_DURATION,
+  PROJECT_CARD_ENTRANCE_EASE,
+  PROJECT_CARD_ENTRANCE_MAX_DELAY,
+  PROJECT_CARD_ENTRANCE_Y,
+  PROJECT_CARD_HOVER_ROTATE_X,
+  PROJECT_CARD_HOVER_ROTATE_Y,
+  PROJECT_CARD_HOVER_SCALE,
+  PROJECT_FLOAT_DELAY_STEP,
+  PROJECT_FLOAT_DURATION,
+  PROJECT_FLOAT_DURATION_STEP,
+  PROJECT_TECH_CHIP_HOVER_SCALE,
+  PROJECT_TECH_CHIP_HOVER_Y,
+} from './project.constants';
+
+// Card entrance
 export const CARD_ENTRANCE: Variants = {
   hidden: {
     opacity: 0,
-    y: 40,
+    y: PROJECT_CARD_ENTRANCE_Y,
   },
 
   visible: (index: number) => ({
@@ -12,33 +28,35 @@ export const CARD_ENTRANCE: Variants = {
     y: 0,
 
     transition: {
-      duration: 0.65,
-      delay: Math.min(index * 0.06, 0.3),
-      ease: [0.22, 1, 0.36, 1],
+      duration: PROJECT_CARD_ENTRANCE_DURATION,
+      delay: Math.min(
+        index * PROJECT_CARD_ENTRANCE_DELAY_STEP,
+        PROJECT_CARD_ENTRANCE_MAX_DELAY,
+      ),
+      ease: PROJECT_CARD_ENTRANCE_EASE,
     },
   }),
 };
 
-// Featured card hover
 export const CARD_HOVER = {
-  rotateY: 2,
-  rotateX: -2,
-  scale: 1.015,
+  rotateY: PROJECT_CARD_HOVER_ROTATE_Y,
+  rotateX: PROJECT_CARD_HOVER_ROTATE_X,
+  scale: PROJECT_CARD_HOVER_SCALE,
 } as const;
 
-// Tech chip hover
 export const TECH_CHIP_HOVER = {
-  scale: 1.05,
-  y: -2,
-};
+  scale: PROJECT_TECH_CHIP_HOVER_SCALE,
+  y: PROJECT_TECH_CHIP_HOVER_Y,
+} as const;
 
-// FLoating animation
 export function getFloatTransition(index: number): Transition {
   return {
-    duration: 5.5 + index * 0.4,
+    duration: PROJECT_FLOAT_DURATION + index * PROJECT_FLOAT_DURATION_STEP,
+
     repeat: Infinity,
     repeatType: 'reverse',
     ease: 'easeInOut',
-    delay: index * 0.25,
+
+    delay: index * PROJECT_FLOAT_DELAY_STEP,
   };
 }
