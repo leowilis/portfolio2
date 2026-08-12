@@ -41,7 +41,7 @@ export default function ProjectsSection() {
     <section
       id='projects'
       aria-labelledby='projects-heading'
-      className='relative overflow-hidden py-16 sm:py-24'
+      className='relative overflow-hidden py-30 sm:py-32'
     >
       <StaggerContainer>
         <ProjectsHeader />
