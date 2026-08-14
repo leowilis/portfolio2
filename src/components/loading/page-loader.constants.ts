@@ -1,0 +1,67 @@
+import type { Easing } from 'framer-motion';
+
+export const PAGE_LOADER_EASE: Easing = [0.22, 1, 0.36, 1];
+export const PAGE_LOADER_GRID_LINE_COUNT = 13;
+export const PAGE_LOADER_ORBIT_LINE_COUNT = 3;
+
+export const PAGE_LOADER_GRID_LINES = Array.from({
+  length: PAGE_LOADER_GRID_LINE_COUNT,
+});
+
+export const PAGE_LOADER_ORBIT_LINES = Array.from({
+  length: PAGE_LOADER_ORBIT_LINE_COUNT,
+});
+
+export const PAGE_LOADER_PROGRESS = {
+  MIN: 0,
+  MAX: 100,
+  FAST_THRESHOLD: 40,
+  MEDIUM_THRESHOLD: 15,
+  FAST_INCREMENT: 1.8,
+  MEDIUM_INCREMENT: 0.8,
+  SLOW_INCREMENT: 0.25,
+  LABEL_LENGTH: 3,
+} as const;
+
+export const PAGE_LOADER_ANIMATION = {
+  EXIT_DURATION: 0.8,
+  EXIT_DELAY: 0.25,
+  AMBIENT_SCALE: [0.85, 1.1, 0.85] as [number, number, number],
+  AMBIENT_OPACITY: [0.35, 0.7, 0.35] as [number, number, number],
+  AMBIENT_DURATION: 7,
+  SECONDARY_AMBIENT_X: [-30, 20, -30] as [number, number, number],
+  SECONDARY_AMBIENT_Y: [20, -20, 20] as [number, number, number],
+  SECONDARY_AMBIENT_DURATION: 10,
+  GRID_BASE_LEFT_PERCENT: 7.7,
+  GRID_LEFT_INDEX_OFFSET: 1,
+  GRID_OPACITY: [0.15, 0.5, 0.15] as [number, number, number],
+  GRID_DURATION: 3,
+  GRID_DURATION_STEP: 0.15,
+  ORBIT_BASE_SIZE_PERCENT: 55,
+  ORBIT_SIZE_STEP_PERCENT: 22,
+  ORBIT_ROTATION_DURATION: 30,
+  ORBIT_ROTATION_DURATION_STEP: 10,
+  ORBIT_GLOW_SCALE: [0.95, 1.05, 0.95] as [number, number, number],
+  ORBIT_GLOW_OPACITY: [0.25, 0.6, 0.25] as [number, number, number],
+  ORBIT_GLOW_DURATION: 5,
+  TOP_NAME_DURATION: 0.9,
+  TOP_PORTFOLIO_DURATION: 1,
+  TOP_PORTFOLIO_DELAY: 0.2,
+  STATUS_DURATION: 0.8,
+  STATUS_DELAY: 0.15,
+  STATUS_DOT_OPACITY: [0.3, 1, 0.3] as [number, number, number],
+  STATUS_DOT_SCALE: [0.8, 1.15, 0.8] as [number, number, number],
+  STATUS_DOT_DURATION: 1.5,
+  MAIN_PROGRESS_DURATION: 1,
+  MAIN_PROGRESS_DELAY: 0.2,
+  SIDE_INFO_DURATION: 0.8,
+  SIDE_INFO_DELAY: 0.3,
+  SIDE_INFO_X: 20,
+  PROGRESS_GLOW_OPACITY: 0.45,
+  PROGRESS_LEADING_POINT_OPACITY: 0.7,
+  BOTTOM_INFO_DURATION: 0.8,
+  BOTTOM_INFO_DELAY: 0.35,
+  BOTTOM_PULSE_OPACITY: [0.2, 0.6, 0.2] as [number, number, number],
+  BOTTOM_PULSE_DURATION: 2,
+  PROGRESS_LABEL_PAD_LENGTH: 3,
+} as const;
