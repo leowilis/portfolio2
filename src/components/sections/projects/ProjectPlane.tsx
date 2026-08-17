@@ -155,7 +155,6 @@ export default function ProjectPlane({
                   src={project.image}
                   alt={`Screenshot of ${project.title}`}
                   fill
-                  priority={isCenter}
                   quality={PROJECT_IMAGE_QUALITY}
                   sizes={imageSize}
                   className='object-cover object-top'
