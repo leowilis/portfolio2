@@ -1,11 +1,13 @@
 import type { MetadataRoute } from 'next';
 
+const BASE_URL = 'https://leonardo-wilis-portfolio.vercel.app';
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://leonardo-wilis-portfolio.vercel.app/sitemap.xml',
+    sitemap: `${BASE_URL}/sitemap.xml`,
   };
 }
