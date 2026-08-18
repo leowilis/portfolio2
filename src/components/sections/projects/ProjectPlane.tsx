@@ -73,8 +73,8 @@ export default function ProjectPlane({
         rotateY,
         scale,
         zIndex: zIndex + PROJECT_CARD_Z_INDEX_OFFSET,
-        filter: `blur(${blur}px)`,
-        willChange: 'transform',
+        filter: blur > 0 ? `blur(${blur}px)` : undefined,
+        willChange: isCenter ? 'transform' : 'auto',
         transformStyle: 'preserve-3d',
         cursor: isCenter ? 'default' : 'pointer',
       }}
@@ -104,7 +104,7 @@ export default function ProjectPlane({
         >
           <div
             className={cn(
-              'group relative overflow-hidden rounded-[22px] border bg-surface transition-all duration-500',
+              'group relative overflow-hidden rounded-[22px] border bg-surface',
               isCenter ? 'border-violet-500/40' : 'border-white/5',
             )}
             style={{

@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-
 import {
   PROJECT_IMAGE_QUALITY,
   PROJECT_MODAL_CONTENT_EASE,
@@ -10,6 +9,7 @@ import {
   PROJECT_MODAL_IMAGE_INITIAL_SCALE,
   PROJECT_MODAL_IMAGE_OPACITY,
   PROJECT_MODAL_IMAGE_SCALE,
+  PROJECT_MODAL_IMAGE_SIZES,
 } from './project.constants';
 
 interface ProjectModalImageProps {
@@ -43,7 +43,7 @@ export default function ProjectModalImage({
           alt={`Mockup screenshot for ${title}`}
           fill
           quality={PROJECT_IMAGE_QUALITY}
-          sizes='(min-width: 1280px) 680px, (min-width: 1024px) 50vw, 100vw'
+          sizes={PROJECT_MODAL_IMAGE_SIZES}
           className='object-contain object-center transition-transform duration-300'
         />
       </div>

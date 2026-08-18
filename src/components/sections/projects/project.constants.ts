@@ -27,8 +27,8 @@ export const FEATURED_IMAGE_HEIGHT = 430;
 export const SIDE_IMAGE_HEIGHT = 240;
 export const PROJECT_IMAGE_QUALITY = 90;
 export const PROJECT_PRIORITY_IMAGE_COUNT = 2;
-export const FEATURED_IMAGE_SIZE = '560px';
-export const SIDE_IMAGE_SIZE = '480px';
+export const FEATURED_IMAGE_SIZE = '720px';
+export const SIDE_IMAGE_SIZE = '450px';
 
 // Card Motion
 export const FLOAT_DISTANCE = 10;
@@ -134,6 +134,7 @@ export const PROJECT_MODAL_IMAGE_ENTER_DURATION = 0.45;
 export const PROJECT_MODAL_IMAGE_OPACITY = 1;
 export const PROJECT_MODAL_IMAGE_SCALE = 1;
 export const PROJECT_MODAL_NAV_ICON_SIZE = 14;
+export const PROJECT_MODAL_IMAGE_SIZES = '560px';
 
 // Project Stage Floor Light
 export const PROJECT_FLOOR_TOP = 540;
