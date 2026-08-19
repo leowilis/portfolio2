@@ -18,7 +18,7 @@ export const GLOBE_CONFIG = {
 
 // Globe
 export const GLOBE_RADIUS = 90;
-export const GLOBE_HEX_POLYGON_RESOLUTION = 3;
+export const GLOBE_HEX_POLYGON_RESOLUTION = 2;
 export const GLOBE_HEX_POLYGON_MARGIN = 0.65;
 export const GLOBE_MEDAN_POINT_COLOR = '#c4b5fd';
 export const GLOBE_MEDAN_POINT_ALTITUDE = 0.015;
