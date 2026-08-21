@@ -30,7 +30,7 @@ const globeSizeVariables = {
 export default function GlobeScene() {
   return (
     <div
-      className='relative h-(--globe-mobile-size) w-(--globe-mobile-size) shrink-0 overflow-vis sm:h-(--globe-tablet-size) sm:w-[var(--globe-tablet-si lg:h-(--globe-desktop-size) lg:w-(--globe-desktop-size)'
+      className='relative h-(--globe-mobile-size) w-(--globe-mobile-size) shrink-0 overflow-visible sm:h-(--globe-tablet-size) sm:w-[var(--globe-tablet-si lg:h-(--globe-desktop-size) lg:w-(--globe-desktop-size)'
       style={globeSizeVariables}
     >
       <Canvas
