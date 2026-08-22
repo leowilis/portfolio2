@@ -17,6 +17,7 @@ export default function GlobeControls() {
       maxDistance={GLOBE_RADIUS * 2.8}
       minPolarAngle={Math.PI * 0.28}
       maxPolarAngle={Math.PI * 0.72}
+      makeDefault
     />
   );
 }
