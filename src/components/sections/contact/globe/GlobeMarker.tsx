@@ -34,12 +34,12 @@ export default function GlobeMarker() {
   return (
     <group position={position}>
       <mesh>
-        <sphereGeometry args={[GLOBE_MARKER_SIZE, 24, 24]} />
+        <sphereGeometry args={[GLOBE_MARKER_SIZE, 12, 12]} />
         <meshBasicMaterial color={GLOBE_MARKER_COLOR} toneMapped={false} />
       </mesh>
 
       <mesh>
-        <sphereGeometry args={[GLOBE_MARKER_GLOW_SIZE, 24, 24]} />
+        <sphereGeometry args={[GLOBE_MARKER_GLOW_SIZE, 12, 12]} />
         <meshBasicMaterial
           color={GLOBE_MARKER_GLOW_COLOR}
           transparent
