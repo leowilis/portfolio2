@@ -73,7 +73,7 @@ export default function ProjectPlane({
         rotateY,
         scale,
         zIndex: zIndex + PROJECT_CARD_Z_INDEX_OFFSET,
-        filter: blur > 0 ? `blur(${blur}px)` : undefined,
+        filter: blur > 0 ? `blur(${blur}px)` : 'none',
         willChange: isCenter ? 'transform' : 'auto',
         transformStyle: 'preserve-3d',
         cursor: isCenter ? 'default' : 'pointer',
@@ -129,6 +129,7 @@ export default function ProjectPlane({
               )}
             />
 
+            {/* Window Template */}
             <WindowHeader title={project.title} />
 
             <div
