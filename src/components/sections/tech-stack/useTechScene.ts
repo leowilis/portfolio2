@@ -2,7 +2,7 @@
 
 import type { RefObject } from 'react';
 import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import { gsap } from '@/src/lib/gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   SCENE_ROTATE_X,

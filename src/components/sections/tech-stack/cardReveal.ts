@@ -1,4 +1,4 @@
-import gsap from 'gsap';
+import { gsap } from '@/src/lib/gsap';
 
 import {
   CARD_REVEAL_DURATION,

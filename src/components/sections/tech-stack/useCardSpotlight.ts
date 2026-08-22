@@ -2,7 +2,7 @@
 
 import type { RefObject } from 'react';
 import { useEffect } from 'react';
-import gsap from 'gsap';
+import { gsap } from '@/src/lib/gsap';
 
 type Props = {
   cardRef: RefObject<HTMLDivElement | null>;

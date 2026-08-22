@@ -2,7 +2,7 @@
 
 import type { RefObject } from 'react';
 import { useEffect } from 'react';
-import gsap from 'gsap';
+import { gsap } from '@/src/lib/gsap';
 import {
   CARD_MAX_ROTATE_X,
   CARD_MAX_ROTATE_Y,

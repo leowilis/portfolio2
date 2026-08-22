@@ -2,7 +2,7 @@
 
 import type { RefObject } from 'react';
 import { useEffect } from 'react';
-import gsap from 'gsap';
+import { gsap } from '@/src/lib/gsap';
 import {
   GRID_PARALLAX_MAX_X,
   GRID_PARALLAX_MAX_Y,
