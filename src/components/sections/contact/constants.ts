@@ -67,8 +67,8 @@ export const GLOBE_CANVAS_MOBILE_SIZE = 450;
 
 // Globe Canvas Rendering
 export const GLOBE_CANVAS_DPR_MIN = 1;
-export const GLOBE_CANVAS_DPR_MAX = 1.5;
-export const GLOBE_CANVAS_PERFORMANCE_MIN = 0.6;
+export const GLOBE_CANVAS_DPR_MAX = 1.25;
+export const GLOBE_CANVAS_PERFORMANCE_MIN = 0.7;
 
 // GLobe Camera
 export const GLOBE_CAMERA_POSITION: [number, number, number] = [0, 0, 290];
@@ -77,9 +77,9 @@ export const GLOBE_CAMERA_NEAR = 1;
 export const GLOBE_CAMERA_FAR = 1200;
 
 // Globe WebGL
-export const GLOBE_ANTIALIAS = true;
+export const GLOBE_ANTIALIAS = false;
 export const GLOBE_ALPHA = true;
-export const GLOBE_POWER_PREFERENCE = 'default' as const;
+export const GLOBE_POWER_PREFERENCE = 'high-performance' as const;
 
 // Globe Animation
 export const GLOBE_FLOAT_DURATION = 8;
