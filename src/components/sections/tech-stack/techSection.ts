@@ -42,14 +42,7 @@ export function createTechSectionTimeline({
   grid,
   scene,
 }: Params) {
-  if (
-    !section ||
-    !scene ||
-    !title ||
-    !outline ||
-    !description ||
-    !grid
-  ) {
+  if (!section || !scene || !title || !outline || !description || !grid) {
     return null;
   }
 
@@ -60,33 +53,14 @@ export function createTechSectionTimeline({
 
     scrollTrigger: {
       trigger: section,
-
       start: TECH_SECTION_START,
-
-      // IMPORTANT:
-      // jangan tunggu sampai section keluar viewport.
-      // Scene harus sudah flat sebelum masuk Contact.
       end: TECH_SECTION_END,
-
       scrub: TECH_SCRUB,
-
       invalidateOnRefresh: true,
     },
   });
 
-  /*
-   * =========================
-   * SCENE
-   * =========================
-   *
-   * Mobile:
-   * tetap masuk dengan sedikit perspektif
-   * lalu perlahan menjadi flat.
-   *
-   * Desktop:
-   * transform selesai lebih cepat karena
-   * TECH_SECTION_END kita ubah.
-   */
+  // Scene
   timeline.fromTo(
     scene,
     {
@@ -100,19 +74,12 @@ export function createTechSectionTimeline({
       rotateX: SCENE_END_ROTATE_X,
       rotateY: SCENE_END_ROTATE_Y,
       z: SCENE_END_Z,
-
-      // Jangan set transformPerspective di sini.
-      // Perspective sudah tidak kita paksa dari timeline.
       force3D: true,
     },
     0,
   );
 
-  /*
-   * =========================
-   * BADGE
-   * =========================
-   */
+  // Badge
   if (badge) {
     timeline.set(
       badge,
@@ -124,11 +91,7 @@ export function createTechSectionTimeline({
     );
   }
 
-  /*
-   * =========================
-   * TECH TITLE
-   * =========================
-   */
+  // Tech Title
   timeline.to(
     title,
     {
@@ -142,11 +105,7 @@ export function createTechSectionTimeline({
     0,
   );
 
-  /*
-   * =========================
-   * ECOSYSTEM
-   * =========================
-   */
+  // Ecosystem
   timeline.to(
     outline,
     {
@@ -160,11 +119,7 @@ export function createTechSectionTimeline({
     0,
   );
 
-  /*
-   * =========================
-   * DESCRIPTION
-   * =========================
-   */
+  // Description
   timeline.to(
     description,
     {
@@ -175,13 +130,7 @@ export function createTechSectionTimeline({
     0,
   );
 
-  /*
-   * =========================
-   * GRID
-   * =========================
-   *
-   * Jangan dorong grid terlalu jauh ke atas.
-   */
+  // Grid
   timeline.to(
     grid,
     {
