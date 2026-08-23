@@ -144,8 +144,3 @@
   -webkit-text-stroke: 2px #8b5cf6; /* violet-500 */
 }
 
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
-}
