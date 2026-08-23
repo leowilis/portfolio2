@@ -9,7 +9,7 @@ const PARTICLE_MAX_RADIUS = 1.5;
 const PARTICLE_SPEED = 0.5;
 const PARTICLE_CONNECTION_DISTANCE = 100;
 const PARTICLE_CONNECTION_DISTANCE_SQUARED =
-  PARTICLE_CONNECTION_DISTANCE * PARTICLE_CONNECTION_DISTANCE;
+PARTICLE_CONNECTION_DISTANCE * PARTICLE_CONNECTION_DISTANCE;
 const PARTICLE_COLOR = 'rgba(127,119,221,0.7)';
 const PARTICLE_CONNECTION_COLOR = 'rgba(127,119,221,';
 const PARTICLE_CONNECTION_OPACITY = 0.15;
@@ -99,7 +99,6 @@ export default function ParticlesBackground() {
       }
       animationFrameId = requestAnimationFrame(draw);
     };
-
     resize();
     window.addEventListener('resize', resize);
     animationFrameId = requestAnimationFrame(draw);
