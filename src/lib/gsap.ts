@@ -1,6 +1,6 @@
-import gsap from 'gsap';
-import { Flip } from 'gsap/Flip';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(Flip);
+gsap.registerPlugin(ScrollTrigger);
 
-export { gsap, Flip };
+export { gsap, ScrollTrigger };
