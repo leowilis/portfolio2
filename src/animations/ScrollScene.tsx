@@ -33,7 +33,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   // Hero
   const heroScale = useTransform(progress, [0, 0.3], [1, 0.94]);
   const heroOpacity = useTransform(progress, [0, 0.3], [1, 0]);
-  const heroBlur = useTransform(progress, [0, 0.1], [0, 100]);
+  const heroBlur = useTransform(progress, [0, 0.1], [0, 24]);
   const heroFilter = useMotionTemplate`blur(${heroBlur}px)`;
 
   // About
