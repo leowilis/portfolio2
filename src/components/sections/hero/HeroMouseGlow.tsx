@@ -9,7 +9,6 @@ import {
 import { useEffect } from 'react';
 
 import {
-  HERO_MOUSE_GLOW_BLUR,
   HERO_MOUSE_GLOW_OPACITY,
   HERO_MOUSE_GLOW_SIZE,
   HERO_MOUSE_GLOW_SPRING,
@@ -28,7 +27,7 @@ export default function HeroMouseGlow() {
     )
   `;
 
-   useEffect(() => {
+  useEffect(() => {
     // High-performance direct window layout pointer coordinate tracker
     const handleMove = (event: WindowEventMap['mousemove']) => {
       mouseX.set(event.clientX);
@@ -36,22 +35,22 @@ export default function HeroMouseGlow() {
     };
 
     window.addEventListener('mousemove', handleMove, { passive: true });
-    
+
     return () => {
       window.removeEventListener('mousemove', handleMove);
     };
   }, [mouseX, mouseY]);
 
   return (
-     <div 
-      aria-hidden="true" 
-      className="pointer-events-none fixed inset-0 z-0 select-none overflow-hidden"
+    <div
+      aria-hidden='true'
+      className='pointer-events-none fixed inset-0 z-0 select-none overflow-hidden'
     >
       <motion.div
-        className='absolute inset-0 will-change-transform'
+        className='absolute inset-0'
         style={{
           background,
-          filter: `blur(${HERO_MOUSE_GLOW_BLUR}px)`,
+          transform: 'translateZ(0)',
         }}
       />
     </div>
