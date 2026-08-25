@@ -33,12 +33,12 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   // Hero
   const heroScale = useTransform(progress, [0, 0.3], [1, 0.94]);
   const heroOpacity = useTransform(progress, [0, 0.3], [1, 0]);
-  const heroBlur = useTransform(progress, [0, 0.1], [0, 24]);
+  const heroBlur = useTransform(progress, [0, 0.08], [0, 36]);
   const heroFilter = useMotionTemplate`blur(${heroBlur}px)`;
 
   // About
   const aboutY = useTransform(progress, [0, 0.25], [80, 0]);
-  const aboutRadius = useTransform(progress, [0, 0], [40, 0]);
+  const aboutRadius = useTransform(progress, [0, 0.02], [40, 0]);
   const aboutScale = useTransform(progress, [0, 0.25], [0.98, 1]);
   const aboutOpacity = useTransform(progress, [0, 0.01], [0.6, 1]);
 
@@ -50,6 +50,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
           scale: heroScale,
           opacity: heroOpacity,
           filter: heroFilter,
+          willChange: 'transform, opacity, filter',
         }}
         className='sticky top-0 h-screen overflow-hidden'
       >
@@ -64,6 +65,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
           opacity: aboutOpacity,
           borderTopLeftRadius: aboutRadius,
           borderTopRightRadius: aboutRadius,
+          willChange: 'transform, opacity',
         }}
         className='relative z-20 -mt-28 overflow-hidden bg-transparent'
       >
@@ -80,7 +82,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
       {sections[4] && <div className='relative z-50'>{sections[4]}</div>}
 
       {/* Contact */}
-      {sections[5] && <div className='relative z-[60]'>{sections[5]}</div>}
+      {sections[5] && <div className='relative z-60'>{sections[5]}</div>}
     </div>
   );
 }
