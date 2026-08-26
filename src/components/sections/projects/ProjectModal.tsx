@@ -86,7 +86,9 @@ export default function ProjectModal({
 
     document.body.style.overflow = 'hidden';
 
-    modalRef.current?.focus();
+    requestAnimationFrame(() => {
+      modalRef.current?.focus();
+    });
 
     return () => {
       document.body.style.overflow = previousOverflow;
@@ -98,10 +100,10 @@ export default function ProjectModal({
   }, [project]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode='wait'>
       {project && (
         <motion.div
-          className='fixed inset-0 z-999 flex items-center justify-center bg-black/70 px-6 backdrop-blur-md'
+          className='fixed inset-0 z-999 flex items-center justify-center bg-black/80 px-6'
           initial={{ opacity: 0 }}
           animate={{ opacity: PROJECT_MODAL_ACTIVE_OPACITY }}
           exit={{ opacity: 0 }}
@@ -110,6 +112,9 @@ export default function ProjectModal({
             ease: 'easeInOut',
           }}
           onClick={onClose}
+          style={{
+            willChange: 'opacity',
+          }}
         >
           <motion.div
             ref={modalRef}
@@ -140,6 +145,11 @@ export default function ProjectModal({
             }}
             onClick={(event) => event.stopPropagation()}
             className='min-h-[450px] w-full max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-surface shadow-[0_40px_120px_rgba(0,0,0,.55)] outline-none'
+            style={{
+              willChange: 'transform, opacity',
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
+            }}
           >
             <ProjectModalContent
               project={project}
