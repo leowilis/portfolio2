@@ -3,29 +3,34 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import type { KeyboardEvent } from 'react';
+
 import { cn } from '@/src/lib/utils';
-import WindowHeader from './WindowHeader';
-import FeaturedProjectContent from './FeaturedProjectContent';
+
 import CompactProjectContent from './CompactProjectContent';
+import FeaturedProjectContent from './FeaturedProjectContent';
+import WindowHeader from './WindowHeader';
+
 import type { ProjectPlaneProps } from './project.type';
+
 import {
   FEATURED_CARD_WIDTH,
   FEATURED_IMAGE_HEIGHT,
+  FEATURED_IMAGE_SIZE,
   FLOAT_DISTANCE,
   IMAGE_HOVER_SCALE,
+  PROJECT_CARD_HOVER_DURATION,
+  PROJECT_CARD_Z_INDEX_OFFSET,
+  PROJECT_IMAGE_HOVER_EASE,
+  PROJECT_IMAGE_QUALITY,
   SIDE_CARD_HOVER_SCALE,
   SIDE_CARD_HOVER_Y,
   SIDE_CARD_WIDTH,
   SIDE_IMAGE_HEIGHT,
+  SIDE_IMAGE_SIZE,
   CENTER_CARD_SHADOW,
   SIDE_CARD_SHADOW,
-  PROJECT_CARD_Z_INDEX_OFFSET,
-  PROJECT_CARD_HOVER_DURATION,
-  PROJECT_IMAGE_QUALITY,
-  FEATURED_IMAGE_SIZE,
-  SIDE_IMAGE_SIZE,
-  PROJECT_IMAGE_HOVER_EASE,
 } from './project.constants';
+
 import {
   CARD_ENTRANCE,
   CARD_HOVER,
@@ -39,11 +44,10 @@ export default function ProjectPlane({
   onClick,
 }: ProjectPlaneProps) {
   const { x, y, z, rotateX, rotateY, scale, blur, isCenter, zIndex } = layout;
-
+  const isVisible = isCenter || Math.abs(x) > 0;
   const cardWidth = isCenter ? FEATURED_CARD_WIDTH : SIDE_CARD_WIDTH;
   const imageHeight = isCenter ? FEATURED_IMAGE_HEIGHT : SIDE_IMAGE_HEIGHT;
   const imageSize = isCenter ? FEATURED_IMAGE_SIZE : SIDE_IMAGE_SIZE;
-
   const handleKeyDown = (event: KeyboardEvent) => {
     if (!isCenter && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
@@ -57,11 +61,11 @@ export default function ProjectPlane({
       variants={CARD_ENTRANCE}
       initial='hidden'
       animate='visible'
-      onClick={onClick}
-      onKeyDown={handleKeyDown}
+      onClick={isVisible ? onClick : undefined}
+      onKeyDown={isVisible ? handleKeyDown : undefined}
       aria-label={isCenter ? undefined : `View details for ${project.title}`}
       role={isCenter ? undefined : 'button'}
-      tabIndex={isCenter ? -1 : 0}
+      tabIndex={isVisible && !isCenter ? 0 : -1}
       className='absolute'
       style={{
         left: '50%',
@@ -73,26 +77,47 @@ export default function ProjectPlane({
         rotateY,
         scale,
         zIndex: zIndex + PROJECT_CARD_Z_INDEX_OFFSET,
-        filter: blur > 0 ? `blur(${blur}px)` : 'none',
-        willChange: isCenter ? 'transform' : 'auto',
+        ...(blur > 0 && {
+          filter: `blur(${blur}px)`,
+        }),
+        willChange: 'transform',
         transformStyle: 'preserve-3d',
         cursor: isCenter ? 'default' : 'pointer',
+        pointerEvents: isVisible ? 'auto' : 'none',
       }}
     >
       <motion.div
-        animate={{
-          y: [0, -FLOAT_DISTANCE, 0],
+        animate={
+          isCenter
+            ? {
+                y: [0, -FLOAT_DISTANCE, 0],
+              }
+            : undefined
+        }
+        transition={isCenter ? getFloatTransition(index) : undefined}
+        className='relative'
+        style={{
+          transformStyle: 'preserve-3d',
         }}
-        transition={getFloatTransition(index)}
       >
+        {/* Ambient Card Glow */}
+        {isCenter && (
+          <div
+            aria-hidden='true'
+            className='pointer-events-none absolute -inset-20 -z-10 rounded-[50%] bg-[radial-gradient(ellipse_at_center, rgba(139,92,246,0.16)_0%, rgba(139,92,246,0.07)_32%, rgba(139,92,246,0.025)_52%, transparent_74%)] blur-2xl opacity-90'
+          />
+        )}
+
         <motion.div
           whileHover={
-            isCenter
-              ? CARD_HOVER
-              : {
-                  y: SIDE_CARD_HOVER_Y,
-                  scale: SIDE_CARD_HOVER_SCALE,
-                }
+            !isVisible
+              ? undefined
+              : isCenter
+                ? CARD_HOVER
+                : {
+                    y: SIDE_CARD_HOVER_Y,
+                    scale: SIDE_CARD_HOVER_SCALE,
+                  }
           }
           transition={{
             duration: PROJECT_CARD_HOVER_DURATION,
@@ -102,9 +127,10 @@ export default function ProjectPlane({
             transformStyle: 'preserve-3d',
           }}
         >
+          {/* Card */}
           <div
             className={cn(
-              'group relative overflow-hidden rounded-[22px] border bg-surface',
+              'group relative overflow-hidden rounded-[22px] border bg-transparent',
               isCenter ? 'border-violet-500/40' : 'border-white/5',
             )}
             style={{
@@ -115,23 +141,12 @@ export default function ProjectPlane({
             {/* Top Shimmer */}
             <div
               aria-hidden='true'
-              className='absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent'
+              className='pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent'
             />
-
-            {/* Glow */}
-            <div
-              aria-hidden='true'
-              className={cn(
-                'absolute inset-0 rounded-[22px] bg-violet-500/10 blur-[90px] transition-opacity duration-500',
-                isCenter
-                  ? 'opacity-80 group-hover:opacity-100'
-                  : 'opacity-0 group-hover:opacity-20',
-              )}
-            />
-
-            {/* Window Template */}
+            {/* Window Header */}
             <WindowHeader title={project.title} />
 
+            {/* Image */}
             <div
               className='relative overflow-hidden'
               style={{
@@ -162,9 +177,10 @@ export default function ProjectPlane({
                 />
               </motion.div>
 
+              {/* Image Overlay */}
               <div
                 aria-hidden='true'
-                className='absolute inset-0 bg-gradient-to-t from-surface/75 via-surface/20 to-transparent'
+                className='pointer-events-none absolute inset-0 bg-gradient-to-t from-surface/75 via-surface/20 to-transparent'
               />
 
               {isCenter ? (

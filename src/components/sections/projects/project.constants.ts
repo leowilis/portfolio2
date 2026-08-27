@@ -25,7 +25,7 @@ export const PROJECT_CARD_Z_INDEX_OFFSET = 10;
 // Images
 export const FEATURED_IMAGE_HEIGHT = 430;
 export const SIDE_IMAGE_HEIGHT = 240;
-export const PROJECT_IMAGE_QUALITY = 90;
+export const PROJECT_IMAGE_QUALITY = 80;
 export const PROJECT_PRIORITY_IMAGE_COUNT = 2;
 export const FEATURED_IMAGE_SIZE = '720px';
 export const SIDE_IMAGE_SIZE = '450px';

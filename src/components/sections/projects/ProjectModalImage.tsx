@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+
 import {
   PROJECT_IMAGE_QUALITY,
   PROJECT_MODAL_CONTENT_EASE,
@@ -35,7 +36,7 @@ export default function ProjectModalImage({
         duration: PROJECT_MODAL_IMAGE_ENTER_DURATION,
         ease: PROJECT_MODAL_CONTENT_EASE,
       }}
-      className='overflow-hidden rounded-2xl border border-white/10 bg-neutral-950 shadow-inner select-none'
+      className='select-none overflow-hidden rounded-2xl border border-white/10 bg-neutral-950 shadow-inner'
     >
       <div className='relative h-[340px] w-full bg-neutral-950/20 sm:h-[400px] md:h-[420px]'>
         <Image
@@ -44,7 +45,7 @@ export default function ProjectModalImage({
           fill
           quality={PROJECT_IMAGE_QUALITY}
           sizes={PROJECT_MODAL_IMAGE_SIZES}
-          className='object-contain object-center transition-transform duration-300'
+          className='object-contain object-center'
         />
       </div>
     </motion.div>

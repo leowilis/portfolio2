@@ -21,38 +21,35 @@ export default function HeroMouseGlow() {
   const springY = useSpring(mouseY, HERO_MOUSE_GLOW_SPRING);
   const background = useMotionTemplate`
     radial-gradient(
-      ${HERO_MOUSE_GLOW_SIZE}px circle at ${springX}px ${springY}px,
-      rgba(139, 92, 246, ${HERO_MOUSE_GLOW_OPACITY}),
-      transparent 70%
+      circle ${HERO_MOUSE_GLOW_SIZE}px at ${springX}px ${springY}px,
+      rgba(139, 92, 246, ${HERO_MOUSE_GLOW_OPACITY}) 0%,
+      rgba(139, 92, 246, 0.18) 35%,
+      rgba(139, 92, 246, 0.06) 55%,
+      transparent 72%
     )
   `;
 
   useEffect(() => {
-    // High-performance direct window layout pointer coordinate tracker
-    const handleMove = (event: WindowEventMap['mousemove']) => {
+    const handleMove = (event: MouseEvent) => {
       mouseX.set(event.clientX);
       mouseY.set(event.clientY);
     };
-
-    window.addEventListener('mousemove', handleMove, { passive: true });
-
+    window.addEventListener('mousemove', handleMove, {
+      passive: true,
+    });
     return () => {
       window.removeEventListener('mousemove', handleMove);
     };
   }, [mouseX, mouseY]);
 
   return (
-    <div
+    <motion.div
       aria-hidden='true'
       className='pointer-events-none fixed inset-0 z-0 select-none overflow-hidden'
-    >
-      <motion.div
-        className='absolute inset-0'
-        style={{
-          background,
-          transform: 'translateZ(0)',
-        }}
-      />
-    </div>
+      style={{
+        background,
+        willChange: 'background',
+      }}
+    />
   );
 }

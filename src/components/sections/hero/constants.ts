@@ -50,7 +50,6 @@ export const EASE_OUT_EXPO: [number, number, number, number] = [
 
 // Hero Ambient Glow
 export const HERO_AMBIENT_GLOW_SIZE = 420;
-export const HERO_AMBIENT_GLOW_BLUR = 140;
 export const HERO_AMBIENT_GLOW_OPACITY = 0.06;
 export const HERO_AMBIENT_GLOW_SCALE = [1, 1.08, 1];
 export const HERO_AMBIENT_GLOW_ANIMATION_OPACITY = [0.55, 0.8, 0.55];
@@ -59,7 +58,6 @@ export const HERO_AMBIENT_GLOW_DURATION = 8;
 // Hero Mouse Glow
 export const HERO_MOUSE_GLOW_SIZE = 360;
 export const HERO_MOUSE_GLOW_OPACITY = 0.055;
-export const HERO_MOUSE_GLOW_BLUR = 80;
 export const HERO_MOUSE_GLOW_SPRING = {
   stiffness: 120,
   damping: 30,

@@ -62,16 +62,19 @@ export default function ProjectsScene() {
 
   return (
     <>
-      <section className='relative min-h-[900px] w-full select-none overflow-x-hidden bg-transparent py-12'>
+      <section
+        aria-label='Featured projects'
+        className='relative w-full select-none bg-transparent py-12 sm:py-14 md:py-16'
+      >
         <div
-          className='mx-auto w-full px-4'
+          className='mx-auto w-full px-4 sm:px-6 lg:px-8'
           style={{
             maxWidth: PROJECT_STAGE_MAX_WIDTH,
           }}
         >
           <div className='flex w-full flex-col items-center'>
             <ProjectStage {...carousel} onProjectOpen={openProject} />
-            <div className='mt-10 w-full shrink-0'>
+            <div className='mt-10 w-full shrink-0 sm:mt-9 md:mt-10'>
               <ProjectIndicator
                 total={PROJECTS.length}
                 activeIndex={activeIndex}

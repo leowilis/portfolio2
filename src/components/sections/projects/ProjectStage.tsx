@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
+
 import { PROJECTS } from './project.data';
 import {
   DRAG_LIMIT,
@@ -21,13 +22,27 @@ import {
   PROJECT_STAGE_DRAG_ELASTIC,
   PROJECT_STAGE_HEIGHT,
   STAGE_PERSPECTIVE,
+  TABLET_FLOOR_BLOOM_HEIGHT,
+  TABLET_FLOOR_BLOOM_TOP,
+  TABLET_FLOOR_BLOOM_WIDTH,
+  TABLET_FLOOR_HEIGHT,
+  TABLET_FLOOR_MIDDLE_HEIGHT,
+  TABLET_FLOOR_MIDDLE_TOP,
+  TABLET_FLOOR_MIDDLE_WIDTH,
+  TABLET_FLOOR_STRIP_HEIGHT,
+  TABLET_FLOOR_STRIP_TOP,
+  TABLET_FLOOR_STRIP_WIDTH,
+  TABLET_FLOOR_TOP,
+  TABLET_FLOOR_WIDTH,
+  TABLET_STAGE_HEIGHT,
+  TABLET_STAGE_PERSPECTIVE,
   TABLET_PLANE_SCALE,
 } from './project.constants';
 import { getProjectLayout } from './project.layout';
 import type { Project } from './project.type';
 import ProjectPlane from './ProjectPlane';
-import useProjectCarousel from './useProjectCarousel';
 import useIsTablet from './useIsTablet';
+import useProjectCarousel from './useProjectCarousel';
 
 type Props = ReturnType<typeof useProjectCarousel> & {
   onProjectOpen: (project: Project) => void;
@@ -39,6 +54,7 @@ export default function ProjectStage({
   rotateX,
   rotateY,
   cameraZ,
+  handleDragStart,
   handleDrag,
   handleDragEnd,
   onProjectOpen,
@@ -47,13 +63,43 @@ export default function ProjectStage({
   isDragging,
 }: Props) {
   const isTablet = useIsTablet();
+  const stageHeight = isTablet ? TABLET_STAGE_HEIGHT : PROJECT_STAGE_HEIGHT;
+  const stagePerspective = isTablet
+    ? TABLET_STAGE_PERSPECTIVE
+    : STAGE_PERSPECTIVE;
+  const planeScale = isTablet ? TABLET_PLANE_SCALE : 1;
+
+  const floor = {
+    top: isTablet ? TABLET_FLOOR_TOP : PROJECT_FLOOR_TOP,
+    width: isTablet ? TABLET_FLOOR_WIDTH : PROJECT_FLOOR_WIDTH,
+    height: isTablet ? TABLET_FLOOR_HEIGHT : PROJECT_FLOOR_HEIGHT,
+    middleTop: isTablet ? TABLET_FLOOR_MIDDLE_TOP : PROJECT_FLOOR_MIDDLE_TOP,
+    middleWidth: isTablet
+      ? TABLET_FLOOR_MIDDLE_WIDTH
+      : PROJECT_FLOOR_MIDDLE_WIDTH,
+    middleHeight: isTablet
+      ? TABLET_FLOOR_MIDDLE_HEIGHT
+      : PROJECT_FLOOR_MIDDLE_HEIGHT,
+    stripTop: isTablet ? TABLET_FLOOR_STRIP_TOP : PROJECT_FLOOR_STRIP_TOP,
+    stripWidth: isTablet ? TABLET_FLOOR_STRIP_WIDTH : PROJECT_FLOOR_STRIP_WIDTH,
+    stripHeight: isTablet
+      ? TABLET_FLOOR_STRIP_HEIGHT
+      : PROJECT_FLOOR_STRIP_HEIGHT,
+    bloomTop: isTablet ? TABLET_FLOOR_BLOOM_TOP : PROJECT_FLOOR_BLOOM_TOP,
+    bloomWidth: isTablet ? TABLET_FLOOR_BLOOM_WIDTH : PROJECT_FLOOR_BLOOM_WIDTH,
+    bloomHeight: isTablet
+      ? TABLET_FLOOR_BLOOM_HEIGHT
+      : PROJECT_FLOOR_BLOOM_HEIGHT,
+  };
 
   const handleCardClick = (index: number, project: Project) => {
     if (isDragging) return;
+
     if (index !== activeIndex) {
       setActiveIndex(index);
       return;
     }
+
     onProjectOpen(project);
   };
 
@@ -65,12 +111,13 @@ export default function ProjectStage({
         right: DRAG_LIMIT,
       }}
       dragElastic={PROJECT_STAGE_DRAG_ELASTIC}
+      onDragStart={handleDragStart}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}
       className='relative w-full select-none'
       style={{
-        height: PROJECT_STAGE_HEIGHT,
-        perspective: STAGE_PERSPECTIVE,
+        height: stageHeight,
+        perspective: stagePerspective,
         perspectiveOrigin: '50% 50%',
         touchAction: 'pan-y',
       }}
@@ -82,54 +129,66 @@ export default function ProjectStage({
           rotateX,
           rotateY,
           z: cameraZ,
-          scale: isTablet ? TABLET_PLANE_SCALE : 1,
+          scale: planeScale,
           transformStyle: 'preserve-3d',
           transformOrigin: 'center center',
           backfaceVisibility: 'hidden',
         }}
       >
-        {/* Floor Light */}
+        {/* Ambient Floor Light */}
         <div
           aria-hidden='true'
-          className='pointer-events-none absolute inset-0 z-0 overflow-hidden'
+          className='pointer-events-none absolute inset-0 z-0 overflow-visible'
         >
-          {/* Main purple floor */}
+          {/* Main ambient glow */}
           <div
-            className='absolute left-1/2 -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.42)_0%,rgba(139,92,246,0.18)_28%,rgba(139,92,246,0.08)_48%,transparent_72%)]'
+            className='pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-full'
             style={{
-              top: PROJECT_FLOOR_TOP,
-              width: PROJECT_FLOOR_WIDTH,
-              height: PROJECT_FLOOR_HEIGHT,
+              top: floor.top,
+              width: floor.width,
+              height: floor.height,
+              background:
+                'radial-gradient(ellipse at center, rgba(139,92,246,0.24) 0%, rgba(139,92,246,0.12) 28%, rgba(139,92,246,0.04) 52%, transparent 74%)',
+              filter: 'blur(28px)',
             }}
           />
 
-          {/* Middle glow */}
+          {/* Focused center glow */}
           <div
-            className='absolute left-1/2 -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.34)_0%,rgba(139,92,246,0.12)_55%,transparent_100%)]'
+            className='pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-full'
             style={{
-              top: PROJECT_FLOOR_MIDDLE_TOP,
-              width: PROJECT_FLOOR_MIDDLE_WIDTH,
-              height: PROJECT_FLOOR_MIDDLE_HEIGHT,
+              top: floor.middleTop,
+              width: floor.middleWidth,
+              height: floor.middleHeight,
+              background:
+                'radial-gradient(ellipse at center, rgba(167,139,250,0.26) 0%, rgba(139,92,246,0.10) 42%, transparent 78%)',
+              filter: 'blur(16px)',
             }}
           />
 
-          {/* Bright center strip */}
+          {/* Thin light core */}
           <div
-            className='absolute left-1/2 -translate-x-1/2 rounded-full bg-violet-400/80 blur-2xl'
+            className='pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-full'
             style={{
-              top: PROJECT_FLOOR_STRIP_TOP,
-              width: PROJECT_FLOOR_STRIP_WIDTH,
-              height: PROJECT_FLOOR_STRIP_HEIGHT,
+              top: floor.stripTop,
+              width: floor.stripWidth,
+              height: floor.stripHeight,
+              background:
+                'radial-gradient(ellipse at center, rgba(167,139,250,0.30) 0%, rgba(139,92,246,0.12) 42%, transparent 78%)',
+              filter: 'blur(8px)',
             }}
           />
 
           {/* Soft bloom */}
           <div
-            className='absolute left-1/2 -translate-x-1/2 rounded-full bg-violet-500/25 blur-xl'
+            className='pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-full'
             style={{
-              top: PROJECT_FLOOR_BLOOM_TOP,
-              width: PROJECT_FLOOR_BLOOM_WIDTH,
-              height: PROJECT_FLOOR_BLOOM_HEIGHT,
+              top: floor.bloomTop,
+              width: floor.bloomWidth,
+              height: floor.bloomHeight,
+              background:
+                'radial-gradient(ellipse at center, rgba(139,92,246,0.14) 0%, rgba(139,92,246,0.05) 38%, transparent 76%)',
+              filter: 'blur(24px)',
             }}
           />
         </div>
