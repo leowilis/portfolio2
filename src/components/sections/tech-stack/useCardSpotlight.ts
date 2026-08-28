@@ -2,6 +2,7 @@
 
 import type { RefObject } from 'react';
 import { useEffect } from 'react';
+
 import { gsap } from '@/src/lib/gsap';
 
 type Props = {
@@ -11,29 +12,38 @@ type Props = {
 export default function useCardSpotlight({ cardRef }: Props) {
   useEffect(() => {
     const card = cardRef.current;
+
     if (!card) return;
+
     const setX = gsap.quickSetter(card, '--mouse-x', 'px');
     const setY = gsap.quickSetter(card, '--mouse-y', 'px');
 
-    const updateCoordinates = (clientX: number, clientY: number) => {
+    const updateCoordinates = (
+      clientX: number,
+      clientY: number,
+    ) => {
       const rect = card.getBoundingClientRect();
-      const x = clientX - rect.left;
-      const y = clientY - rect.top;
 
-      setX(x);
-      setY(y);
+      setX(clientX - rect.left);
+      setY(clientY - rect.top);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      updateCoordinates(e.clientX, e.clientY);
+    const handleMouseMove = (event: MouseEvent) => {
+      updateCoordinates(
+        event.clientX,
+        event.clientY,
+      );
     };
 
-    const handleTouchMove = (e: TouchEvent) => {
-      const touch = e.touches[0];
+    const handleTouchMove = (event: TouchEvent) => {
+      const touch = event.touches[0];
 
-      if (touch) {
-        updateCoordinates(touch.clientX, touch.clientY);
-      }
+      if (!touch) return;
+
+      updateCoordinates(
+        touch.clientX,
+        touch.clientY,
+      );
     };
 
     card.addEventListener('mousemove', handleMouseMove, {
