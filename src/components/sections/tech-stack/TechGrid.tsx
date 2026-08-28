@@ -7,11 +7,10 @@ import useCardReveal from './useCardReveal';
 import useGridParallax from './useGridParallax';
 
 export default function TechGrid() {
-  const cardRefs = useRef<HTMLDivElement[]>([]);
-  const gridRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement | null>(null);
 
   useCardReveal({
-    cardRefs,
+    gridRef,
   });
 
   useGridParallax({
@@ -23,18 +22,8 @@ export default function TechGrid() {
       ref={gridRef}
       className='grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4'
     >
-      {TECH_STACK.map((tech, index) => (
-        <TechCard
-          key={tech.id}
-          tech={tech}
-          ref={(element) => {
-            if (element) {
-              cardRefs.current[index] = element;
-            } else {
-              delete cardRefs.current[index];
-            }
-          }}
-        />
+      {TECH_STACK.map((tech) => (
+        <TechCard key={tech.id} tech={tech} />
       ))}
     </div>
   );
