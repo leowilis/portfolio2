@@ -20,15 +20,16 @@ export default function useGridParallax({ gridRef }: Props) {
     if (!grid) return;
 
     const cards = Array.from(
-      grid.querySelectorAll<HTMLElement>('[data-tech-card]'),
+      grid.querySelectorAll<HTMLElement>('[data-tech-parallax]'),
     );
 
     if (cards.length === 0) return;
 
-    const move = (e: MouseEvent) => {
+    const move = (event: MouseEvent) => {
       const rect = grid.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      if (rect.width === 0 || rect.height === 0) return;
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
 
       cards.forEach((card, index) => {
         const factor = (index % 4) + 1;
@@ -37,8 +38,9 @@ export default function useGridParallax({ gridRef }: Props) {
           x: x * GRID_PARALLAX_MAX_X * factor,
           y: y * GRID_PARALLAX_MAX_Y * factor,
           duration: GRID_PARALLAX_DURATION,
-          overwrite: true,
+          overwrite: 'auto',
           ease: 'power2.out',
+          force3D: true,
         });
       });
     };
@@ -48,18 +50,23 @@ export default function useGridParallax({ gridRef }: Props) {
         x: 0,
         y: 0,
         duration: GRID_PARALLAX_DURATION,
-        overwrite: true,
+        overwrite: 'auto',
         ease: 'power2.out',
+        force3D: true,
       });
     };
 
-    grid.addEventListener('mousemove', move);
-    grid.addEventListener('mouseleave', leave);
+    grid.addEventListener('mousemove', move, {
+      passive: true,
+    });
+
+    grid.addEventListener('mouseleave', leave, {
+      passive: true,
+    });
 
     return () => {
       grid.removeEventListener('mousemove', move);
       grid.removeEventListener('mouseleave', leave);
-
       gsap.killTweensOf(cards);
     };
   }, [gridRef]);
