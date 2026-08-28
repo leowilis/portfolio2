@@ -2,12 +2,10 @@
 
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-
 import ProgressBar from './ProgressBar';
 import type { TechItem } from './types';
 import useCardSpotlight from './useCardSpotlight';
 import useCardTilt from './useCardTilt';
-
 import {
   CARD_BORDER_GLOW_ALPHA,
   CARD_BORDER_GLOW_BLUR,
@@ -47,7 +45,6 @@ const TechCard = forwardRef<HTMLDivElement, Props>(function TechCard(
 ) {
   const [hovered, setHovered] = useState(false);
   const localRef = useRef<HTMLDivElement>(null);
-
   const Icon = tech.icon;
 
   useCardTilt({
@@ -73,7 +70,7 @@ const TechCard = forwardRef<HTMLDivElement, Props>(function TechCard(
         duration: TECH_CARD_HOVER_DURATION,
         ease: EASE_OUT_EXPO,
       }}
-      className='group relative h-full w-full overflow-hidden bg-black/30 p-7'
+      className='group relative h-full w-full overflow-hidden bg-transparent p-7'
       style={
         {
           '--mouse-x': '50%',
@@ -181,7 +178,7 @@ const TechCard = forwardRef<HTMLDivElement, Props>(function TechCard(
           transition={{
             duration: TECH_CARD_ICON_DURATION,
           }}
-          className='flex items-center justify-center rounded-xl bg-white/5 backdrop-blur-sm'
+          className='flex items-center justify-center rounded-xl'
           style={{
             width: TECH_ICON_SIZE,
             height: TECH_ICON_SIZE,
