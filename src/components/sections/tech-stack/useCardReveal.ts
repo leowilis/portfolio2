@@ -5,17 +5,28 @@ import { useGSAP } from '@gsap/react';
 import { createCardReveal } from './cardReveal';
 
 type Props = {
-  cardRefs: RefObject<HTMLDivElement[]>;
+  gridRef: RefObject<HTMLDivElement | null>;
 };
 
-export default function useCardReveal({ cardRefs }: Props) {
-  useGSAP(() => {
-    const cards = cardRefs.current;
-    if (cards.length === 0) return;
-    const animation = createCardReveal(cards);
-    if (!animation) return;
-    return () => {
-      animation.kill();
-    };
-  }, []);
+export default function useCardReveal({ gridRef }: Props) {
+  useGSAP(
+    () => {
+      const grid = gridRef.current;
+      if (!grid) return;
+
+      const cards = Array.from(
+        grid.querySelectorAll<HTMLElement>('[data-tech-reveal]'),
+      );
+      if (cards.length === 0) return;
+      const animation = createCardReveal(cards);
+      if (!animation) return;
+
+      return () => {
+        animation.kill();
+      };
+    },
+    {
+      scope: gridRef,
+    },
+  );
 }
