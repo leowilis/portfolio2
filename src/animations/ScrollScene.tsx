@@ -1,5 +1,6 @@
 'use client';
 
+import { Children, type ReactNode, useRef } from 'react';
 import {
   motion,
   useMotionTemplate,
@@ -7,7 +8,6 @@ import {
   useSpring,
   useTransform,
 } from 'framer-motion';
-import { Children, type ReactNode, useRef } from 'react';
 
 interface ScrollSceneProps {
   children: ReactNode;
@@ -43,7 +43,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   const aboutOpacity = useTransform(progress, [0, 0.01], [0.6, 1]);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} id='home'>
       {/* Hero */}
       <motion.div
         style={{
