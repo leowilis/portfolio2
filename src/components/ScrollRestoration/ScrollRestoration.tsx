@@ -2,30 +2,45 @@
 
 import { useLayoutEffect } from 'react';
 
+const SCROLL_STORAGE_KEY = 'portfolio-scroll-y';
+
 export default function ScrollRestoration() {
   useLayoutEffect(() => {
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
+    if (typeof window === 'undefined') {
+      return;
     }
 
-    const savedScrollY = sessionStorage.getItem('scroll-y');
+    window.history.scrollRestoration = 'manual';
 
-    if (savedScrollY !== null) {
-      window.scrollTo(0, Number(savedScrollY));
+    const navigationEntry = performance.getEntriesByType('navigation')[0] as
+      | PerformanceNavigationTiming
+      | undefined;
+
+    const isReload = navigationEntry?.type === 'reload';
+
+    if (isReload) {
+      const savedScrollY = sessionStorage.getItem(SCROLL_STORAGE_KEY);
+
+      if (savedScrollY !== null) {
+        const scrollY = Number(savedScrollY);
+
+        if (Number.isFinite(scrollY)) {
+          window.scrollTo({
+            top: scrollY,
+            left: 0,
+            behavior: 'auto',
+          });
+        }
+      }
     }
 
     const saveScrollPosition = () => {
-      sessionStorage.setItem('scroll-y', String(window.scrollY));
+      sessionStorage.setItem(SCROLL_STORAGE_KEY, String(window.scrollY));
     };
-
-    window.addEventListener('scroll', saveScrollPosition, {
-      passive: true,
-    });
 
     window.addEventListener('beforeunload', saveScrollPosition);
 
     return () => {
-      window.removeEventListener('scroll', saveScrollPosition);
       window.removeEventListener('beforeunload', saveScrollPosition);
     };
   }, []);
