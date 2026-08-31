@@ -22,13 +22,15 @@ interface NavBodyProps {
   visible?: boolean;
 }
 
+type NavItem = {
+  name: string;
+  link: string;
+};
+
 interface NavItemsProps {
-  items: {
-    name: string;
-    link: string;
-  }[];
+  items: readonly NavItem[];
   className?: string;
-  onItemClick?: () => void;
+  onItemClick?: (item: NavItem) => void;
 }
 
 interface MobileNavProps {
@@ -46,7 +48,6 @@ interface MobileNavMenuProps {
   children: React.ReactNode;
   className?: string;
   isOpen: boolean;
-  onClose: () => void;
 }
 
 type NavbarButtonProps = {
@@ -54,7 +55,7 @@ type NavbarButtonProps = {
   className?: string;
   variant?: 'primary' | 'secondary' | 'dark' | 'gradient';
   href?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 export const Navbar = ({ children, className }: NavbarProps) => {
@@ -145,7 +146,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
             key={item.name}
             href={item.link}
             onMouseEnter={() => setHovered(idx)}
-            onClick={onItemClick}
+            onClick={() => onItemClick?.(item)}
             className='relative rounded-full px-4 py-2 text-sm font-medium text-white/55 transition-colors duration-200 hover:text-white'
           >
             {isHovered && (
@@ -156,7 +157,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
                   stiffness: 350,
                   damping: 30,
                 }}
-                className='absolute inset-0 -z-10 rounded-full bg-violet-500/10 ring-1 ring-violet-400/10'
+                className='absolute inset-0 -z-10 rounded-full ring-1 ring-violet-400/10'
               />
             )}
 
@@ -239,11 +240,11 @@ export const MobileNavMenu = ({
             ease: [0.22, 1, 0.36, 1],
           }}
           className={cn(
-            'absolute inset-x-0 top-[calc(100%+0.5rem)] overflow-hidden rounded-2xl border border-violet-400/15 bg-[#0a0810]/95 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl',
+            'absolute inset-x-0 top-[calc(100%+0.5rem)] z-[110] overflow-hidden rounded-2xl border border-violet-400/15 bg-[#0a0810]/95 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl',
             className,
           )}
         >
-          <div className='flex flex-col gap-1'>{children}</div>
+          <div className='relative z-[120] flex flex-col gap-1'>{children}</div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -332,7 +333,7 @@ export const NavbarButton = ({
   }
 
   return (
-    <button type='button' onClick={onClick} className={classes}>
+    <button type='button' className={classes}>
       {children}
     </button>
   );
