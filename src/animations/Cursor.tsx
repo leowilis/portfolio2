@@ -3,12 +3,12 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-const NEON_PURPLE = new THREE.Vector3(0.259, 0.333, 0.969); // #a855f7
-const SHADER_POINTS = 16;
+const NEON_PURPLE = new THREE.Vector3(0.259, 0.133, 0.969);
+const SHADER_POINTS = 26;
 const CURVE_POINTS = 80;
 const CURVE_LERP = 0.5;
-const RADIUS_1 = 5;
-const RADIUS_2 = 14;
+const RADIUS_1 = 3;
+const RADIUS_2 = 5;
 const GLOW_INTENSITY = 1.2;
 const SLEEP_RADIUS_X = 100;
 const SLEEP_RADIUS_Y = 100;
