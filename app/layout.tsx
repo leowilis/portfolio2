@@ -1,15 +1,12 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-
-import './globals.css';
-
 import ClientProviders from '@/src/components/layout/ClientProviders';
 import MainNavbar from '@/src/components/layout/Navbar';
-import ScrollRestorationScript from '@/src/components/ScrollRestoration/ScrollRestorationScript';
 import ScrollRestoration from '@/src/components/ScrollRestoration/ScrollRestoration';
 import PageLoader from '@/src/components/loading/PageLoader';
 import Footer from '@/src/components/layout/Footer';
 import StructuredData from '@/src/components/seo/StructuredData';
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -102,7 +99,6 @@ export default function RootLayout({
           <StructuredData />
           <PageLoader />
           <MainNavbar />
-          <ScrollRestorationScript />
           <ScrollRestoration />
 
           <main className='flex-1'>{children}</main>
