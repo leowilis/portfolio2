@@ -43,7 +43,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   const aboutOpacity = useTransform(progress, [0, 0.01], [0.6, 1]);
 
   return (
-    <div ref={ref} id='home'>
+    <div ref={ref} id='home' className='relative'>
       {/* Hero */}
       <motion.div
         style={{
