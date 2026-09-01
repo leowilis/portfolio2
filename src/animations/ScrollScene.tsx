@@ -7,7 +7,7 @@ import {
   useScroll,
   useSpring,
   useTransform,
-} from 'framer-motion';
+} from 'motion/react';
 
 interface ScrollSceneProps {
   children: ReactNode;

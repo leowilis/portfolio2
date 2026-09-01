@@ -59,49 +59,65 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --color-surface: var(--surface);
   --color-surface-secondary: var(--surface-secondary);
   --color-surface-elevated: var(--surface-elevated);
   --color-surface-glass: var(--surface-glass);
+
   --color-card: var(--card);
   --color-card-hover: var(--card-hover);
   --color-card-active: var(--card-active);
+
   --color-popover: var(--popover);
   --color-overlay: var(--overlay);
+
   --color-primary: var(--primary);
-  --color-primary-100: var(--color-primary-100);
-  --color-primary-200: var(--color-primary-200);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
   --color-primary-hover: var(--primary-hover);
   --color-primary-active: var(--primary-active);
   --color-primary-foreground: var(--primary-foreground);
+
   --color-secondary: var(--secondary);
   --color-secondary-hover: var(--secondary-hover);
   --color-secondary-foreground: var(--secondary-foreground);
+
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-foreground: var(--accent-foreground);
+
   --color-foreground-secondary: var(--foreground-secondary);
   --color-foreground-muted: var(--foreground-muted);
   --color-foreground-disabled: var(--foreground-disabled);
   --color-foreground-inverse: var(--foreground-inverse);
+
   --color-border: var(--border);
   --color-border-light: var(--border-light);
   --color-border-strong: var(--border-strong);
-  --color-ring-primary: var(--color-ring-primary);
+
+  --color-ring-primary: var(--ring-primary);
+
   --color-input: var(--input);
   --color-input-hover: var(--input-hover);
   --color-input-focus: var(--input-focus);
+
   --color-success: var(--success);
   --color-success-light: var(--success-light);
+
   --color-warning: var(--warning);
   --color-warning-light: var(--warning-light);
+
   --color-danger: var(--danger);
   --color-danger-light: var(--danger-light);
+
   --color-info: var(--info);
   --color-info-light: var(--info-light);
+
   --color-mac-red: var(--mac-red);
   --color-mac-yellow: var(--mac-yellow);
   --color-mac-green: var(--mac-green);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);

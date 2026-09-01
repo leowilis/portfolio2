@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <section
       aria-label='Hero'
-      className='relative flex min-h-[49svh] flex-col items-center justify-center overflow-hidden px-5 py-24 sm:px-6 sm:py-28 lg:py-20'
+     className='relative flex h-full min-h-screen flex-col items-center justify-center'
     >
       <HeroAmbientGlow />
 
