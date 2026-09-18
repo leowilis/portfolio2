@@ -160,7 +160,7 @@ export default function NeonCursor() {
     const resize = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      renderer.setSize(width, height);
+      renderer.setSize(width, height, false);
       uniforms.uSize.value.set(RADIUS_1, RADIUS_2);
 
       if (width >= height) {
