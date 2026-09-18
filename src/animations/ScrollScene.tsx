@@ -43,7 +43,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
   const aboutOpacity = useTransform(progress, [0, 0.01], [0.6, 1]);
 
   return (
-    <div ref={ref} id='home' className='relative'>
+    <div ref={ref} id='home' className='relative w-full max-w-full overflow-x-clip'>
       {/* Hero */}
       <motion.div
         style={{
@@ -52,7 +52,7 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
           filter: heroFilter,
           willChange: 'transform, opacity, filter',
         }}
-        className='sticky top-0 h-screen overflow-hidden'
+        className='sticky top-0 h-[100svh] w-full overflow-hidden'
       >
         {sections[0]}
       </motion.div>
@@ -67,22 +67,22 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
           borderTopRightRadius: aboutRadius,
           willChange: 'transform, opacity',
         }}
-        className='relative z-20 -mt-28 overflow-hidden bg-transparent'
+        className='relative z-20 -mt-28 w-full max-w-full overflow-hidden bg-transparent'
       >
         {sections[1]}
       </motion.div>
 
       {/* Projects */}
-      {sections[2] && <div className='relative z-30'>{sections[2]}</div>}
+      {sections[2] && <div className='relative z-30 w-full max-w-full'>{sections[2]}</div>}
 
       {/* Tech Stack */}
-      {sections[3] && <div className='relative z-40'>{sections[3]}</div>}
+      {sections[3] && <div className='relative z-40 w-full max-w-full'>{sections[3]}</div>}
 
       {/* Education */}
-      {sections[4] && <div className='relative z-50'>{sections[4]}</div>}
+      {sections[4] && <div className='relative z-50 w-full max-w-full'>{sections[4]}</div>}
 
       {/* Contact */}
-      {sections[5] && <div className='relative z-60'>{sections[5]}</div>}
+      {sections[5] && <div className='relative z-60 w-full max-w-full'>{sections[5]}</div>}
     </div>
   );
 }
