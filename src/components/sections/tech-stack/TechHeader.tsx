@@ -63,7 +63,7 @@ const TechHeader = forwardRef<HTMLDivElement, Props>(function TechHeader(
           ref={outlineRef}
           className='tech-outline absolute left-1/2 top-full block -translate-x-1/2 font-black uppercase leading-none tracking-[-0.08em] will-change-transform'
           style={{
-            fontSize: 'clamp(5rem,10vw,9rem)',
+            fontSize: 'clamp(4.5rem,10vw,9rem)',
             marginTop: '-1rem',
           }}
         >
