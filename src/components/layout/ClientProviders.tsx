@@ -1,5 +1,5 @@
 'use client';
-import Cursor from '@/src/animations/Cursor';
+
 import dynamic from 'next/dynamic';
 
 const ParticlesBackground = dynamic(
@@ -14,11 +14,11 @@ export default function ClientProviders({
 }) {
   return (
     <>
-    <ParticlesBackground />
-      <Cursor />
+      <ParticlesBackground />
+
       <div
         style={{ position: 'relative', zIndex: 1 }}
-        className='flex flex-col min-h-full'
+        className='flex min-h-full flex-col'
       >
         {children}
       </div>
