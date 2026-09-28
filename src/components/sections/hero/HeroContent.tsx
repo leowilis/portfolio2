@@ -1,3 +1,4 @@
+import HeroAvailability from './HeroAvailability';
 import HeroButtons from './HeroButtons';
 import HeroDescription from './HeroDescription';
 import HeroHeading from './HeroHeading';
@@ -6,22 +7,30 @@ import HeroTypewriter from './HeroTypewriter';
 
 export default function HeroContent() {
   return (
-    <section
-      role='region'
-      aria-label='Introduction summary banner showcase'
-      className='flex w-full max-w-4xl flex-col items-center justify-center text-center select-none mx-auto px-4 py-8 md:py-12 lg:py-16 shrink-0 relative z-10 animate-in fade-in duration-300'
-    >
-      <div className='flex flex-col items-center text-center w-full space-y-5 md:space-y-6 lg:space-y-7'>
+    <div className='relative z-10 flex w-full max-w-2xl flex-col justify-center'>
+      <div className='flex w-full flex-col items-start text-left'>
         <HeroHeading />
 
-        <HeroTypewriter />
+        <div className='mt-5 md:mt-6'>
+          <HeroTypewriter />
+        </div>
 
-        <HeroDescription />
+        <div className='mt-5 max-w-xl md:mt-6'>
+          <HeroDescription />
+        </div>
 
-        <HeroButtons />
+        <div className='mt-7 md:mt-8'>
+          <HeroButtons />
+        </div>
 
-        <HeroHighlights />
+        <div className='mt-8 md:mt-10'>
+          <HeroHighlights />
+        </div>
+
+        <div className='mt-7'>
+          <HeroAvailability />
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
