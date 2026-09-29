@@ -92,7 +92,7 @@ export default function ProjectModalContent({
           >
             {/* Featured label */}
             {project.featured && (
-              <span className='block pb-1 text-[10px] font-black uppercase leading-none tracking-[0.3em] text-purple-400'>
+              <span className='block pb-1 text-[10px] font-black uppercase leading-none tracking-[0.3em] text-blue-400'>
                 Featured Showcase Project
               </span>
             )}

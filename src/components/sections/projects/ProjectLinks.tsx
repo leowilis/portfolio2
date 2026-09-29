@@ -9,8 +9,8 @@ interface ProjectLinksProps {
 const LINK_CLASS =
   'flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 ' +
   'px-4 py-2 text-xs font-bold text-neutral-400 transition-all duration-300 ' +
-  'hover:border-purple-500/40 hover:bg-purple-500/10 hover:text-white ' +
-  'outline-none focus-visible:ring-1 focus-visible:ring-purple-500 ' +
+  'hover:border-blue-500/40 hover:bg-blue-500/10 hover:text-white ' +
+  'outline-none focus-visible:ring-1 focus-visible:ring-blue-500 ' +
   'focus-visible:ring-offset-1 focus-visible:ring-offset-background ' +
   'active:scale-95 cursor-pointer select-none';
 

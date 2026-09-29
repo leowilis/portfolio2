@@ -148,7 +148,7 @@ export default function ProjectStage({
               width: floor.width,
               height: floor.height,
               background:
-                'radial-gradient(ellipse at center, rgba(139,92,246,0.24) 0%, rgba(139,92,246,0.12) 28%, rgba(139,92,246,0.04) 52%, transparent 74%)',
+                'radial-gradient(ellipse at center, rgba(59,130,246,0.24) 0%, rgba(59,130,246,0.12) 28%, rgba(59,130,246,0.04) 52%, transparent 74%)',
               filter: 'blur(28px)',
             }}
           />
@@ -174,7 +174,7 @@ export default function ProjectStage({
               width: floor.stripWidth,
               height: floor.stripHeight,
               background:
-                'radial-gradient(ellipse at center, rgba(167,139,250,0.30) 0%, rgba(139,92,246,0.12) 42%, transparent 78%)',
+                'radial-gradient(ellipse at center, rgba(96,165,250,0.30) 0%, rgba(59,130,246,0.12) 42%, transparent 78%)',
               filter: 'blur(8px)',
             }}
           />
@@ -187,7 +187,7 @@ export default function ProjectStage({
               width: floor.bloomWidth,
               height: floor.bloomHeight,
               background:
-                'radial-gradient(ellipse at center, rgba(139,92,246,0.14) 0%, rgba(139,92,246,0.05) 38%, transparent 76%)',
+                'radial-gradient(ellipse at center, rgba(59,130,246,0.14) 0%, rgba(59,130,246,0.05) 38%, transparent 76%)',
               filter: 'blur(24px)',
             }}
           />
@@ -225,7 +225,7 @@ export default function ProjectStage({
           type='button'
           aria-label='Previous project'
           onClick={previousProject}
-          className='pointer-events-auto absolute left-[3%] top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-violet-500/40 hover:bg-violet-500/10 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60'
+          className='pointer-events-auto absolute left-[3%] top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-blue-500/40 hover:bg-blue-500/10 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60'
         >
           <IoChevronBack size={PROJECT_CHEVRON_ICON} aria-hidden='true' />
         </button>
@@ -235,7 +235,7 @@ export default function ProjectStage({
           type='button'
           aria-label='Next project'
           onClick={nextProject}
-          className='pointer-events-auto absolute right-[3%] top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-violet-500/40 hover:bg-violet-500/10 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60'
+          className='pointer-events-auto absolute right-[3%] top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-blue-500/40 hover:bg-blue-500/10 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60'
         >
           <IoChevronForward size={PROJECT_CHEVRON_ICON} aria-hidden='true' />
         </button>

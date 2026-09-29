@@ -13,7 +13,7 @@ export default function FeaturedProjectContent({
   return (
     <figcaption className='absolute inset-x-0 bottom-0 select-none bg-gradient-to-t from-black via-black/90 to-transparent p-6 pt-24 sm:p-8 sm:pt-24'>
       {project.featured && (
-        <p className='mb-2 text-[10px] font-black uppercase tracking-[0.25em] text-violet-400'>
+        <p className='mb-2 text-[10px] font-black uppercase tracking-[0.25em] text-blue-400'>
           Featured Project
         </p>
       )}

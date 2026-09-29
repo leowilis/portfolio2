@@ -104,7 +104,7 @@ export default function ProjectPlane({
         {isCenter && (
           <div
             aria-hidden='true'
-            className='pointer-events-none absolute -inset-20 -z-10 rounded-[50%] bg-[radial-gradient(ellipse_at_center, rgba(139,92,246,0.16)_0%, rgba(139,92,246,0.07)_32%, rgba(139,92,246,0.025)_52%, transparent_74%)] blur-2xl opacity-90'
+            className='pointer-events-none absolute -inset-20 -z-10 rounded-[50%] bg-[radial-gradient(ellipse at center, rgba(59,130,246,0.16) 0%, rgba(59,130,246,0.07) 32%, rgba(59,130,246,0.025) 52%, transparent 74%)] blur-2xl opacity-90'
           />
         )}
 
@@ -131,7 +131,7 @@ export default function ProjectPlane({
           <div
             className={cn(
               'group relative overflow-hidden rounded-[22px] border bg-transparent',
-              isCenter ? 'border-violet-500/40' : 'border-white/5',
+              isCenter ? 'border-blue-500/40' : 'border-white/5',
             )}
             style={{
               width: cardWidth,

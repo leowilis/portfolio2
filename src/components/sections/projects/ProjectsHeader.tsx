@@ -33,7 +33,7 @@ export default function ProjectsHeader() {
       }}
       className='mb-16 flex w-full shrink-0 select-none flex-col items-center px-4 text-center md:mb-20'
     >
-      <p className='mb-4 text-xs font-extrabold uppercase tracking-[0.45em] text-violet-400 sm:text-xs'>
+      <p className='mb-4 text-xs font-extrabold uppercase tracking-[0.45em] text-blue-400 sm:text-xs'>
         Selected Works
       </p>
 

@@ -70,7 +70,7 @@ export default function MobileProjectCard({
 
         <figcaption className='flex flex-col gap-3 p-5'>
           {project.featured && (
-            <p className='text-[10px] font-semibold uppercase tracking-[0.25em] text-violet-400'>
+            <p className='text-[10px] font-bold uppercase tracking-[0.25em] text-blue-400'>
               Featured
             </p>
           )}
