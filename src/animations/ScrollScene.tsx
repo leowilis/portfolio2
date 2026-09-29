@@ -1,23 +1,11 @@
 'use client';
 
 import { Children, type ReactNode, useRef } from 'react';
-import {
-  motion,
-  useMotionTemplate,
-  useScroll,
-  useSpring,
-  useTransform,
-} from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 interface ScrollSceneProps {
   children: ReactNode;
 }
-
-const SPRING_CONFIG = {
-  stiffness: 140,
-  damping: 25,
-  mass: 0.25,
-};
 
 export default function ScrollScene({ children }: ScrollSceneProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -28,29 +16,24 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
     offset: ['start start', 'end end'],
   });
 
-  const progress = useSpring(scrollYProgress, SPRING_CONFIG);
-
   // Hero
-  const heroScale = useTransform(progress, [0, 0.3], [1, 0.94]);
-  const heroOpacity = useTransform(progress, [0, 0.3], [1, 0]);
-  const heroBlur = useTransform(progress, [0, 0.08], [0, 36]);
-  const heroFilter = useMotionTemplate`blur(${heroBlur}px)`;
+  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.94]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   // About
-  const aboutY = useTransform(progress, [0, 0.25], [80, 0]);
-  const aboutRadius = useTransform(progress, [0, 0.02], [40, 0]);
-  const aboutScale = useTransform(progress, [0, 0.25], [0.98, 1]);
-  const aboutOpacity = useTransform(progress, [0, 0.01], [0.6, 1]);
+  const aboutY = useTransform(scrollYProgress, [0, 0.25], [80, 0]);
+  const aboutRadius = useTransform(scrollYProgress, [0, 0.02], [40, 0]);
+  const aboutScale = useTransform(scrollYProgress, [0, 0.25], [0.98, 1]);
+  const aboutOpacity = useTransform(scrollYProgress, [0, 0.01], [0.6, 1]);
 
   return (
-    <div ref={ref} id='home' className='relative w-full max-w-full overflow-x-clip'>
+    <div ref={ref} className='relative w-full max-w-full overflow-x-clip'>
       {/* Hero */}
       <motion.div
         style={{
           scale: heroScale,
           opacity: heroOpacity,
-          filter: heroFilter,
-          willChange: 'transform, opacity, filter',
+          willChange: 'transform, opacity',
         }}
         className='sticky top-0 h-[100svh] w-full overflow-hidden'
       >
@@ -73,16 +56,24 @@ export default function ScrollScene({ children }: ScrollSceneProps) {
       </motion.div>
 
       {/* Projects */}
-      {sections[2] && <div className='relative z-30 w-full max-w-full'>{sections[2]}</div>}
+      {sections[2] && (
+        <div className='relative z-30 w-full max-w-full'>{sections[2]}</div>
+      )}
 
       {/* Tech Stack */}
-      {sections[3] && <div className='relative z-40 w-full max-w-full'>{sections[3]}</div>}
+      {sections[3] && (
+        <div className='relative z-40 w-full max-w-full'>{sections[3]}</div>
+      )}
 
       {/* Education */}
-      {sections[4] && <div className='relative z-50 w-full max-w-full'>{sections[4]}</div>}
+      {sections[4] && (
+        <div className='relative z-50 w-full max-w-full'>{sections[4]}</div>
+      )}
 
       {/* Contact */}
-      {sections[5] && <div className='relative z-60 w-full max-w-full'>{sections[5]}</div>}
+      {sections[5] && (
+        <div className='relative z-60 w-full max-w-full'>{sections[5]}</div>
+      )}
     </div>
   );
 }
