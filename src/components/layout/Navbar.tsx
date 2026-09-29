@@ -88,12 +88,12 @@ export default function MainNavbar() {
                 key={item.name}
                 href={item.link}
                 onClick={isHome ? handleHomeNavigation : closeMobileMenu}
-                className="group relative z-[120] block w-full rounded-xl px-4 py-3 text-base font-medium text-white/70 transition-colors hover:bg-violet-500/10 hover:text-white"
+                className="group relative z-[120] block w-full rounded-xl px-4 py-3 text-base font-medium text-white/70 transition-colors hover:bg-blue-500/10 hover:text-white"
               >
                 <span className="flex items-center justify-between">
                   <span>{item.name}</span>
 
-                  <span className="text-violet-400 opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="text-blue-400 opacity-0 transition-opacity group-hover:opacity-100">
                     →
                   </span>
                 </span>

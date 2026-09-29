@@ -157,7 +157,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
                   stiffness: 350,
                   damping: 30,
                 }}
-                className='absolute inset-0 -z-10 rounded-full ring-1 ring-violet-400/10'
+                className='absolute inset-0 -z-10 rounded-full ring-1 ring-blue-400/10'
               />
             )}
 
@@ -240,7 +240,7 @@ export const MobileNavMenu = ({
             ease: [0.22, 1, 0.36, 1],
           }}
           className={cn(
-            'absolute inset-x-0 top-[calc(100%+0.5rem)] z-[110] overflow-hidden rounded-2xl border border-violet-400/15 bg-[#0a0810]/95 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl',
+            'absolute inset-x-0 top-[calc(100%+0.5rem)] z-[110] overflow-hidden rounded-2xl border border-blue-400/15 bg-[#0a0810]/95 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl',
             className,
           )}
         >
@@ -264,7 +264,7 @@ export const MobileNavToggle = ({
       onClick={onClick}
       aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
       aria-expanded={isOpen}
-      className='flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white transition-colors hover:border-violet-400/30 hover:bg-violet-500/10'
+      className='flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white transition-colors hover:border-blue-400/30 hover:bg-blue-500/10'
     >
       {isOpen ? (
         <IconX className='h-5 w-5' />
@@ -283,8 +283,8 @@ export const NavbarLogo = () => {
       className='relative z-20 mr-4 flex items-center gap-2.5 px-3 py-1'
     >
       <div className='relative h-10 w-9 flex-shrink-0'>
-        <div className='absolute bottom-0 right-0 h-[30px] w-[30px] rounded-[9px] bg-purple-900' />
-        <div className='absolute left-0 top-1 flex h-[30px] w-[30px] items-center justify-center rounded-[9px] bg-violet-500'>
+        <div className='absolute bottom-0 right-0 h-[30px] w-[30px] rounded-[9px] bg-blue-900' />
+        <div className='absolute left-0 top-1 flex h-[30px] w-[30px] items-center justify-center rounded-[9px] bg-blue-500'>
           <span className='text-[11px] font-bold tracking-widest text-white'>
             LW
           </span>
@@ -311,15 +311,15 @@ export const NavbarButton = ({
 
   const variantStyles = {
     primary:
-      'bg-white text-black shadow-[0_8px_25px_rgba(255,255,255,0.08)] hover:bg-violet-400 hover:text-white hover:shadow-[0_8px_30px_rgba(139,92,246,0.25)]',
+      'bg-white text-black shadow-[0_8px_25px_rgba(255,255,255,0.08)] hover:bg-blue-400 hover:text-white hover:shadow-[0_8px_30px_rgba(59,130,246,0.25)]',
 
     secondary:
-      'border border-white/10 bg-white/[0.03] text-white hover:border-violet-400/30 hover:bg-violet-500/10',
+      'border border-white/10 bg-white/[0.03] text-white hover:border-blue-400/30 hover:bg-blue-500/10',
 
     dark: 'bg-black text-white',
 
     gradient:
-      'bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 text-white shadow-[0_8px_30px_rgba(139,92,246,0.2)] hover:shadow-[0_10px_35px_rgba(139,92,246,0.3)]',
+      'bg-gradient-to-r from-blue-500 via-blue-500 to-blue-600 text-white shadow-[0_8px_30px_rgba(59,130,246,0.2)] hover:shadow-[0_10px_35px_rgba(59,130,246,0.3)]',
   };
 
   const classes = cn(baseStyles, variantStyles[variant], className);

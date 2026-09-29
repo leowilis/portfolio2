@@ -13,7 +13,7 @@ export default function HeroHeading() {
         <span className='inline-block min-w-[200px] text-left sm:min-w-[300px]'>
           <ScrambleText
             text={HERO_NAME}
-            className='text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-indigo-400 to-purple-400 font-extrabold'
+            className='bg-gradient-to-r from-blue-300 via-blue-400 to-blue-600 bg-clip-text font-extrabold text-transparent'
             loopEvery={8000}
           />
         </span>

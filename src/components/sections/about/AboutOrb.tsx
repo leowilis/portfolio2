@@ -19,7 +19,7 @@ export default function AboutOrb() {
     >
       <div aria-hidden='true' className='relative h-[120px] w-[120px]'>
         {/* Glow */}
-        <div className='absolute inset-0 rounded-full bg-violet-500/20 blur-3xl' />
+        <div className='absolute inset-0 rounded-full bg-blue-500/20 blur-3xl' />
 
         {/* Outer Ring */}
         <motion.div
@@ -31,7 +31,7 @@ export default function AboutOrb() {
             repeat: ABOUT_ORB_REPEAT,
             ease: ABOUT_ORB_EASE,
           }}
-          className='absolute inset-[-32px] rounded-full border border-violet-500/30'
+          className='absolute inset-[-32px] rounded-full border border-blue-500/30'
         />
 
         {/* Inner Ring */}
@@ -44,7 +44,7 @@ export default function AboutOrb() {
             repeat: ABOUT_ORB_REPEAT,
             ease: ABOUT_ORB_EASE,
           }}
-          className='absolute inset-[-18px] rounded-full border border-violet-500/40'
+          className='absolute inset-[-18px] rounded-full border border-blue-500/40'
         />
 
         {/* Core */}
@@ -57,9 +57,9 @@ export default function AboutOrb() {
             repeat: ABOUT_ORB_REPEAT,
             ease: ABOUT_ORB_EASE,
           }}
-          className='absolute inset-0 flex items-center justify-center rounded-full border border-violet-500/40 bg-violet-500/10 backdrop-blur-sm'
+          className='absolute inset-0 flex items-center justify-center rounded-full border border-blue-500/40 bg-blue-500/10 backdrop-blur-sm'
         >
-          <span className='text-3xl font-bold text-violet-400'>LW</span>
+          <span className='text-3xl font-bold text-blue-400'>LW</span>
         </motion.div>
       </div>
 

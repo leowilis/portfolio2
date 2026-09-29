@@ -18,7 +18,7 @@ export default function AboutWhatIBring() {
     <section aria-labelledby='about-what-i-bring-heading' className='mt-12'>
       <h2
         id='about-what-i-bring-heading'
-        className='mb-6 text-xs font-black uppercase tracking-[0.22em] text-violet-300/70'
+        className='mb-6 text-xs font-black uppercase tracking-[0.22em] text-blue-300/70'
       >
         What I Bring
       </h2>
@@ -49,7 +49,7 @@ export default function AboutWhatIBring() {
             <div className='flex gap-4'>
               <span
                 aria-hidden='true'
-                className='pt-0.5 text-[10px] font-black tracking-[0.18em] text-violet-400'
+                className='pt-0.5 text-[10px] font-black tracking-[0.18em] text-blue-400'
               >
                 {item.number}
               </span>

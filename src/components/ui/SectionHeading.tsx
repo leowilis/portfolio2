@@ -41,7 +41,7 @@ export default function SectionHeading({
       ].join(' ')}
     >
       {badge && (
-        <span className='inline-flex rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-violet-300'>
+        <span className='inline-flex rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-blue-300'>
           {badge}
         </span>
       )}

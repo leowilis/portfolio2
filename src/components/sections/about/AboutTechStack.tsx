@@ -10,7 +10,7 @@ export default function AboutTechStack() {
       <ul className='flex flex-wrap gap-2'>
         {TECHS.map((tech) => (
           <li key={tech}>
-            <span className='rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/30 transition-all duration-300 hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-violet-300'>
+            <span className='rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/30 transition-all duration-300 hover:border-blue-500/40 hover:bg-blue-500/10 hover:text-blue-300'>
               {tech}
             </span>
           </li>

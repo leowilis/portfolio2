@@ -48,7 +48,7 @@ export default function HeroTypewriter() {
 
       <span
         aria-hidden='true'
-        className='ml-1 font-bold text-violet-400 animate-pulse'
+        className='ml-1 font-bold text-blue-400 animate-pulse'
       >
         |
       </span>
