@@ -8,7 +8,7 @@ const ICON_CLASS =
 
 export default function HeroButtons() {
   return (
-    <div className='flex flex-wrap items-center justify-center gap-3'>
+    <div className='flex flex-wrap items-center gap-3'>
       <a
         href='#projects'
         className={`${BUTTON_CLASS} bg-primary text-primary-foreground hover:bg-primary-hover`}

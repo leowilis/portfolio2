@@ -2,7 +2,7 @@ import { SITE_CONFIG } from '@/src/config/site.config';
 
 export default function HeroHeading() {
   return (
-    <header className='flex max-w-4xl flex-col items-center text-center'>
+    <header className='flex max-w-4xl flex-col items-start text-left'>
       <p className='mb-5 font-mono text-xs uppercase tracking-[0.24em] text-foreground-muted'>
         {SITE_CONFIG.role}
       </p>

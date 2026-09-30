@@ -5,10 +5,10 @@ import HeroHeading from './HeroHeading';
 
 export default function HeroContent() {
   return (
-    <div className='relative z-10 flex w-full max-w-2xl flex-col items-center text-center'>
+    <div className='relative z-10 flex w-full max-w-2xl flex-col items-start text-left'>
       <HeroHeading />
 
-      <div className='mt-6'>
+      <div className='mt-6 max-w-xl'>
         <HeroDescription />
       </div>
 
@@ -16,7 +16,7 @@ export default function HeroContent() {
         <HeroButtons />
       </div>
 
-      <div className='mt-7'>
+      <div className='mt-8'>
         <HeroAvailability />
       </div>
     </div>
