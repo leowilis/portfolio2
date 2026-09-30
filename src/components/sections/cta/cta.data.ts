@@ -1,18 +1,11 @@
-export type ContactSocial = {
+export type CTASocial = {
   name: string;
   url: string;
 };
 
-export const CONTACT_LOCATION = {
-  city: 'Medan',
-  label: "Leo's base",
-  latitude: 3.5952,
-  longitude: 98.6722,
-} as const;
+export const CTA_EMAIL = 'leowilis9898@gmail.com';
 
-export const CONTACT_EMAIL = 'leowilis9898@gmail.com';
-
-export const CONTACT_SOCIALS: ContactSocial[] = [
+export const CTA_SOCIALS: CTASocial[] = [
   {
     name: 'GitHub',
     url: 'https://github.com/leowilis',
