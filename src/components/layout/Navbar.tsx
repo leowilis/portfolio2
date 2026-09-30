@@ -1,116 +1,151 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
-import {
-  MobileNav,
-  MobileNavHeader,
-  MobileNavMenu,
-  MobileNavToggle,
-  NavBody,
-  Navbar,
-  NavbarButton,
-  NavbarLogo,
-  NavItems,
-} from '@/src/components/ui/resizable-navbar';
-
-const navItems = [
-  { name: 'Home', link: '#home' },
-  { name: 'About', link: '#about' },
-  { name: 'Projects', link: '#projects' },
-  { name: 'Skills', link: '#skills' },
-  { name: 'Education', link: '#education' },
-  { name: 'Contact', link: '#contact' },
+const NAV_ITEMS = [
+  { label: 'About', href: '#about' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Education', href: '#education' },
+  { label: 'Contact', href: '#contact' },
 ] as const;
+
+const MOBILE_MENU_ID = 'mobile-navigation';
 
 export default function MainNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const closeMobileMenu = useCallback(() => {
+  const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
-  }, []);
+  };
 
-  const handleHomeNavigation = useCallback(
-    (event: React.MouseEvent<HTMLAnchorElement>) => {
-      event.preventDefault();
-
-      closeMobileMenu();
-
-      // Remove any active smooth/hash navigation.
-      window.history.replaceState(null, '', '#home');
-
-      // Force the document back to the beginning.
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'instant',
-      });
-    },
-    [closeMobileMenu],
-  );
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((isOpen) => !isOpen);
+  };
 
   return (
-    <Navbar>
-      {/* Desktop */}
-      <NavBody>
-        <NavbarLogo />
-
-        <NavItems items={navItems} />
-
-        <NavbarButton
-          href="#contact"
-          variant="primary"
-        >
-          Hire Me
-        </NavbarButton>
-      </NavBody>
-
-      {/* Mobile */}
-      <MobileNav>
-        <MobileNavHeader>
-          <NavbarLogo />
-
-          <MobileNavToggle
-            isOpen={isMobileMenuOpen}
-            onClick={() => {
-              setIsMobileMenuOpen((previous) => !previous);
-            }}
-          />
-        </MobileNavHeader>
-
-        <MobileNavMenu isOpen={isMobileMenuOpen}>
-          {navItems.map((item) => {
-            const isHome = item.link === '#home';
-
-            return (
-              <Link
-                key={item.name}
-                href={item.link}
-                onClick={isHome ? handleHomeNavigation : closeMobileMenu}
-                className="group relative z-[120] block w-full rounded-xl px-4 py-3 text-base font-medium text-white/70 transition-colors hover:bg-blue-500/10 hover:text-white"
-              >
-                <span className="flex items-center justify-between">
-                  <span>{item.name}</span>
-
-                  <span className="text-blue-400 opacity-0 transition-opacity group-hover:opacity-100">
-                    →
-                  </span>
-                </span>
-              </Link>
-            );
-          })}
-
-          <NavbarButton
-            href="#contact"
-            variant="primary"
+    <header className='fixed inset-x-0 top-0 z-50'>
+      <nav
+        aria-label='Main navigation'
+        className='border-b border-border-subtle bg-background/85 backdrop-blur-xl'
+      >
+        <div className='mx-auto flex h-16 max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:h-[72px] lg:px-10'>
+          {/* Logo */}
+          <Link
+            href='#home'
+            aria-label='Leonardo Wilis — Home'
             onClick={closeMobileMenu}
-            className="mt-2 w-full"
+            className='group flex items-center gap-3'
           >
-            Hire Me
-          </NavbarButton>
-        </MobileNavMenu>
-      </MobileNav>
-    </Navbar>
+            <span className='flex size-8 items-center justify-center rounded-md border border-border-strong bg-surface text-xs font-semibold tracking-tight text-foreground transition-colors duration-200 group-hover:border-primary group-hover:text-primary'>
+              LW
+            </span>
+
+            <span className='hidden text-sm font-medium tracking-tight text-foreground sm:block'>
+              Leonardo Wilis
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className='hidden items-center gap-8 md:flex'>
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className='relative py-2 text-sm font-medium text-foreground-muted transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+              >
+                {item.label}
+              </Link>
+            ))}
+
+            <Link
+              href='#contact'
+              className='inline-flex h-10 items-center justify-center rounded-[10px] bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-primary-hover focus-visible:outline-none'
+            >
+              Hire Me
+            </Link>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            type='button'
+            aria-label={
+              isMobileMenuOpen
+                ? 'Close navigation menu'
+                : 'Open navigation menu'
+            }
+            aria-expanded={isMobileMenuOpen}
+            aria-controls={MOBILE_MENU_ID}
+            onClick={toggleMobileMenu}
+            className='flex size-10 items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-colors duration-200 hover:border-border-strong hover:bg-surface-hover md:hidden'
+          >
+            <span className='sr-only'>
+              {isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            </span>
+
+            <span className='flex w-4 flex-col gap-1.5' aria-hidden='true'>
+              <span
+                className={`block h-px w-full bg-current transition-transform duration-200 ${
+                  isMobileMenuOpen ? 'translate-y-[4px] rotate-45' : ''
+                }`}
+              />
+              <span
+                className={`block h-px w-full bg-current transition-opacity duration-200 ${
+                  isMobileMenuOpen ? 'opacity-0' : ''
+                }`}
+              />
+              <span
+                className={`block h-px w-full bg-current transition-transform duration-200 ${
+                  isMobileMenuOpen ? '-translate-y-[4px] -rotate-45' : ''
+                }`}
+              />
+            </span>
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div
+          id={MOBILE_MENU_ID}
+          aria-hidden={!isMobileMenuOpen}
+          className={`overflow-hidden border-t border-border-subtle bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 md:hidden ${
+            isMobileMenuOpen
+              ? 'max-h-[420px] opacity-100'
+              : 'pointer-events-none max-h-0 opacity-0'
+          }`}
+        >
+          <div className='mx-auto max-w-[1280px] px-5 py-4 sm:px-8'>
+            <div className='flex flex-col'>
+              <Link
+                href='#home'
+                onClick={closeMobileMenu}
+                className='rounded-lg px-3 py-3 text-sm font-medium text-foreground-muted transition-colors duration-200 hover:bg-surface hover:text-foreground'
+              >
+                Home
+              </Link>
+
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMobileMenu}
+                  className='rounded-lg px-3 py-3 text-sm font-medium text-foreground-muted transition-colors duration-200 hover:bg-surface hover:text-foreground'
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              <Link
+                href='#contact'
+                onClick={closeMobileMenu}
+                className='mt-3 inline-flex h-11 items-center justify-center rounded-[10px] bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-primary-hover'
+              >
+                Hire Me
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 }
