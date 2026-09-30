@@ -1,24 +1,21 @@
-import { TextReveal } from '@/src/animations';
-
 export default function AboutHeader() {
   return (
-    <header className='mb-20 flex flex-col items-center text-center'>
-      <p className='mb-3 text-xs font-bold uppercase tracking-[0.35em] text-white/40'>
+    <header className='mx-auto mb-12 max-w-3xl text-center sm:mb-16'>
+      <p className='font-mono text-xs uppercase tracking-[0.2em] text-primary'>
         About Me
       </p>
 
-      <TextReveal
-        as='h2'
-        className='text-3xl font-semibold tracking-tight md:text-4xl'
+      <h2
+        id='about-heading'
+        className='mt-4 text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-tight tracking-[-0.035em] text-foreground'
       >
-        <span className='text-white'>Passionate about building </span>
-        <span className='text-blue-400'>great products.</span>
-      </TextReveal>
+        Building thoughtful digital experiences.
+      </h2>
 
-      <div
-        aria-hidden='true'
-        className='mt-6 h-px w-12 rounded-full bg-gradient-to-r from-transparent via-blue-500 to-transparent'
-      />
+      <p className='mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-foreground-secondary sm:text-base'>
+        A frontend developer focused on clean architecture, responsive
+        interfaces, and products that are practical to use.
+      </p>
     </header>
   );
 }

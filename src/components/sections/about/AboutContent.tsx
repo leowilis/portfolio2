@@ -1,22 +1,17 @@
 import FadeIn from '@/src/animations/FadeIn';
+
 import AboutBio from './AboutBio';
 import AboutDetails from './AboutDetails';
-import AboutWhatIBring from './AboutWhatIBring';
-import {
-  ABOUT_CONTENT_REVEAL_DELAY,
-  ABOUT_CONTENT_REVEAL_Y,
-} from './constants';
 
 export default function AboutContent() {
   return (
-    <div className='grid items-start gap-16 md:grid-cols-2'>
+    <div className='grid items-start gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-16 lg:gap-24'>
       <FadeIn>
         <AboutBio />
       </FadeIn>
 
-      <FadeIn y={ABOUT_CONTENT_REVEAL_Y} delay={ABOUT_CONTENT_REVEAL_DELAY}>
+      <FadeIn>
         <AboutDetails />
-        <AboutWhatIBring />
       </FadeIn>
     </div>
   );

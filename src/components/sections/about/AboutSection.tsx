@@ -1,20 +1,17 @@
-import StaggerContainer from '@/src/animations/StaggerContainer';
 import AboutContent from './AboutContent';
 import AboutHeader from './AboutHeader';
-import AboutStats from './AboutStats';
 
 export default function AboutSection() {
   return (
     <section
       id='about'
       aria-labelledby='about-heading'
-      className='relative mx-auto max-w-5xl px-6 py-32'
+      className='relative overflow-hidden py-20 sm:py-24 lg:py-32'
     >
-      <StaggerContainer>
+      <div className='mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-10'>
         <AboutHeader />
         <AboutContent />
-        <AboutStats />
-      </StaggerContainer>
+      </div>
     </section>
   );
 }
