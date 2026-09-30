@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const NAV_ITEMS = [
   { label: 'About', href: '#about' },
@@ -15,8 +14,10 @@ const MOBILE_MENU_ID = 'mobile-navigation';
 
 export default function MainNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuToggleRef = useRef<HTMLButtonElement>(null);
 
   const closeMobileMenu = () => {
+    mobileMenuToggleRef.current?.focus();
     setIsMobileMenuOpen(false);
   };
 
@@ -32,7 +33,7 @@ export default function MainNavbar() {
       >
         <div className='mx-auto flex h-16 max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:h-[72px] lg:px-10'>
           {/* Logo */}
-          <Link
+          <a
             href='#home'
             aria-label='Leonardo Wilis — Home'
             onClick={closeMobileMenu}
@@ -45,30 +46,31 @@ export default function MainNavbar() {
             <span className='hidden text-sm font-medium tracking-tight text-foreground sm:block'>
               Leonardo Wilis
             </span>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <div className='hidden items-center gap-8 md:flex'>
             {NAV_ITEMS.map((item) => (
-              <Link
+              <a
                 key={item.href}
                 href={item.href}
                 className='relative py-2 text-sm font-medium text-foreground-muted transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
 
-            <Link
+            <a
               href='#contact'
               className='inline-flex h-10 items-center justify-center rounded-[10px] bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-primary-hover focus-visible:outline-none'
             >
               Hire Me
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Toggle */}
           <button
+            ref={mobileMenuToggleRef}
             type='button'
             aria-label={
               isMobileMenuOpen
@@ -90,11 +92,13 @@ export default function MainNavbar() {
                   isMobileMenuOpen ? 'translate-y-[4px] rotate-45' : ''
                 }`}
               />
+
               <span
                 className={`block h-px w-full bg-current transition-opacity duration-200 ${
                   isMobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
+
               <span
                 className={`block h-px w-full bg-current transition-transform duration-200 ${
                   isMobileMenuOpen ? '-translate-y-[4px] -rotate-45' : ''
@@ -116,32 +120,32 @@ export default function MainNavbar() {
         >
           <div className='mx-auto max-w-[1280px] px-5 py-4 sm:px-8'>
             <div className='flex flex-col'>
-              <Link
+              <a
                 href='#home'
                 onClick={closeMobileMenu}
                 className='rounded-lg px-3 py-3 text-sm font-medium text-foreground-muted transition-colors duration-200 hover:bg-surface hover:text-foreground'
               >
                 Home
-              </Link>
+              </a>
 
               {NAV_ITEMS.map((item) => (
-                <Link
+                <a
                   key={item.href}
                   href={item.href}
                   onClick={closeMobileMenu}
                   className='rounded-lg px-3 py-3 text-sm font-medium text-foreground-muted transition-colors duration-200 hover:bg-surface hover:text-foreground'
                 >
                   {item.label}
-                </Link>
+                </a>
               ))}
 
-              <Link
+              <a
                 href='#contact'
                 onClick={closeMobileMenu}
                 className='mt-3 inline-flex h-11 items-center justify-center rounded-[10px] bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-primary-hover'
               >
                 Hire Me
-              </Link>
+              </a>
             </div>
           </div>
         </div>
