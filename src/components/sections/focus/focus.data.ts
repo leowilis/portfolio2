@@ -7,20 +7,20 @@ export type FocusItem = {
 export const FOCUS_ITEMS: FocusItem[] = [
   {
     number: '01',
-    title: 'Performance',
+    title: 'Product UI',
     description:
-      'Building fast, responsive interfaces with modern web standards and thoughtful rendering strategies.',
+      'Designing interfaces around real product flows, including loading, empty, error, responsive, and interaction states.',
   },
   {
     number: '02',
-    title: 'Clean Architecture',
+    title: 'Frontend Architecture',
     description:
-      'Writing reusable components and maintainable frontend architecture that stays easy to scale.',
+      'Keeping component ownership, data flow, and boundaries clear so the codebase remains predictable as features grow.',
   },
   {
     number: '03',
-    title: 'User Experience',
+    title: 'Quality & Performance',
     description:
-      'Creating intuitive interfaces with purposeful interactions, smooth motion, and attention to detail.',
+      'Paying attention to accessibility, resilient UI behavior, and performance without adding complexity that the product does not need.',
   },
 ];

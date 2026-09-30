@@ -9,12 +9,12 @@ export default function AboutHeader() {
         id='about-heading'
         className='mt-4 text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-tight tracking-[-0.035em] text-foreground'
       >
-        Building thoughtful digital experiences.
+        How I approach frontend engineering.
       </h2>
 
       <p className='mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-foreground-secondary sm:text-base'>
-        A frontend developer focused on clean architecture, responsive
-        interfaces, and products that are practical to use.
+        I care about building interfaces that are clear to use, reliable in
+        real-world conditions, and maintainable as a product evolves.
       </p>
     </header>
   );

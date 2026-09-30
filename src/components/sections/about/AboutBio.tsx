@@ -3,12 +3,12 @@ import { ABOUT_BIO } from './about.data';
 
 export default function AboutBio() {
   return (
-    <article className='flex flex-col gap-6'>
+    <article className='flex flex-col gap-7'>
       <div className='space-y-5'>
         {ABOUT_BIO.map((paragraph) => (
           <p
             key={paragraph.id}
-            className='text-sm leading-relaxed text-foreground-secondary sm:text-base'
+            className='text-sm leading-7 text-foreground-secondary sm:text-base'
           >
             {'content' in paragraph ? (
               paragraph.content
@@ -17,7 +17,7 @@ export default function AboutBio() {
                 {paragraph.before}{' '}
                 <span className='font-medium text-foreground'>
                   {paragraph.highlight}
-                </span>
+                </span>{' '}
                 {paragraph.after}
               </>
             )}
