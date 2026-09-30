@@ -1,7 +1,5 @@
 import Image from 'next/image';
-import { PROJECT_CARD_MOTION } from '@/src/constants/animation.constants';
 import type { Project } from '@/src/types/project';
-
 import ProjectLinks from './ProjectLinks';
 import TechList from './TechList';
 
@@ -18,13 +16,10 @@ export default function ProjectCard({
     <article
       className={[
         'group overflow-hidden rounded-2xl border border-border bg-surface',
-        'transition-[border-color,background-color,box-shadow]',
+        'transition-[border-color,background-color,box-shadow] duration-300',
         'hover:border-border-strong hover:bg-surface-hover hover:shadow-elevated',
         featured ? 'lg:col-span-2' : '',
       ].join(' ')}
-      style={{
-        transitionDuration: `${PROJECT_CARD_MOTION.cardDuration}s`,
-      }}
     >
       <div
         className={[
@@ -41,14 +36,7 @@ export default function ProjectCard({
               ? '(min-width: 1024px) 840px, 100vw'
               : '(min-width: 640px) 50vw, 100vw'
           }
-          className='object-cover object-top transition-transform group-hover:scale-[var(--project-image-hover-scale)]'
-          style={
-            {
-              transitionDuration: `${PROJECT_CARD_MOTION.imageDuration}s`,
-              '--project-image-hover-scale':
-                PROJECT_CARD_MOTION.imageHoverScale,
-            } as React.CSSProperties
-          }
+          className='object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]'
         />
 
         <div
