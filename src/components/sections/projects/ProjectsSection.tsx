@@ -1,65 +1,31 @@
-'use client';
+import { PROJECTS } from '@/src/config/projects.config';
 
-import { useSyncExternalStore } from 'react';
-import { StaggerContainer } from '@/src/animations';
-import MobileProjectCard from './MobileProjectCard';
+import ProjectCard from './ProjectCard';
 import ProjectsHeader from './ProjectsHeader';
-import ProjectsScene from './ProjectsScene';
-import { MOBILE_BREAKPOINT } from './project.constants';
-import { PROJECTS } from './project.data';
-
-const MOBILE_QUERY = `(max-width: ${MOBILE_BREAKPOINT - 1}px)`;
-
-function subscribeToMobileQuery(callback: () => void) {
-  const mediaQuery = window.matchMedia(MOBILE_QUERY);
-  mediaQuery.addEventListener('change', callback);
-  return () => {
-    mediaQuery.removeEventListener('change', callback);
-  };
-}
-
-function getMobileSnapshot() {
-  return window.matchMedia(MOBILE_QUERY).matches;
-}
-
-function getMobileServerSnapshot() {
-  return false;
-}
-
-function useIsMobile() {
-  return useSyncExternalStore(
-    subscribeToMobileQuery,
-    getMobileSnapshot,
-    getMobileServerSnapshot,
-  );
-}
 
 export default function ProjectsSection() {
-  const isMobile = useIsMobile();
+  const featuredProject = PROJECTS.find((project) => project.featured);
+  const supportingProjects = PROJECTS.filter((project) => !project.featured);
 
   return (
     <section
       id='projects'
       aria-labelledby='projects-heading'
-      className='relative overflow-hidden py-30 sm:py-32'
+      className='relative overflow-hidden py-20 sm:py-24 lg:py-32'
     >
-      <StaggerContainer>
+      <div className='mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-10'>
         <ProjectsHeader />
-      </StaggerContainer>
 
-      {isMobile ? (
-        <div className='mx-auto mt-12 flex max-w-lg flex-col gap-6 px-6'>
-          {PROJECTS.map((project, index) => (
-            <MobileProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-            />
+        <div className='grid grid-cols-1 gap-6 lg:grid-cols-2'>
+          {featuredProject ? (
+            <ProjectCard project={featuredProject} featured />
+          ) : null}
+
+          {supportingProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
-      ) : (
-        <ProjectsScene />
-      )}
+      </div>
     </section>
   );
 }

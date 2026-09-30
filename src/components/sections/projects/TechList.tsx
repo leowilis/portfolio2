@@ -1,18 +1,20 @@
-interface Props {
+interface TechListProps {
   technologies: string[];
 }
 
-export default function TechList({ technologies }: Props) {
-  if (!technologies || technologies.length === 0) return null;
+export default function TechList({ technologies }: TechListProps) {
+  if (technologies.length === 0) {
+    return null;
+  }
 
   return (
     <ul aria-label='Technologies used' className='flex flex-wrap gap-2'>
-      {technologies.map((tech) => (
+      {technologies.map((technology) => (
         <li
-          key={tech}
-          className='rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] select-none font-medium text-white/45'
+          key={technology}
+          className='rounded-full border border-border bg-background-subtle px-3 py-1.5 font-mono text-[11px] text-foreground-muted'
         >
-          {tech}
+          {technology}
         </li>
       ))}
     </ul>
