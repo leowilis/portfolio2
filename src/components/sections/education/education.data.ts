@@ -20,7 +20,7 @@ export const EDUCATION_DATA: EducationItem[] = [
       'Completed and graduated from a Front-End Developer Web Programming Hack program focused on building modern frontend web applications through structured learning and hands-on development.',
     period: '2026',
     category: 'Front-End Developer',
-    certificateUrl: '/certificates/leonardo-wilis-FE.pdf',
+    certificateUrl: '/certificates/leonardo-wilis-FE-water-mark.pdf',
     skills: [
       'HTML',
       'CSS',
