@@ -1,434 +1,445 @@
-# Leonardo Wilis — Personal Developer Portfolio
+# Leonardo Wilis — Frontend Developer Portfolio
 
-A modern, responsive, and interactive personal portfolio built to showcase my work, technical skills, and experience as a Frontend Developer. The project focuses on clean component architecture, reusable animation systems, and immersive 3D visual experiences.
+Personal portfolio website for **Leonardo Wilis**, focused on frontend engineering, clean UI architecture, responsive interfaces, accessibility, and maintainable React/Next.js development.
 
-<p align="center">
-  <a href="https://leonardo-wilis-portfolio.vercel.app"><b>Live Demo</b></a> ·
-  <a href="https://github.com/leowilis/portfolio2"><b>Repository</b></a>
-</p>
-
-<p align="center">
-  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-black?logo=next.js" />
-  <img alt="React" src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black" />
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" />
-  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white" />
-  <img alt="Three.js" src="https://img.shields.io/badge/Three.js-black?logo=three.js" />
-</p>
-
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Architecture](#architecture)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Available Scripts](#available-scripts)
-- [Animation System](#animation-system)
-- [Responsive Design](#responsive-design)
-- [Performance Considerations](#performance-considerations)
-- [SEO & Metadata](#seo--metadata)
-- [Deployment](#deployment)
-- [Environment Variables](#environment-variables)
-- [Development Principles](#development-principles)
-- [Browser Support](#browser-support)
-- [Troubleshooting](#troubleshooting)
-- [Project Status](#project-status)
-- [Author](#author)
-- [License](#license)
+**Live:** https://leonardo-wilis-portfolio.vercel.app/
 
 ---
 
 ## Overview
 
-This portfolio is designed and developed as a **production-style frontend project** rather than a simple static personal website. It combines traditional frontend engineering with motion design and 3D experiences to reflect both technical and UI/UX capabilities.
+This portfolio is built as a production-oriented frontend project rather than a simple static personal page.
 
-**Goals of the project:**
+The implementation focuses on:
 
-- Showcase selected frontend projects in an interactive, product-like way
-- Demonstrate modern React and Next.js development practices
-- Build reusable, well-typed animation primitives
-- Maintain a scalable, easy-to-extend component structure
-- Provide a fully responsive experience across devices
-- Apply SEO and accessibility best practices
-- Keep the codebase clean and maintainable
+- Clean and maintainable component architecture
+- Responsive layouts across mobile, tablet, and desktop
+- Accessible navigation and interaction patterns
+- Reusable UI patterns
+- Centralized configuration for site and UI values
+- Semantic HTML and SEO-friendly structure
+- Performance-conscious animation and visual design
+- A developer-focused hero visual built with HTML and CSS
+
+The visual direction uses a restrained dark interface with blue accents and subtle depth to create a mature, engineering-focused presentation.
+
+The hero visual intentionally avoids WebGL, canvas-based rendering, and continuously animated 3D effects.
 
 ---
 
-## Features
+## Sections
 
-### Responsive Navigation
-- Dedicated desktop and mobile navigation experiences
-- Mobile hamburger menu with state management
-- Smooth section navigation and scroll position handling
-- Responsive "Hire Me" call-to-action
+The homepage follows this content structure:
 
-### Animated Hero Section
-- Layered motion with ambient background effects
-- Mouse-based visual interaction
-- Availability indicator and scroll indicator
-- Responsive typography and motion-based transitions
+```text
+Hero
+↓
+Selected Work
+↓
+About
+↓
+Technical Skills
+↓
+Engineering Priorities
+↓
+Education & Training
+↓
+CTA
+```
 
-### About Section
-- Introduces my background and development approach
-- Smooth scroll-triggered entrance animations via reusable components
+### Hero
 
-### Interactive Projects Section
-- Scroll-driven animation with 3D CSS transforms and perspective effects
-- Project cards with technology badges, live demo, and GitHub links
-- Feels like an interactive product experience rather than a static grid
+Introduces Leonardo's role, frontend focus, availability, and primary technologies.
 
-### Tech Stack Section
-- Responsive layout highlighting tools and technologies
-- Motion-based interactions on hover/scroll
+The hero includes an editorial developer interface representing a frontend system rather than a personal photograph.
 
-### Education Section
-- Overview of my learning background and development journey
+### Selected Work
 
-### Contact Section
-- Clear call-to-action for clients, recruiters, and collaborators
-- Interactive Three.js globe
+Presents selected frontend projects with project information maintained through centralized configuration.
 
-### Reusable Animation System
-Animations are organized into reusable components instead of being reimplemented in every section:
+### About
 
-- Fade In
-- Stagger Container
-- Text Reveal
-- Magnetic Button
-- Floating Elements
-- Count Up
-- Scroll-based transformations
+Provides an introduction to Leonardo's frontend development background, engineering mindset, and approach to building web experiences.
 
-### 🔍 SEO
-- Page metadata, Open Graph, and Twitter card metadata
-- Structured data, robots configuration, favicon, and canonical metadata
+### Technical Skills
+
+Presents the technologies and tools used across frontend development and the portfolio itself.
+
+### Engineering Priorities
+
+Highlights several engineering priorities:
+
+- Component architecture
+- Performance
+- User experience
+- Maintainability
+- Accessibility
+
+### Education & Training
+
+Presents education, frontend development training, and supporting credentials.
+
+Education and certification data is maintained separately from the presentation components.
+
+### CTA
+
+Provides a final contact-oriented section with direct ways to connect.
 
 ---
 
 ## Tech Stack
 
-| Category | Technologies |
-|---|---|
-| **Framework** | Next.js, React, TypeScript |
-| **Styling** | Tailwind CSS, Tailwind Merge, Tailwind Animate |
-| **Animation** | Motion, GSAP, React CountUp |
-| **3D & WebGL** | Three.js, React Three Fiber, React Three Drei, React Three Postprocessing, Three Globe, Postprocessing, Maath |
-| **UI & Components** | shadcn/ui, Radix UI, Lucide React, Tabler Icons, React Icons, Class Variance Authority, clsx |
-| **Tooling** | ESLint, TypeScript, PostCSS, npm |
+### Core
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+### UI & Styling
+
+- Tailwind CSS
+- shadcn/ui
+- Radix UI
+- class-variance-authority
+- clsx
+- tailwind-merge
+- tw-animate-css
+
+### Animation
+
+- Motion
+
+Animation is used selectively to support hierarchy, interaction, and visual polish without creating unnecessary continuous motion.
+
+### Icons
+
+- Lucide React
+- Tabler Icons
+- React Icons
+
+### SEO & Structured Data
+
+- Next.js Metadata
+- Schema.org structured data
+- `schema-dts`
+
+### Development
+
+- ESLint
+- TypeScript
+- npm
 
 ---
 
 ## Architecture
 
-The project follows a **component-oriented architecture**, separated into:
+The project separates presentation, configuration, reusable UI, and shared utilities into focused directories.
 
-- Page-level structure
-- Layout components
-- Section components
-- UI components
-- Animation components
-- SEO components
-- Scroll utilities
-
-This separation keeps responsibilities clear and makes individual parts of the portfolio easier to modify without affecting unrelated sections.
-
----
-
-## Project Structure
+The following represents the main application structure:
 
 ```text
-portfolio2/
-│
-├── app/
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-│
-├── public/
-│   └── ...
-│
-├── src/
-│   ├── animations/
-│   │   ├── CountUp.tsx
-│   │   ├── Cursor.tsx
-│   │   ├── FadeIn.tsx
-│   │   ├── Floating.tsx
-│   │   ├── Magnetic.tsx
-│   │   ├── ScrollScene.tsx
-│   │   ├── StaggerContainer.tsx
-│   │   └── TextReveal.tsx
+src/
+├── components/
+│   ├── layout/
+│   │   ├── Footer.tsx
+│   │   └── Navbar.tsx
 │   │
-│   ├── components/
-│   │   ├── layout/
-│   │   │   ├── Footer.tsx
-│   │   │   └── Navbar.tsx
-│   │   ├── loading/
-│   │   ├── ScrollRestoration/
-│   │   ├── sections/
-│   │   │   ├── about/
-│   │   │   ├── contact/
-│   │   │   ├── education/
-│   │   │   ├── hero/
-│   │   │   ├── projects/
-│   │   │   └── tech-stack/
-│   │   ├── seo/
-│   │   └── ui/
-│   │       └── resizable-navbar.tsx
-│   └── ...
+│   ├── loading/
+│   │   └── page-loader.constants.ts
+│   │
+│   ├── sections/
+│   │   ├── about/
+│   │   ├── cta/
+│   │   ├── education/
+│   │   ├── focus/
+│   │   ├── projects/
+│   │   └── skills/
+│   │
+│   ├── seo/
+│   │   └── StructuredData.tsx
+│   │
+│   └── ui/
+│       └── SectionHeading.tsx
 │
-├── components.json
-├── eslint.config.mjs
-├── next.config.ts
-├── package.json
-├── package-lock.json
-├── postcss.config.mjs
-├── tsconfig.json
-└── README.md
+├── config/
+│   ├── projects.config.ts
+│   └── site.config.ts
+│
+├── constants/
+│   ├── hero.constants.ts
+│   └── layout.constants.ts
+│
+├── hooks/
+│   └── useInView.ts
+│
+├── lib/
+│   └── utils.ts
+│
+├── sections/
+│   └── hero/
+│       ├── HeroAvailability.tsx
+│       ├── HeroButtons.tsx
+│       ├── HeroCodeVisual.tsx
+│       ├── HeroContent.tsx
+│       ├── HeroDescription.tsx
+│       ├── HeroHeading.tsx
+│       ├── HeroSection.tsx
+│       ├── HeroVisual.tsx
+│       └── index.ts
+│
+└── types/
+    └── project.ts
 ```
+
+The architecture is organized around feature and responsibility boundaries rather than concentrating unrelated logic inside large components.
 
 ---
 
-## Getting Started
+## Design Principles
 
-### Prerequisites
+### 1. Focused component responsibilities
 
-Make sure you have the following installed:
+Components are structured around clear responsibilities.
 
-- [Node.js](https://nodejs.org/)
-- npm
-- Git
+For example, the hero separates:
 
-Verify your versions with:
+- Heading
+- Description
+- Actions
+- Availability
+- Visual presentation
+- Section composition
 
-```bash
-node -v
-npm -v
+Section-specific components follow the same approach across About, Projects, Skills, Engineering Priorities, Education, and CTA.
+
+### 2. Centralized configuration
+
+Reusable or intentionally tunable configuration is kept outside presentation components where appropriate.
+
+Examples include:
+
+- Site information
+- Project data
+- Hero visual configuration
+- Layout constants
+
+This keeps configuration from becoming scattered throughout the component tree.
+
+### 3. Meaningful abstraction
+
+Reusable components are introduced when they provide a clear architectural or maintenance benefit.
+
+The goal is not to maximize the number of abstractions, but to keep responsibilities cohesive and avoid unnecessary duplication.
+
+### 4. Accessibility
+
+The interface uses semantic HTML and accessible interaction patterns wherever appropriate.
+
+Navigation includes:
+
+- Semantic navigation landmarks
+- Accessible labels
+- Keyboard-focus support
+- Responsive mobile navigation
+- Reduced-motion considerations
+
+Same-page navigation uses native anchor links for predictable browser behavior.
+
+### 5. Motion with restraint
+
+Motion is used to improve hierarchy and interaction rather than act as a constant visual layer.
+
+The implementation respects:
+
+```css
+prefers-reduced-motion
 ```
 
-### 1. Clone the Repository
+so users who request reduced motion are not exposed to unnecessary animation.
+
+### 6. Performance awareness
+
+The portfolio avoids unnecessary continuous animation and heavy visual effects.
+
+The developer visual is built with standard HTML and CSS rather than WebGL or canvas-based rendering.
+
+---
+
+## Responsive Design
+
+The portfolio is designed for:
+
+- Mobile
+- Tablet
+- Desktop
+- Large desktop displays
+
+Responsive Tailwind utilities are used to adapt:
+
+- Typography
+- Spacing
+- Navigation
+- Section layouts
+- Interactive elements
+- Hero composition
+
+The mobile navigation provides a dedicated responsive interaction model while maintaining the same overall content structure as the desktop experience.
+
+---
+
+## SEO
+
+The application includes SEO-oriented metadata and structured data.
+
+The implementation uses:
+
+- Next.js Metadata
+- Semantic HTML
+- Structured data through `StructuredData.tsx`
+- Descriptive page content
+- Accessible headings and navigation
+
+The goal is to make the portfolio understandable to both users and search engines without compromising the visual experience.
+
+---
+
+## Development
+
+### Requirements
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/leowilis/portfolio2.git
 cd portfolio2
 ```
 
-### 2. Install Dependencies
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-This installs the dependencies defined in `package.json`, using the existing `package-lock.json` for reproducible dependency resolution.
-
-### 3. Start the Development Server
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-The application will be available at [http://localhost:3000](http://localhost:3000).
+The application will be available at:
 
-### Development Workflow
-
-```bash
-npm install
-npm run dev
-```
-
-After making changes, run the project's validation commands before committing:
-
-```bash
-npm run lint
-npm run typecheck
-npm run build
+```text
+http://localhost:3000
 ```
 
 ---
 
 ## Available Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Starts the development server |
-| `npm run build` | Creates the production build |
-| `npm run start` | Starts the production server |
-| `npm run lint` | Runs ESLint |
-| `npm run typecheck` | Runs TypeScript type checking |
+### Development
 
----
-
-## Animation System
-
-One of the main goals of this project is to avoid duplicating animation logic across individual sections. Instead, common animation patterns are implemented as reusable components.
-
-**Fade In** — controlled entrance animations
-```tsx
-<FadeIn>
-  <Content />
-</FadeIn>
+```bash
+npm run dev
 ```
 
-**Stagger Container** — animates multiple children sequentially
-```tsx
-<StaggerContainer>
-  <Item />
-  <Item />
-  <Item />
-</StaggerContainer>
+Starts the Next.js development server.
+
+### Production Build
+
+```bash
+npm run build
 ```
 
-**Text Reveal** — animated text entrances and heading transitions
+Creates an optimized production build.
 
-**Magnetic** — interactive buttons/elements that respond to pointer movement
+### Production Server
 
-**Floating** — subtle continuous motion on selected visual elements
+```bash
+npm run start
+```
 
-**Scroll Scene** — scroll-driven motion connecting different sections, giving the page an interactive, visual-experience feel while keeping the structure component-based
+Starts the production server after a successful build.
 
----
+### Lint
 
-## Responsive Design
+```bash
+npm run lint
+```
 
-The portfolio adapts across Mobile, Tablet, Laptop, Desktop, and Large Desktop displays, including:
+Runs ESLint against the project.
 
-- Navigation changes
-- Typography scaling
-- Section spacing
-- Project layouts
-- Interactive elements
-- 3D visual adjustments
-- Mobile menu behavior
+### Type Check
 
-The goal is to preserve visual hierarchy and usability regardless of viewport size.
+```bash
+npm run typecheck
+```
 
----
-
-## Performance Considerations
-
-Since the project contains animation- and WebGL-heavy experiences, performance is a key consideration. The implementation relies on:
-
-- Reusable animation primitives
-- CSS transforms
-- Scroll-based motion values
-- Component separation
-- Next.js image optimization
-- Responsive rendering strategies
-- Controlled visual effects
-
-3D effects are used selectively to enhance the experience rather than replacing the entire UI with WebGL.
+Runs TypeScript without emitting files.
 
 ---
 
-## SEO & Metadata
+## Development Workflow
 
-Configured through the Next.js App Router, including:
+Before committing changes, validate the project with:
 
-- Site title, description, and keywords
-- Author information
-- Open Graph metadata
-- Twitter metadata
-- Robots configuration
-- Favicon and metadata base URL
-- Structured data for search engines
+```bash
+npm run lint
+npm run typecheck
+npm run build
+git diff --check
+```
+
+Changes should remain scoped to the relevant feature or responsibility.
+
+Unrelated changes should not be included in the same commit.
 
 ---
 
 ## Deployment
 
-The portfolio is deployed using [Vercel](https://vercel.com).
+The portfolio is deployed using Vercel.
 
-**Production website:** [leonardo-wilis-portfolio.vercel.app](https://leonardo-wilis-portfolio.vercel.app)
+**Production:**
+https://leonardo-wilis-portfolio.vercel.app/
 
-### Deploying Your Own Instance
-
-1. Fork or clone the repository
-2. Install the dependencies
-3. Run the production build locally
-4. Connect the repository to Vercel
-5. Configure any required environment variables
-6. Deploy the project
-
-No special server configuration is required beyond the standard Next.js application setup.
-
----
-
-## Development Principles
-
-- **Component Reusability** — components are reused whenever the same behavior or UI pattern appears in multiple places
-- **Separation of Concerns** — page structure, animation behavior, UI primitives, and section-specific logic are kept separated where practical
-- **Maintainability** — individual sections can be changed without large ripple effects across the app
-- **Responsive First** — UI behavior is considered across viewport sizes, not just desktop
-- **Purposeful Animation** — motion improves hierarchy, feedback, and storytelling rather than adding decoration for its own sake
-- **Performance Awareness** — visual effects are balanced against rendering and browser performance, especially for animation-heavy and WebGL-based sections
-
----
-
-## Browser Support
-
-The portfolio targets modern browsers with support for modern JavaScript, CSS transforms/animations, ES modules, and WebGL for 3D experiences.
-
-For the best experience, use an up-to-date version of:
-
-- Chrome
-- Edge
-- Firefox
-- Safari
-
----
-
-## Troubleshooting
-
-**Port 3000 is already in use**
-```bash
-npm run dev -- -p 3001
-```
-Then open [http://localhost:3001](http://localhost:3001).
-
-**Dependencies are out of sync**
-```bash
-rm -rf node_modules
-npm install
-npm run dev
-```
-
-**Build issues**
-
-Run the checks individually to isolate the source of the problem:
-```bash
-npm run lint
-npm run typecheck
-npm run build
-```
+The application is built as a Next.js production application and can be deployed through a standard Vercel workflow.
 
 ---
 
 ## Project Status
 
-The portfolio is currently live. Planned improvements include:
+The portfolio is actively being refined with a focus on:
 
-- Additional project case studies
-- More detailed project documentation
-- Further performance optimization
-- Additional accessibility improvements
-- Expanded interactive experiences
+- Frontend engineering presentation
+- Component architecture
+- Responsive design
+- Accessibility
+- Motion quality
+- Performance
+- SEO
+- Maintainable code organization
+
+The visual system is intentionally oriented toward a mature engineering-focused portfolio rather than relying on heavy visual effects.
 
 ---
 
 ## Author
 
 **Leonardo Wilis**
-Frontend Developer focused on building modern, responsive, and interactive web experiences.
 
-I enjoy working with React, Next.js, TypeScript, modern CSS, animation, interactive UI, and 3D web experiences.
+Frontend Developer focused on building clean, responsive, and maintainable web experiences.
 
-- Portfolio: [leonardo-wilis-portfolio.vercel.app](https://leonardo-wilis-portfolio.vercel.app)
-- GitHub: [@leowilis](https://github.com/leowilis)
+- Portfolio: https://leonardo-wilis-portfolio.vercel.app/
+- GitHub: https://github.com/leowilis
 
 ---
 
 ## License
 
-This repository contains my personal portfolio website and is intended primarily for personal and professional presentation. The design, content, branding, and personal assets are **not** intended to be redistributed as a portfolio template without permission.
+This project is a personal portfolio created by Leonardo Wilis.
