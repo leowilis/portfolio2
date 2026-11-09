@@ -15,7 +15,7 @@ export const EDUCATION_DATA: EducationItem[] = [
     id: 'front-end-developer-hack',
     type: 'Certificate of Graduation',
     title: 'Front-End Developer Web Programming Hack',
-    institution: 'Hacktiv8',
+    institution: 'Ahademy Code',
     description:
       'Completed and graduated from a Front-End Developer Web Programming Hack program focused on building modern frontend web applications through structured learning and hands-on development.',
     period: '2026',
